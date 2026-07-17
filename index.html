@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo Alvo — Acelerador de Faturamento</title>
+  <meta name="description" content="Faça seu negócio crescer de verdade. Tráfego pago, social media e sites que enchem o salão, movimentam o delivery e constroem marca. No alvo, desde 2021." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <meta property="og:title" content="Grupo Alvo — Acelerador de Faturamento" />
+  <meta property="og:description" content="Faça seu negócio crescer de verdade. Mais clientes, mais vendas, mais faturamento — no alvo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,400..600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ==================== PRELOADER ==================== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner" id="plInner">
+      <div class="pl-target" aria-hidden="true">
+        <span class="pl-target-ring"></span>
+        <span class="pl-target-ring"></span>
+      </div>
+      <img class="pl-logo" src="assets/logo.png" alt="Grupo Alvo" />
+    </div>
+    <div class="preloader-meta">
+      <span class="pl-label">Ajustando a mira</span>
+      <div class="pl-bar"><span class="pl-bar-fill" id="plFill"></span></div>
+      <span class="pl-count"><span id="plCount">0</span>%</span>
+    </div>
+  </div>
+
+  <!-- ==================== TEXTURA / PROGRESSO ==================== -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ==================== NAV ==================== -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav-logo" aria-label="Grupo Alvo — início">
+      <img src="assets/logo.png" alt="Grupo Alvo" />
+    </a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#sobre" class="nav-link">Quem somos</a>
+      <a href="#servicos" class="nav-link" data-navlink="servicos">Serviços</a>
+      <a href="#metodo" class="nav-link" data-navlink="metodo">Método</a>
+      <a href="#resultados" class="nav-link" data-navlink="resultados">Resultados</a>
+      <a href="#contato" class="nav-link" data-navlink="contato">Contato</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram do Grupo Alvo" data-magnetic>
+        <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+      <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-magnetic>
+        <span class="btn-label">Falar no WhatsApp</span>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==================== MENU MOBILE ==================== -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu-links">
+      <a href="#sobre">Quem somos</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#metodo">Método</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary">
+        <span class="btn-label">Falar no WhatsApp</span>
+      </a>
+      <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="btn btn-ghost">
+        <span class="btn-label">@grupoalvo_</span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+      <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
+      <div class="hero-bg-glow" aria-hidden="true"></div>
+
+      <div class="hero-target" aria-hidden="true">
+        <svg class="target-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(167,139,250,0)" />
+              <stop offset="100%" stop-color="rgba(167,139,250,0.9)" />
+            </linearGradient>
+          </defs>
+          <circle class="target-ring target-ring-outer" cx="200" cy="200" r="192" />
+          <circle class="target-ring" cx="200" cy="200" r="150" />
+          <circle class="target-ring" cx="200" cy="200" r="108" />
+          <circle class="target-ring" cx="200" cy="200" r="66" />
+          <g id="targetTicks">
+            <circle class="target-tick" cx="200" cy="200" r="176" fill="none" stroke-dasharray="1.5 13" />
+            <line class="target-tick" x1="200" y1="8" x2="200" y2="26" />
+            <line class="target-tick" x1="200" y1="374" x2="200" y2="392" />
+            <line class="target-tick" x1="8" y1="200" x2="26" y2="200" />
+            <line class="target-tick" x1="374" y1="200" x2="392" y2="200" />
+          </g>
+          <line class="target-cross" x1="26" y1="200" x2="374" y2="200" />
+          <line class="target-cross" x1="200" y1="26" x2="200" y2="374" />
+          <path class="target-bracket target-bracket-tl" d="M105 131 L105 105 L131 105" />
+          <path class="target-bracket target-bracket-tr" d="M269 105 L295 105 L295 131" />
+          <path class="target-bracket target-bracket-bl" d="M105 269 L105 295 L131 295" />
+          <path class="target-bracket target-bracket-br" d="M295 269 L295 295 L269 295" />
+          <line class="target-scan" id="targetScan" x1="200" y1="200" x2="200" y2="24" />
+          <g id="targetCore">
+            <circle class="target-core-ring" cx="200" cy="200" r="14" />
+            <circle class="target-core" cx="200" cy="200" r="5" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="container hero-inner">
+        <span class="eyebrow hero-eyebrow">
+          <span class="eyebrow-dot"></span>Acelerador de faturamento<span class="eyebrow-since">Desde 2021</span>
+        </span>
+        <h1 class="hero-title">
+          <span class="line"><span class="line-inner">Faça seu negócio</span></span>
+          <span class="line"><span class="line-inner">crescer de verdade.</span></span>
+          <span class="line hero-alvo-line"><span class="line-inner">
+            <span class="hero-alvo"><span class="serif-accent brand-text">no alvo.</span></span>
+          </span></span>
+        </h1>
+        <p class="hero-sub">
+          Mais clientes, mais vendas, mais faturamento. Unimos tráfego, conteúdo e
+          estratégia para fazer o seu negócio decolar — e construímos uma marca que as
+          pessoas lembram na hora de escolher.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contato" class="btn btn-primary" data-magnetic>
+            <span class="btn-label">Quero crescer meu negócio</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#metodo" class="btn btn-ghost">
+            <span class="btn-label">Ver o método</span>
+          </a>
+        </div>
+        <div class="hero-statstrip">
+          <div class="hstat"><span class="hstat-num">+50</span><span class="hstat-label">Projetos</span></div>
+          <span class="hstat-sep"></span>
+          <div class="hstat"><span class="hstat-num">4x</span><span class="hstat-label">ROI médio</span></div>
+          <span class="hstat-sep"></span>
+          <div class="hstat"><span class="hstat-num">2021</span><span class="hstat-label">Acelerando</span></div>
+        </div>
+      </div>
+
+      <div class="hero-scrollhint" aria-hidden="true">
+        <span>Role</span>
+        <span class="line-anim"></span>
+      </div>
+    </section>
+
+    <!-- ==================== MARQUEE ==================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Tráfego pago <span class="marquee-star">✦</span> Social media <span class="marquee-star">✦</span> Sites &amp; cardápios <span class="marquee-star">✦</span> <span class="is-muted">Mais faturamento</span> <span class="marquee-star">✦</span></span>
+        <span class="marquee-item">Tráfego pago <span class="marquee-star">✦</span> Social media <span class="marquee-star">✦</span> Sites &amp; cardápios <span class="marquee-star">✦</span> <span class="is-muted">Mais faturamento</span> <span class="marquee-star">✦</span></span>
+      </div>
+    </div>
+
+    <!-- ==================== DOR / DIAGNÓSTICO ==================== -->
+    <section class="section pain" id="diagnostico">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">O diagnóstico</span>
+          <h2 class="section-title" data-split>Você trabalha muito.<br>Mas não vê o faturamento crescer.</h2>
+        </div>
+
+        <div class="pain-grid" data-reveal-group>
+          <article class="pain-card" data-reveal>
+            <span class="pain-index">01</span>
+            <span class="pain-bar" aria-hidden="true"></span>
+            <h3>Vende bem, <em>mas fatura menos do que poderia.</em></h3>
+            <p>Movimento não é margem. Falta estratégia pra aumentar o ticket e a recorrência.</p>
+          </article>
+          <article class="pain-card" data-reveal>
+            <span class="pain-index">02</span>
+            <span class="pain-bar" aria-hidden="true"></span>
+            <h3>Todo mundo conhece, <em>mas ninguém lembra na hora de escolher.</em></h3>
+            <p>Sem marca forte e presença digital, você fica invisível — e briga no preço.</p>
+          </article>
+          <article class="pain-card" data-reveal>
+            <span class="pain-index">03</span>
+            <span class="pain-bar" aria-hidden="true"></span>
+            <h3>Trabalha demais, <em>e mesmo assim não cresce.</em></h3>
+            <p>O problema não é o seu produto. É a mira. E é exatamente isso que a gente ajusta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== NO ALVO (flecha + dinheiro) ==================== -->
+    <section class="alvo-hit" id="alvoHit">
+      <canvas class="alvo-money" id="alvoMoney" aria-hidden="true"></canvas>
+      <div class="container alvo-inner">
+        <p class="alvo-lead">A gente ajusta a mira e crava o seu faturamento</p>
+        <div class="alvo-stage">
+          <svg class="alvo-target-svg" id="alvoTarget" viewBox="0 0 240 240" aria-hidden="true">
+            <circle class="at-ring" cx="120" cy="120" r="112" />
+            <circle class="at-ring" cx="120" cy="120" r="84" />
+            <circle class="at-ring" cx="120" cy="120" r="56" />
+            <circle class="at-fill" cx="120" cy="120" r="30" />
+            <circle class="at-core" cx="120" cy="120" r="13" />
+            <line class="at-cross" x1="120" y1="14" x2="120" y2="46" />
+            <line class="at-cross" x1="120" y1="194" x2="120" y2="226" />
+            <line class="at-cross" x1="14" y1="120" x2="46" y2="120" />
+            <line class="at-cross" x1="194" y1="120" x2="226" y2="120" />
+          </svg>
+          <svg class="alvo-arrow" id="alvoArrow" viewBox="0 0 132 26" aria-hidden="true">
+            <line x1="8" y1="13" x2="106" y2="13" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+            <path d="M104 5 L126 13 L104 21 Z" fill="currentColor" />
+            <path d="M8 13 L20 5 M8 13 L20 21 M15 13 L27 5 M15 13 L27 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h3 class="alvo-word"><span class="brand-text">NO ALVO.</span></h3>
+      </div>
+    </section>
+
+    <!-- ==================== QUEM SOMOS ==================== -->
+    <section class="section about" id="sobre">
+      <div class="container">
+        <div class="about-wrap">
+          <div class="about-copy">
+            <span class="section-tag">Quem somos</span>
+            <h2 class="section-title" data-split>Especialistas em fazer<br>negócio crescer.</h2>
+            <p class="about-lead">Desde 2021, o Grupo Alvo acelera o faturamento de quem empreende — com estratégia, tráfego e conteúdo. Direto ao ponto: foco total em resultado.</p>
+
+            <div class="about-stats" data-count-group>
+              <div class="astat"><span class="astat-num" data-count="50" data-prefix="+">+0</span><span class="astat-label">Projetos entregues</span></div>
+              <div class="astat"><span class="astat-num" data-count="4" data-suffix="x">0x</span><span class="astat-label">ROI médio</span></div>
+              <div class="astat"><span class="astat-num" data-count="100" data-suffix="%">0%</span><span class="astat-label">Comprometimento</span></div>
+            </div>
+
+            <div class="about-ctas">
+              <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary" data-magnetic>
+                <span class="btn-label">Falar no WhatsApp</span>
+                <span class="btn-arrow">→</span>
+              </a>
+              <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="btn btn-ig-solid" data-magnetic>
+                <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+                <span class="btn-label">@grupoalvo_</span>
+              </a>
+            </div>
+          </div>
+          <div class="founders">
+            <div class="founder">
+              <img src="assets/felipe.jpg" alt="Felipe — sócio do Grupo Alvo" loading="lazy" />
+              <div class="founder-name"><strong>Felipe</strong><span>Sócio</span></div>
+            </div>
+            <div class="founder">
+              <img src="assets/gabriel.jpg" alt="Gabriel — sócio do Grupo Alvo" loading="lazy" />
+              <div class="founder-name"><strong>Gabriel</strong><span>Sócio</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVIÇOS ==================== -->
+    <section class="section services" id="servicos">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">O que fazemos</span>
+          <h2 class="section-title" data-split>Três frentes para o seu<br>negócio faturar mais.</h2>
+        </div>
+
+        <div class="services-grid" data-reveal-group>
+          <article class="service-card" data-reveal data-tilt>
+            <span class="service-num">01</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 15-4v12L3 15v-4z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/><path d="M18 8.5a3.5 3.5 0 0 1 0 7"/></svg>
+            </div>
+            <h3>Tráfego Pago</h3>
+            <p>Anúncios que colocam seu negócio na frente de quem já está pronto pra comprar, na hora certa.</p>
+            <ul class="service-list">
+              <li>Campanhas Meta &amp; Google Ads</li>
+              <li>Mais clientes e vendas</li>
+              <li>Presença nos apps</li>
+              <li>Segmentação certeira</li>
+            </ul>
+          </article>
+
+          <article class="service-card" data-reveal data-tilt>
+            <span class="service-num">02</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4h5l1.7 2.5H20a1.5 1.5 0 0 1 1.5 1.5v10A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18V8A1.5 1.5 0 0 1 4 6.5h3.8L9.5 4z"/><circle cx="12" cy="12.5" r="3.4"/></svg>
+            </div>
+            <h3>Social Media</h3>
+            <p>Conteúdo que constrói uma marca desejada, gera autoridade e transforma seguidor em cliente fiel.</p>
+            <ul class="service-list">
+              <li>Fotos e vídeos que vendem</li>
+              <li>Linha editorial estratégica</li>
+              <li>Gestão diária das redes</li>
+              <li>Comunidade fiel à marca</li>
+            </ul>
+          </article>
+
+          <article class="service-card" data-reveal data-tilt>
+            <span class="service-num">03</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.6"/><line x1="9.5" y1="7" x2="14.5" y2="7"/><line x1="9.5" y1="10.5" x2="14.5" y2="10.5"/><line x1="9.5" y1="14" x2="12.5" y2="14"/></svg>
+            </div>
+            <h3>Sites &amp; Cardápios</h3>
+            <p>Sites e cardápios digitais rápidos e lindos no celular, feitos pra converter visita em venda.</p>
+            <ul class="service-list">
+              <li>Site institucional que converte</li>
+              <li>Sistema de reservas</li>
+              <li>Cardápio digital</li>
+              <li>Mobile-first e rápido</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PARA QUEM ==================== -->
+    <section class="section audience" id="para-quem">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Para quem é</span>
+          <h2 class="section-title" data-split>Feito para quem quer<br>crescer de verdade.</h2>
+        </div>
+        <div class="audience-grid" data-reveal-group>
+          <article class="audience-card" data-reveal>
+            <span class="audience-mark" aria-hidden="true"></span>
+            <h3>Restaurantes &amp; Bares</h3>
+            <p>Encher a casa, virar o ponto da cidade e aumentar o ticket médio.</p>
+          </article>
+          <article class="audience-card" data-reveal>
+            <span class="audience-mark" aria-hidden="true"></span>
+            <h3>Comércio &amp; Serviços locais</h3>
+            <p>Atrair a vizinhança certa, gerar fluxo e transformar presença em venda.</p>
+          </article>
+          <article class="audience-card" data-reveal>
+            <span class="audience-mark" aria-hidden="true"></span>
+            <h3>Marcas em crescimento</h3>
+            <p>Escalar com previsibilidade, ganhar autoridade e sair da guerra de preço.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STATEMENT (preenche no scroll) ==================== -->
+    <section class="statement">
+      <div class="container">
+        <p class="statement-lead">Nós não vendemos curtidas</p>
+        <h2 class="statement-big">
+          <span class="fillword">FATURAMENTO<span class="fillword-echo" aria-hidden="true">FATURAMENTO</span></span>
+        </h2>
+        <p class="statement-note">
+          Curtida não paga conta. A gente mira no que importa: <b>mais clientes, mais vendas e caixa no azul.</b>
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== MÉTODO + FORM ==================== -->
+    <section class="section method" id="metodo">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">O método Alvo</span>
+          <h2 class="section-title" data-split>Da mira ao alvo<br>em quatro passos.</h2>
+        </div>
+
+        <div class="method-wrap">
+          <div class="method-steps">
+            <div class="steps-line"><span class="steps-progress" id="stepsProgress"></span></div>
+            <div class="step" data-step>
+              <span class="step-dot">01</span>
+              <h3>Diagnóstico</h3>
+              <p>Analisamos seu negócio, seu mercado e a concorrência pra achar onde está o dinheiro que passa batido.</p>
+            </div>
+            <div class="step" data-step>
+              <span class="step-dot">02</span>
+              <h3>Estratégia</h3>
+              <p>Montamos o plano de mídia e conteúdo com a mira travada no seu objetivo de faturamento.</p>
+            </div>
+            <div class="step" data-step>
+              <span class="step-dot">03</span>
+              <h3>Execução</h3>
+              <p>Campanhas no ar e conteúdo que atrai — do anúncio até a venda confirmada.</p>
+            </div>
+            <div class="step" data-step>
+              <span class="step-dot">04</span>
+              <h3>Escala</h3>
+              <p>Medimos, otimizamos e escalamos o que traz caixa. Crescimento com previsibilidade.</p>
+            </div>
+          </div>
+
+          <!-- FORM -->
+          <form class="lead-form" id="leadForm" novalidate>
+            <h3>Peça seu orçamento grátis</h3>
+            <p>Receba uma proposta personalizada em até 24h, direto no seu WhatsApp.</p>
+            <div class="field">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="voce@email.com" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="whatsapp">WhatsApp (com DDD)</label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 90000-0000" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="objetivo">Qual seu principal objetivo?</label>
+              <select id="objetivo" name="objetivo">
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option>Atrair mais clientes</option>
+                <option>Aumentar as vendas / faturamento</option>
+                <option>Divulgar meu negócio na cidade</option>
+                <option>Construir a marca nas redes sociais</option>
+                <option>Criar/refazer meu site ou cardápio</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <span class="btn-label">Receber proposta</span>
+              <span class="btn-arrow">→</span>
+            </button>
+            <p class="form-privacy">Abre direto no WhatsApp · sem enrolação</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RESULTADOS ==================== -->
+    <section class="section results" id="resultados">
+      <div class="container">
+        <div class="results-head">
+          <div class="section-head">
+            <span class="section-tag">Resultados reais</span>
+            <h2 class="section-title" data-split>Prints que valem mais<br>que promessa.</h2>
+            <p class="section-sub">Toque para ver de perto — números reais de quem confiou na gente.</p>
+          </div>
+          <div class="results-nav">
+            <button class="results-arrow" id="resultsPrev" aria-label="Anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="results-arrow" id="resultsNext" aria-label="Próximo">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="results-viewport">
+          <div class="results-track" id="resultsTrack">
+            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-1.jpg" alt="Resultado de campanha 1" loading="lazy" /></div>
+            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-2.jpg" alt="Resultado de campanha 2" loading="lazy" /></div>
+            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-3.jpg" alt="Resultado de campanha 3" loading="lazy" /></div>
+            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-4.jpg" alt="Resultado de campanha 4" loading="lazy" /></div>
+            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-5.jpg" alt="Resultado de campanha 5" loading="lazy" /></div>
+            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-6.jpg" alt="Resultado de campanha 6" loading="lazy" /></div>
+          </div>
+        </div>
+        <div class="results-progress-track"><span class="results-progress" id="resultsProgress"></span></div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Dúvidas</span>
+          <h2 class="section-title" data-split>Perguntas frequentes.</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Em quanto tempo vejo resultado?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>As primeiras campanhas costumam gerar movimento já nas primeiras semanas. Crescimento consistente vem com a otimização ao longo dos primeiros meses.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Que tipo de negócio vocês atendem?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>Trabalhamos com quem quer crescer de verdade — restaurantes e bares, comércio e serviços locais e marcas em expansão. Se tem cliente pra conquistar, a gente mira.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Preciso ter verba grande de anúncios?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>Não. Começamos com um investimento adequado à sua realidade e escalamos conforme o retorno aparece, sempre protegendo a sua margem.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Como funciona o primeiro contato?<span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>Você chama no WhatsApp ou preenche o formulário. Fazemos um diagnóstico e enviamos uma proposta personalizada em até 24 horas.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FINALE ==================== -->
+    <section class="finale" id="contato">
+      <div class="container">
+        <span class="eyebrow finale-eyebrow"><span class="eyebrow-dot"></span>Bora acertar o alvo?</span>
+        <h2 class="finale-title">
+          <span class="line"><span class="line-inner">Vamos fazer seu</span></span>
+          <span class="line"><span class="line-inner">negócio <span class="serif-accent brand-text">crescer</span>.</span></span>
+        </h2>
+        <p class="finale-sub">Chame no WhatsApp ou peça seu orçamento. A gente mira, você fatura.</p>
+        <div class="finale-ctas">
+          <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary" data-magnetic>
+            <span class="btn-label">Falar no WhatsApp</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="btn btn-ig-solid" data-magnetic>
+            <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+            <span class="btn-label">@grupoalvo_</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Grupo Alvo" />
+        <p>Acelerador de faturamento. Estratégia que transforma negócios em marcas — desde 2021.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navegar</h4>
+          <a href="#sobre">Quem somos</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#metodo">Método</a>
+          <a href="#resultados">Resultados</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <a href="https://wa.me/5511979705089" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener">Instagram</a>
+          <a href="#contato">Pedir orçamento</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Grupo Alvo. Todos os direitos reservados.</span>
+      <span>Feito com mira no seu faturamento.</span>
+    </div>
+  </footer>
+
+  <!-- ==================== FLUTUANTE (WhatsApp) ==================== -->
+  <div class="floats">
+    <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="float-btn float-wa" aria-label="Falar no WhatsApp">
+      <span class="float-pulse" aria-hidden="true"></span>
+      <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.2-157zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+  </div>
+
+  <!-- ==================== LIGHTBOX ==================== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Fechar">×</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
