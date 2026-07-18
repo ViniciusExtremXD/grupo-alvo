@@ -96,7 +96,7 @@
           </defs>
           <circle class="target-ring target-ring-outer" cx="200" cy="200" r="192" />
           <circle class="target-ring" cx="200" cy="200" r="150" />
-          <circle class="target-ring" cx="200" cy="200" r="108" />
+          <circle class="target-ring target-ring-dashed" id="targetRingDashed" cx="200" cy="200" r="108" fill="none" stroke="rgba(167, 139, 250, 0.22)" stroke-width="1" />
           <circle class="target-ring" cx="200" cy="200" r="66" />
           <g id="targetTicks">
             <circle class="target-tick" cx="200" cy="200" r="176" fill="none" stroke-dasharray="1.5 13" />
@@ -105,12 +105,14 @@
             <line class="target-tick" x1="8" y1="200" x2="26" y2="200" />
             <line class="target-tick" x1="374" y1="200" x2="392" y2="200" />
           </g>
-          <line class="target-cross" x1="26" y1="200" x2="374" y2="200" />
-          <line class="target-cross" x1="200" y1="26" x2="200" y2="374" />
-          <path class="target-bracket target-bracket-tl" d="M105 131 L105 105 L131 105" />
-          <path class="target-bracket target-bracket-tr" d="M269 105 L295 105 L295 131" />
-          <path class="target-bracket target-bracket-bl" d="M105 269 L105 295 L131 295" />
-          <path class="target-bracket target-bracket-br" d="M295 269 L295 295 L269 295" />
+          <line class="target-cross" x1="26" y1="200" x2="130" y2="200" />
+          <line class="target-cross" x1="270" y1="200" x2="374" y2="200" />
+          <line class="target-cross" x1="200" y1="26" x2="200" y2="130" />
+          <line class="target-cross" x1="200" y1="270" x2="200" y2="374" />
+          <path class="target-bracket target-bracket-tl" d="M20 50 L20 20 L50 20" />
+          <path class="target-bracket target-bracket-tr" d="M350 20 L380 20 L380 50" />
+          <path class="target-bracket target-bracket-bl" d="M20 350 L20 380 L50 380" />
+          <path class="target-bracket target-bracket-br" d="M350 380 L380 380 L380 350" />
           <line class="target-scan" id="targetScan" x1="200" y1="200" x2="200" y2="24" />
           <g id="targetCore">
             <circle class="target-core-ring" cx="200" cy="200" r="14" />
@@ -127,7 +129,13 @@
           <span class="line"><span class="line-inner">Faça seu negócio</span></span>
           <span class="line"><span class="line-inner">crescer de verdade.</span></span>
           <span class="line hero-alvo-line"><span class="line-inner">
-            <span class="hero-alvo"><span class="serif-accent brand-text">no alvo.</span></span>
+            <span class="hero-alvo">
+              <span class="serif-accent brand-text">no alvo.</span>
+              <span class="alvo-bracket alvo-bracket-tl"></span>
+              <span class="alvo-bracket alvo-bracket-tr"></span>
+              <span class="alvo-bracket alvo-bracket-bl"></span>
+              <span class="alvo-bracket alvo-bracket-br"></span>
+            </span>
           </span></span>
         </h1>
         <p class="hero-sub">
@@ -206,9 +214,10 @@
         <div class="alvo-stage">
           <svg class="alvo-target-svg" id="alvoTarget" viewBox="0 0 240 240" aria-hidden="true">
             <circle class="at-ring" cx="120" cy="120" r="112" />
-            <circle class="at-ring" cx="120" cy="120" r="84" />
+            <circle class="at-ring at-ring-dashed" id="alvoTargetRingDashed" cx="120" cy="120" r="84" />
             <circle class="at-ring" cx="120" cy="120" r="56" />
             <circle class="at-fill" cx="120" cy="120" r="30" />
+            <circle class="at-shockwave" id="alvoShockwave" cx="120" cy="120" r="10" />
             <circle class="at-core" cx="120" cy="120" r="13" />
             <line class="at-cross" x1="120" y1="14" x2="120" y2="46" />
             <line class="at-cross" x1="120" y1="194" x2="120" y2="226" />

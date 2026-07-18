@@ -23,6 +23,11 @@ export function initHero() {
   gsap.set("#targetCore", { scale: 0, opacity: 0, transformOrigin: "50% 50%" });
   gsap.set("#targetTicks", { opacity: 0, transformOrigin: "50% 50%" });
   gsap.set("#targetScan", { opacity: 0 });
+  gsap.set(".alvo-bracket", { opacity: 0 });
+  gsap.set(".alvo-bracket-tl", { x: -14, y: -14 });
+  gsap.set(".alvo-bracket-tr", { x: 14, y: -14 });
+  gsap.set(".alvo-bracket-bl", { x: -14, y: 14 });
+  gsap.set(".alvo-bracket-br", { x: 14, y: 14 });
 
   heroIntro
     // a retícula surge e "trava" no centro
@@ -47,6 +52,12 @@ export function initHero() {
     .from(".hero-title .line-inner", {
       yPercent: 118, duration: 1.1, stagger: 0.1, ease: "expo.out",
     }, 0.7)
+    // mini-brackets do próprio texto convergem e travam
+    .to(".alvo-bracket-tl", { x: 0, y: 0, duration: 0.6, ease: "back.out(2)" }, 0.85)
+    .to(".alvo-bracket-tr", { x: 0, y: 0, duration: 0.6, ease: "back.out(2)" }, 0.85)
+    .to(".alvo-bracket-bl", { x: 0, y: 0, duration: 0.6, ease: "back.out(2)" }, 0.85)
+    .to(".alvo-bracket-br", { x: 0, y: 0, duration: 0.6, ease: "back.out(2)" }, 0.85)
+    .to(".alvo-bracket", { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.85)
     .from(".hero-sub", { opacity: 0, y: 26, duration: 0.8, ease: "power3.out" }, 1.1)
     .from(".hero-ctas > *", { opacity: 0, y: 26, stagger: 0.1, duration: 0.7, ease: "power3.out" }, 1.25)
     .from(".hero-statstrip .hstat", { opacity: 0, y: 24, stagger: 0.1, duration: 0.7, ease: "power3.out" }, 1.4)
@@ -57,6 +68,7 @@ export function initHero() {
   // não do bounding-box do elemento (que descentralizaria a linha do scan).
   if (!reduceMotion) {
     gsap.to("#targetTicks", { rotation: 360, duration: 46, ease: "none", repeat: -1, svgOrigin: "200 200" });
+    gsap.to("#targetRingDashed", { rotation: -360, duration: 34, ease: "none", repeat: -1, svgOrigin: "200 200" });
     gsap.to("#targetScan", { rotation: 360, duration: 6.5, ease: "none", repeat: -1, svgOrigin: "200 200" });
     gsap.to("#targetCore", {
       scale: 1.35, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: -1, transformOrigin: "50% 50%",

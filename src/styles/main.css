@@ -538,12 +538,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   will-change: transform;
 }
 .target-svg { width: 100%; height: 100%; overflow: visible; }
-.target-ring { fill: none; stroke: rgba(167, 139, 250, 0.22); stroke-width: 1; }
-.target-ring-outer { stroke: rgba(167, 139, 250, 0.16); }
-.target-cross { stroke: rgba(167, 139, 250, 0.3); stroke-width: 1; }
-.target-tick { stroke: rgba(167, 139, 250, 0.5); stroke-width: 1.4; }
-.target-bracket { stroke: var(--violet-2); stroke-width: 2.4; fill: none; filter: drop-shadow(0 0 6px var(--glow)); }
-.target-scan { stroke: url(#scanGrad); stroke-width: 2; }
+.target-ring { fill: none; stroke: rgba(167, 139, 250, 0.12); stroke-width: 1; }
+.target-ring-outer { stroke: rgba(167, 139, 250, 0.08); }
+.target-ring-dashed { stroke-dasharray: 6 10; stroke-width: 1.2; }
+.target-cross { stroke: rgba(167, 139, 250, 0.18); stroke-width: 1; }
+.target-tick { stroke: rgba(167, 139, 250, 0.4); stroke-width: 1.4; }
+.target-bracket { stroke: var(--violet-2); stroke-width: 1.5; fill: none; opacity: 0.5; filter: drop-shadow(0 0 6px var(--glow)); }
+.target-scan { stroke: url(#scanGrad); stroke-width: 1.5; opacity: 0.7; }
 .target-core { fill: var(--violet-2); filter: drop-shadow(0 0 10px var(--glow)); }
 .target-core-ring { fill: none; stroke: var(--violet-2); stroke-width: 1.5; }
 
@@ -569,11 +570,41 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* linha "no alvo" com destaque forte (gradiente + glow) */
 .hero-alvo-line { margin-top: 0.04em; }
 .hero-alvo {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  padding: 4px 18px;
   filter: drop-shadow(0 6px 42px rgba(124, 77, 255, 0.62));
 }
 .hero-alvo .serif-accent { font-size: 1.2em; line-height: 1; }
+
+/* Mini brackets wrapping the branding "no alvo." */
+.alvo-bracket {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--violet-2);
+  border-style: solid;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 5px var(--glow));
+}
+.alvo-bracket-tl {
+  top: 0; left: 0;
+  border-width: 2px 0 0 2px;
+}
+.alvo-bracket-tr {
+  top: 0; right: 0;
+  border-width: 2px 2px 0 0;
+}
+.alvo-bracket-bl {
+  bottom: 0; left: 0;
+  border-width: 0 0 2px 2px;
+}
+.alvo-bracket-br {
+  bottom: 0; right: 0;
+  border-width: 0 2px 2px 0;
+}
 .hero-sub {
   font-size: clamp(16px, 1.7vw, 20px);
   color: var(--muted);
@@ -768,9 +799,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .alvo-target-svg { width: 100%; height: 100%; overflow: visible; }
 .at-ring { fill: none; stroke: rgba(167, 139, 250, 0.3); stroke-width: 1.4; }
+.at-ring-dashed { stroke-dasharray: 4 6; stroke-width: 1.4; }
 .at-fill { fill: rgba(124, 77, 255, 0.14); stroke: var(--violet); stroke-width: 1.5; }
 .at-core { fill: var(--violet-2); filter: drop-shadow(0 0 12px var(--glow)); }
 .at-cross { stroke: rgba(167, 139, 250, 0.42); stroke-width: 1.4; }
+.at-shockwave {
+  fill: none;
+  stroke: var(--violet-2);
+  stroke-width: 2.2;
+  opacity: 0;
+  pointer-events: none;
+}
 .alvo-arrow {
   position: absolute;
   top: 50%; left: 50%;
