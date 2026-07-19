@@ -61,7 +61,8 @@ export function initHero() {
     .from(".hero-sub", { opacity: 0, y: 26, duration: 0.8, ease: "power3.out" }, 1.1)
     .from(".hero-ctas > *", { opacity: 0, y: 26, stagger: 0.1, duration: 0.7, ease: "power3.out" }, 1.25)
     .from(".hero-statstrip .hstat", { opacity: 0, y: 24, stagger: 0.1, duration: 0.7, ease: "power3.out" }, 1.4)
-    .from(".hero-scrollhint", { opacity: 0, duration: 0.8 }, 1.6);
+    .from(".hero-scrollhint", { opacity: 0, duration: 0.8 }, 1.6)
+    .set(".hero-title .line", { overflow: "visible" });
 
   // idle: retícula de ticks gira devagar, núcleo pulsa, scan varre.
   // svgOrigin garante a rotação em torno do centro real da SVG (200,200),
