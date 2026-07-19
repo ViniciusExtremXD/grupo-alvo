@@ -20,10 +20,15 @@ export function initAlvoHit() {
   const DPR = Math.min(window.devicePixelRatio || 1, 2);
   let w = 0, h = 0;
   const bills = [];
-  const GREENS = [
+  const BILL_COLORS = [
+    // Emerald greens
     ["#3fb765", "#0e5a30"],
     ["#54c47a", "#12613a"],
     ["#2ea45b", "#0b4a28"],
+    // Luxury Gold/Bronze
+    ["#f1c40f", "#7d6608"],
+    ["#f39c12", "#7e5109"],
+    ["#f5b041", "#9a7d0a"],
   ];
 
   function resize() {
@@ -52,7 +57,7 @@ export function initAlvoHit() {
     ctx.translate(m.x, m.y);
     ctx.rotate(m.rot);
     
-    // Rotação 3D (pitch) simulando queda de papel
+    // Rotação 3D (pitch)
     const scaleY = Math.abs(Math.sin(m.pitch || Math.PI / 2));
     ctx.scale(1, scaleY);
     
@@ -90,13 +95,15 @@ export function initAlvoHit() {
   }
 
   function spawnBurst(cx, cy) {
-    const n = Math.min(70, Math.round(w / 17));
+    const n = Math.min(75, Math.round(w / 16));
     for (let i = 0; i < n; i++) {
       const ang = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.15;
-      const spd = 6 + Math.random() * 10;
-      const [c1, c2] = GREENS[i % GREENS.length];
+      // spd de 2 a 13 para distribuir cédulas perto do centro e nas laterais
+      const spd = 2 + Math.random() * 11;
+      const [c1, c2] = BILL_COLORS[i % BILL_COLORS.length];
       bills.push({
-        x: cx, y: cy,
+        x: cx + (Math.random() - 0.5) * 16, // Pequeno offset no spawn
+        y: cy,
         vx: Math.cos(ang) * spd,
         vy: Math.sin(ang) * spd - 2,
         rot: Math.random() * Math.PI * 2,
@@ -104,13 +111,13 @@ export function initAlvoHit() {
         pitch: Math.random() * Math.PI * 2,
         vpitch: (Math.random() - 0.5) * 0.28,
         swayPhase: Math.random() * Math.PI * 2,
-        swaySpeed: 0.04 + Math.random() * 0.05,
-        swayAmp: 0.15 + Math.random() * 0.2,
-        w: 32 + Math.random() * 10,
-        h: 17 + Math.random() * 5,
+        swaySpeed: 0.03 + Math.random() * 0.04,
+        swayAmp: 0.12 + Math.random() * 0.18,
+        w: 38 + Math.random() * 10,  // Proporções mais longas, parecidas com notas reais
+        h: 15 + Math.random() * 4,
         c1, c2,
         settled: false,
-        restY: h - 8 - Math.random() * 46,
+        restY: h - 10 - Math.random() * 42,
       });
     }
   }
@@ -122,12 +129,13 @@ export function initAlvoHit() {
     for (const m of bills) {
       if (!m.settled) {
         anyMoving = true;
-        m.vy += 0.22;         // Gravidade menor para efeito de flutuação
-        m.vx *= 0.95;         // Atrito horizontal
-        m.vy *= 0.97;         // Atrito vertical (resistência do ar)
+        m.vy += 0.20;         // Gravidade suave de queda livre
+        m.vx *= 0.985;        // Menos atrito horizontal para que se espalhem organicamente!
+        m.vy *= 0.98;         // Atrito do ar vertical
+        m.vx += (Math.random() - 0.5) * 0.08; // Brisa de vento aleatória lateral
         m.x += m.vx;
         
-        // Balanço senoidal lateral (simulando vento)
+        // Balanço senoidal
         m.swayPhase += m.swaySpeed;
         m.x += Math.sin(m.swayPhase) * m.swayAmp;
         
@@ -136,12 +144,12 @@ export function initAlvoHit() {
         // Rotação Z e Pitch 3D
         m.rot += m.vrot;
         m.pitch += m.vpitch;
-        m.vpitch *= 0.98;
+        m.vpitch *= 0.985;
         
         if (m.x < 10) { m.x = 10; m.vx *= -0.5; }
         if (m.x > w - 10) { m.x = w - 10; m.vx *= -0.5; }
         
-        // Pouso suave no rodapé da seção
+        // Pouso suave no chão
         if (m.y >= m.restY) {
           m.y = m.restY;
           m.settled = true;
@@ -149,8 +157,8 @@ export function initAlvoHit() {
           m.vy = 0;
           m.vrot = 0;
           m.vpitch = 0;
-          m.rot = (Math.random() - 0.5) * 0.3; // Deita levemente inclinado
-          m.pitch = Math.PI / 2; // Lie flat (scaleY = 1)
+          m.rot = (Math.random() - 0.5) * 0.35; // Deita rotacionado
+          m.pitch = Math.PI / 2; // Flat 3D
         }
       }
       drawBill(m);
@@ -179,18 +187,22 @@ export function initAlvoHit() {
       .fromTo("#alvoShockwave", { scale: 0.8, opacity: 1 }, { scale: 4.5, opacity: 0, duration: 0.65, ease: "power2.out" }, "<")
       // Infla o alvo
       .to(target, { scale: 1.15, duration: 0.12, ease: "expo.out", transformOrigin: "50% 50%" }, "<")
-      // Flecha vibra no centro do alvo (decaimento rápido)
-      .fromTo(arrow, { rotation: -6 }, { rotation: 6, duration: 0.05, repeat: 7, yoyo: true, ease: "sine.inOut" }, "<")
-      .to(arrow, { rotation: 0, duration: 0.18, ease: "power2.out" })
+      // Vibração decrescente realista na flecha (mola amortecida)
+      .to(arrow, { rotation: -7, duration: 0.05, ease: "sine.inOut" }, "<")
+      .to(arrow, { rotation: 5, duration: 0.05, ease: "sine.inOut" })
+      .to(arrow, { rotation: -3.5, duration: 0.06, ease: "sine.inOut" })
+      .to(arrow, { rotation: 2, duration: 0.06, ease: "sine.inOut" })
+      .to(arrow, { rotation: -1, duration: 0.07, ease: "sine.inOut" })
+      .to(arrow, { rotation: 0, duration: 0.12, ease: "power2.out" })
       // Retorno elástico do alvo
-      .to(target, { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.4)" }, "<")
+      .to(target, { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.4)" }, "-=0.25")
       .add(() => {
         const r = stage.getBoundingClientRect();
         const s = section.getBoundingClientRect();
         spawnBurst(r.left - s.left + r.width / 2, r.top - s.top + r.height / 2);
         startLoop();
-      }, "-=0.42")
-      // Leve tremor na cena
+      }, "-=0.38")
+      // Tremor sutil na cena
       .fromTo(stage, { x: 0 }, { x: 5, duration: 0.05, repeat: 4, yoyo: true, ease: "none" }, "<");
   }
 

@@ -50,7 +50,14 @@ await live.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
 await live.goto(base, { waitUntil: "networkidle0", timeout: 45000 });
 await new Promise((r) => setTimeout(r, 4200)); // preloader + intro do hero
 await live.screenshot({ path: join(outDir, "live-hero.png") });
-console.log("ok live-hero");
+// seção no alvo (disparo e dinheiro acumulado)
+await live.evaluate(() => {
+  const el = document.querySelector("#alvoHit");
+  window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY);
+});
+await new Promise((r) => setTimeout(r, 4500)); // Espera a animação e o dinheiro assentar
+await live.screenshot({ path: join(outDir, "live-alvohit.png") });
+console.log("ok live-alvohit");
 
 // seção de serviços (motion aplicado)
 await live.evaluate(() => {
