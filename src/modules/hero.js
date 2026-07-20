@@ -16,6 +16,42 @@ import { $, $$, reduceMotion, finePointer } from "./env.js";
 export function initHero() {
   const heroIntro = gsap.timeline({ paused: true });
 
+  // Prepara animação palavra por palavra no título
+  const lineInners = $$(".hero-title .line-inner");
+  lineInners.forEach((line) => {
+    const nodes = Array.from(line.childNodes);
+    line.innerHTML = "";
+    nodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const words = node.textContent.split(/\s+/);
+        words.forEach((w) => {
+          if (!w) return;
+          const wrap = document.createElement("span");
+          wrap.className = "word-wrap";
+          wrap.style.display = "inline-block";
+          wrap.style.overflow = "hidden";
+          wrap.style.verticalAlign = "top";
+          wrap.innerHTML = `<span class="word-inner" style="display:inline-block;">${w}</span>`;
+          line.appendChild(wrap);
+          line.appendChild(document.createTextNode(" "));
+        });
+      } else {
+        const wrap = document.createElement("span");
+        wrap.className = "word-wrap";
+        wrap.style.display = "inline-block";
+        wrap.style.overflow = "hidden";
+        wrap.style.verticalAlign = "top";
+        const inner = document.createElement("span");
+        inner.className = "word-inner";
+        inner.style.display = "inline-block";
+        inner.appendChild(node);
+        wrap.appendChild(inner);
+        line.appendChild(wrap);
+        line.appendChild(document.createTextNode(" "));
+      }
+    });
+  });
+
   // estado inicial da mira (antes da intro)
   gsap.set(".target-ring", { scale: 1.35, opacity: 0, transformOrigin: "50% 50%" });
   gsap.set(".target-cross", { scaleX: 0, scaleY: 0, opacity: 0, transformOrigin: "50% 50%" });
@@ -49,9 +85,10 @@ export function initHero() {
     .to("#targetScan", { opacity: 1, duration: 0.4 }, 0.9)
     // texto entra sobre a mira travada
     .from(".hero-eyebrow", { opacity: 0, y: 20, duration: 0.7, ease: "power3.out" }, 0.55)
-    .from(".hero-title .line-inner", {
-      yPercent: 118, duration: 1.1, stagger: 0.1, ease: "expo.out",
-    }, 0.7)
+    // TODAS AS PALAVRAS SUBINDO ANIMADAS (word-by-word reveal)
+    .from(".hero-title .word-inner", {
+      yPercent: 120, rotateX: -25, opacity: 0, duration: 0.85, stagger: 0.04, ease: "expo.out",
+    }, 0.6)
     // mini-brackets do próprio texto convergem e travam
     .to(".alvo-bracket-tl", { x: 0, y: 0, duration: 0.6, ease: "back.out(2)" }, 0.85)
     .to(".alvo-bracket-tr", { x: 0, y: 0, duration: 0.6, ease: "back.out(2)" }, 0.85)
@@ -62,6 +99,7 @@ export function initHero() {
     .from(".hero-ctas > *", { opacity: 0, y: 26, stagger: 0.1, duration: 0.7, ease: "power3.out" }, 1.25)
     .from(".hero-statstrip .hstat", { opacity: 0, y: 24, stagger: 0.1, duration: 0.7, ease: "power3.out" }, 1.4)
     .from(".hero-scrollhint", { opacity: 0, duration: 0.8 }, 1.6)
+    .set(".hero-title .word-wrap", { overflow: "visible" })
     .set(".hero-title .line", { overflow: "visible" });
 
   // idle: retícula de ticks gira devagar, núcleo pulsa, scan varre.
@@ -77,6 +115,16 @@ export function initHero() {
     // respiro sutil das rings externas
     gsap.to(".target-ring-outer", {
       scale: 1.04, duration: 4.2, ease: "sine.inOut", yoyo: true, repeat: -1, transformOrigin: "50% 50%",
+    });
+    // flutuação dinâmica do alvo (vai e vem para maior dinamismo)
+    gsap.to(".hero-target", {
+      y: 25, duration: 6.5, ease: "sine.inOut", yoyo: true, repeat: -1
+    });
+    gsap.to(".hero-target", {
+      x: 15, duration: 8.2, ease: "sine.inOut", yoyo: true, repeat: -1
+    });
+    gsap.to(".hero-target", {
+      rotation: 1.5, duration: 7, ease: "sine.inOut", yoyo: true, repeat: -1, transformOrigin: "50% 50%"
     });
   }
 

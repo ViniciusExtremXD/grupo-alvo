@@ -85,52 +85,86 @@
     <section class="hero" id="hero">
       <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
       <div class="hero-bg-glow" aria-hidden="true"></div>
+      <!-- Linha guia laser conectando a intro até a seção do alvo -->
+      <div class="hero-laser-guide" aria-hidden="true">
+        <div class="laser-line"></div>
+        <div class="laser-pulse"></div>
+      </div>
 
       <div class="hero-target" aria-hidden="true">
-        <svg class="target-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <svg class="target-svg hero-target-svg" viewBox="0 0 400 400" aria-hidden="true">
           <defs>
-            <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="rgba(167,139,250,0)" />
-              <stop offset="100%" stop-color="rgba(167,139,250,0.9)" />
+            <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(167, 139, 250, 0.8)" />
+              <stop offset="100%" stop-color="rgba(124, 77, 255, 0)" />
             </linearGradient>
           </defs>
+
+          <!-- Aneis Radar com Graus e Ticks -->
           <circle class="target-ring target-ring-outer" cx="200" cy="200" r="192" />
-          <circle class="target-ring" cx="200" cy="200" r="150" />
-          <circle class="target-ring target-ring-dashed" id="targetRingDashed" cx="200" cy="200" r="108" fill="none" stroke="rgba(167, 139, 250, 0.22)" stroke-width="1" />
+          <circle class="target-ring" cx="200" cy="200" r="150" stroke-dasharray="8 6" />
+          <circle class="target-ring target-ring-dashed" id="targetRingDashed" cx="200" cy="200" r="108" fill="none" stroke="rgba(167, 139, 250, 0.3)" stroke-width="1.2" />
           <circle class="target-ring" cx="200" cy="200" r="66" />
+          
+          <!-- Ticks táticos radiais de bússola -->
           <g id="targetTicks">
-            <circle class="target-tick" cx="200" cy="200" r="176" fill="none" stroke-dasharray="1.5 13" />
-            <line class="target-tick" x1="200" y1="8" x2="200" y2="26" />
-            <line class="target-tick" x1="200" y1="374" x2="200" y2="392" />
-            <line class="target-tick" x1="8" y1="200" x2="26" y2="200" />
-            <line class="target-tick" x1="374" y1="200" x2="392" y2="200" />
+            <circle class="target-tick" cx="200" cy="200" r="176" fill="none" stroke-dasharray="2 12" />
+            <line class="target-tick" x1="200" y1="4" x2="200" y2="24" stroke-width="2" />
+            <line class="target-tick" x1="200" y1="376" x2="200" y2="396" stroke-width="2" />
+            <line class="target-tick" x1="4" y1="200" x2="24" y2="200" stroke-width="2" />
+            <line class="target-tick" x1="376" y1="200" x2="396" y2="200" stroke-width="2" />
+            <line class="target-tick" x1="60" y1="60" x2="74" y2="74" />
+            <line class="target-tick" x1="340" y1="60" x2="326" y2="74" />
+            <line class="target-tick" x1="60" y1="340" x2="74" y2="326" />
+            <line class="target-tick" x1="340" y1="340" x2="326" y2="326" />
           </g>
-          <line class="target-cross" x1="26" y1="200" x2="130" y2="200" />
-          <line class="target-cross" x1="270" y1="200" x2="374" y2="200" />
-          <line class="target-cross" x1="200" y1="26" x2="200" y2="130" />
-          <line class="target-cross" x1="200" y1="270" x2="200" y2="374" />
-          <path class="target-bracket target-bracket-tl" d="M20 50 L20 20 L50 20" />
-          <path class="target-bracket target-bracket-tr" d="M350 20 L380 20 L380 50" />
-          <path class="target-bracket target-bracket-bl" d="M20 350 L20 380 L50 380" />
-          <path class="target-bracket target-bracket-br" d="M350 380 L380 380 L380 350" />
-          <line class="target-scan" id="targetScan" x1="200" y1="200" x2="200" y2="24" />
+
+          <!-- Retículos Eixo X/Y -->
+          <line class="target-cross" x1="10" y1="200" x2="135" y2="200" />
+          <line class="target-cross" x1="265" y1="200" x2="390" y2="200" />
+          <line class="target-cross" x1="200" y1="10" x2="200" y2="135" />
+          <line class="target-cross" x1="200" y1="265" x2="200" y2="390" />
+
+          <!-- HUD Data Corner Brackets -->
+          <path class="target-bracket target-bracket-tl" d="M16 60 L16 16 L60 16" />
+          <path class="target-bracket target-bracket-tr" d="M340 16 L384 16 L384 60" />
+          <path class="target-bracket target-bracket-bl" d="M16 340 L16 384 L60 384" />
+          <path class="target-bracket target-bracket-br" d="M340 384 L384 384 L384 340" />
+
+          <!-- Textos táticos HUD -->
+          <text x="25" y="42" fill="rgba(167,139,250,0.6)" font-size="10" font-family="monospace" letter-spacing="1">SYS.LOCK // 01</text>
+          <text x="300" y="42" fill="rgba(167,139,250,0.6)" font-size="10" font-family="monospace" letter-spacing="1">RADAR.ON</text>
+          <text x="25" y="370" fill="rgba(167,139,250,0.6)" font-size="10" font-family="monospace" letter-spacing="1">ALT.99.8</text>
+          <text x="295" y="370" fill="rgba(167,139,250,0.6)" font-size="10" font-family="monospace" letter-spacing="1">TARGET.OK</text>
+
+          <!-- Radar Scan Line -->
+          <line class="target-scan" id="targetScan" x1="200" y1="200" x2="200" y2="20" />
+          
+          <!-- Núcleo Central emissivo -->
           <g id="targetCore">
-            <circle class="target-core-ring" cx="200" cy="200" r="14" />
-            <circle class="target-core" cx="200" cy="200" r="5" />
+            <circle class="target-core-ring" cx="200" cy="200" r="16" />
+            <circle class="target-core" cx="200" cy="200" r="6" />
           </g>
         </svg>
       </div>
 
       <div class="container hero-inner">
-        <span class="eyebrow hero-eyebrow">
-          <span class="eyebrow-dot"></span>Acelerador de faturamento<span class="eyebrow-since">Desde 2021</span>
-        </span>
+        <div class="hero-tag hero-eyebrow">
+          <span class="tag-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </span>
+          <div class="tag-body">
+            <span class="tag-title">Acelerando o seu negócio</span>
+            <span class="tag-sub">Desde 2021</span>
+          </div>
+        </div>
         <h1 class="hero-title">
-          <span class="line"><span class="line-inner">Faça seu negócio</span></span>
-          <span class="line"><span class="line-inner">crescer de verdade.</span></span>
+          <span class="line"><span class="line-inner">Traga todo o potencial de crescimento</span></span>
+          <span class="line"><span class="line-inner">do seu negócio,</span></span>
           <span class="line hero-alvo-line"><span class="line-inner">
+            mirando no
             <span class="hero-alvo">
-              <span class="serif-accent brand-text">no alvo.</span>
+              <span class="serif-accent brand-text">alvo.</span>
               <span class="alvo-bracket alvo-bracket-tl"></span>
               <span class="alvo-bracket alvo-bracket-tr"></span>
               <span class="alvo-bracket alvo-bracket-bl"></span>
@@ -211,26 +245,93 @@
       <canvas class="alvo-money" id="alvoMoney" aria-hidden="true"></canvas>
       <div class="container alvo-inner">
         <p class="alvo-lead">A gente ajusta a mira e crava o seu faturamento</p>
-        <div class="alvo-stage">
+        <div class="alvo-stage" id="alvoStage">
+          <div class="alvo-bow-wrap" id="alvoBowWrap">
+            <svg class="alvo-bow" id="alvoBow" viewBox="0 0 100 200" aria-hidden="true">
+              <!-- Arco invertido (virado para a direita) -->
+              <path class="bow-limb" d="M38,6 C86,55 86,145 38,194" />
+              <line class="bow-string" id="bowStringTop" x1="38" y1="6" x2="38" y2="100" />
+              <line class="bow-string" id="bowStringBottom" x1="38" y1="194" x2="38" y2="100" />
+            </svg>
+          </div>
+          <svg class="alvo-arrow" id="alvoArrow" viewBox="0 0 210 50" aria-hidden="true">
+            <defs>
+              <linearGradient id="laserShaft" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--lav)" />
+                <stop offset="100%" stop-color="var(--violet-2)" />
+              </linearGradient>
+            </defs>
+            <!-- Cauda (Fletching) mais aerodinâmica com mais barbatanas -->
+            <path class="arrow-fletch" d="M38,25 Q20,10 8,5 Q18,15 32,25" fill="none" />
+            <path class="arrow-fletch" d="M38,25 Q20,40 8,45 Q18,35 32,25" fill="none" />
+            <path class="arrow-fletch" d="M48,25 Q26,14 14,8 Q24,18 42,25" fill="none" />
+            <path class="arrow-fletch" d="M48,25 Q26,36 14,42 Q24,32 42,25" fill="none" />
+            <!-- Nock (entalhe) moderno -->
+            <path class="arrow-nock" d="M12,20 L6,25 L12,30 L16,25 Z" />
+            <!-- Haste em gradiente -->
+            <line class="arrow-shaft" x1="12" y1="25" x2="175" y2="25" stroke="url(#laserShaft)" />
+            <!-- Ponta cravada realística, com o final exatamente no X=210 -->
+            <path class="arrow-head" d="M170,25 L190,15 L210,25 L190,35 Z" fill="var(--violet-2)" />
+          </svg>
+          <div class="alvo-target-wrap" id="alvoTargetWrap">
           <svg class="alvo-target-svg" id="alvoTarget" viewBox="0 0 240 240" aria-hidden="true">
+            <defs>
+              <linearGradient id="lockGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e879f9" />
+                <stop offset="50%" stop-color="#c084fc" />
+                <stop offset="100%" stop-color="#7c4dff" />
+              </linearGradient>
+              <filter id="lockGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- Outer Precision Radar Rings -->
             <circle class="at-ring" cx="120" cy="120" r="112" />
             <circle class="at-ring at-ring-dashed" id="alvoTargetRingDashed" cx="120" cy="120" r="84" />
             <circle class="at-ring" cx="120" cy="120" r="56" />
             <circle class="at-fill" cx="120" cy="120" r="30" />
+            
+            <!-- Shockwave expansion ring -->
             <circle class="at-shockwave" id="alvoShockwave" cx="120" cy="120" r="10" />
-            <circle class="at-core" cx="120" cy="120" r="13" />
-            <line class="at-cross" x1="120" y1="14" x2="120" y2="46" />
-            <line class="at-cross" x1="120" y1="194" x2="120" y2="226" />
-            <line class="at-cross" x1="14" y1="120" x2="46" y2="120" />
-            <line class="at-cross" x1="194" y1="120" x2="226" y2="120" />
+
+            <!-- Core central dot -->
+            <circle class="at-core" id="alvoCoreDot" cx="120" cy="120" r="13" />
+
+            <!-- Retículos e Linhas de Cruzamento Tático -->
+            <g id="alvoCrosshairs">
+              <line class="at-cross" x1="120" y1="12" x2="120" y2="48" />
+              <line class="at-cross" x1="120" y1="192" x2="120" y2="228" />
+              <line class="at-cross" x1="12" y1="120" x2="48" y2="120" />
+              <line class="at-cross" x1="192" y1="120" x2="228" y2="120" />
+              <circle cx="120" cy="120" r="4" fill="#ffffff" filter="url(#lockGlow)" />
+            </g>
+
+            <!-- Brackets de Lock-on Tático HUD (snap no centro) -->
+            <g id="alvoLockBrackets">
+              <!-- Top-Left Bracket -->
+              <path class="alvo-hud-bracket alvo-hud-tl" d="M 64 84 L 64 64 L 84 64" stroke="url(#lockGlowGrad)" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lockGlow)" />
+              <!-- Top-Right Bracket -->
+              <path class="alvo-hud-bracket alvo-hud-tr" d="M 156 64 L 176 64 L 176 84" stroke="url(#lockGlowGrad)" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lockGlow)" />
+              <!-- Bottom-Left Bracket -->
+              <path class="alvo-hud-bracket alvo-hud-bl" d="M 64 156 L 64 176 L 84 176" stroke="url(#lockGlowGrad)" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lockGlow)" />
+              <!-- Bottom-Right Bracket -->
+              <path class="alvo-hud-bracket alvo-hud-br" d="M 156 176 L 176 176 L 176 156" stroke="url(#lockGlowGrad)" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lockGlow)" />
+            </g>
+
+            <!-- High-Voltage Energy Lock Pulse Ring -->
+            <circle id="alvoLockRing" cx="120" cy="120" r="38" fill="none" stroke="#e879f9" stroke-width="2" stroke-dasharray="8 4" opacity="0" filter="url(#lockGlow)" />
           </svg>
-          <svg class="alvo-arrow" id="alvoArrow" viewBox="0 0 132 26" aria-hidden="true">
-            <line x1="8" y1="13" x2="106" y2="13" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-            <path d="M104 5 L126 13 L104 21 Z" fill="currentColor" />
-            <path d="M8 13 L20 5 M8 13 L20 21 M15 13 L27 5 M15 13 L27 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
+          </div>
         </div>
-        <h3 class="alvo-word"><span class="brand-text">NO ALVO.</span></h3>
+        <h3 class="alvo-word">
+          <span class="w"><span class="wi">NO</span></span>
+          <span class="w"><span class="wi brand-text">ALVO.</span></span>
+        </h3>
       </div>
     </section>
 
@@ -527,7 +628,15 @@
     <!-- ==================== FINALE ==================== -->
     <section class="finale" id="contato">
       <div class="container">
-        <span class="eyebrow finale-eyebrow"><span class="eyebrow-dot"></span>Bora acertar o alvo?</span>
+        <div class="hero-tag finale-eyebrow">
+          <span class="tag-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </span>
+          <div class="tag-body">
+            <span class="tag-title">Bora acertar o alvo?</span>
+            <span class="tag-sub">Fale com nosso time</span>
+          </div>
+        </div>
         <h2 class="finale-title">
           <span class="line"><span class="line-inner">Vamos fazer seu</span></span>
           <span class="line"><span class="line-inner">negócio <span class="serif-accent brand-text">crescer</span>.</span></span>

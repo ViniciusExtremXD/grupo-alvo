@@ -26,12 +26,16 @@ export function initForm() {
 
     const data = Object.fromEntries(new FormData(form));
     const msg = [
-      "Olá, Grupo Alvo! Quero lotar minha casa e escalar meu faturamento. 🎯",
+      "Olá, Grupo Alvo!",
+      "Quero lotar minha casa e escalar meu faturamento.",
       "",
-      `*Nome:* ${data.nome}`,
-      `*E-mail:* ${data.email}`,
-      `*WhatsApp:* ${data.whatsapp}`,
-      `*Objetivo:* ${data.objetivo}`,
+      "*Meus dados:*",
+      `• Nome: ${data.nome}`,
+      `• E-mail: ${data.email}`,
+      `• WhatsApp: ${data.whatsapp}`,
+      `• Objetivo: ${data.objetivo}`,
+      "",
+      "Aguardo o contato!",
     ].join("\n");
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
 

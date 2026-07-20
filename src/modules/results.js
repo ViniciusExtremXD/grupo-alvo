@@ -1,7 +1,6 @@
 /**
- * Resultados: carrossel dos prints reais (autoplay a cada 5s), setas que
- * avançam e reiniciam o timer, arraste por toque/mouse (swipe) e barra de
- * progresso. Mesma mecânica robusta usada nos demais sites da Vesta.
+ * Resultados: carrossel de prints reais com rotação infinita (lista encadeada/circular).
+ * Clona slides dinamicamente nas pontas para permitir transição contínua em loop infinito.
  */
 import { gsap } from "./gsap.js";
 import { $, $$, reduceMotion } from "./env.js";
@@ -12,17 +11,37 @@ export function initResults() {
   if (!section || !track) return;
 
   const viewport = $(".results-viewport");
-  const slides = $$(".result-card", track);
+  const originalSlides = Array.from(track.children);
+  if (originalSlides.length < 2) return;
+
+  // Clona os 3 últimos slides no início e os 3 primeiros no final
+  const numClones = 3;
+  const prependedClones = originalSlides.slice(-numClones).map(el => {
+    const clone = el.cloneNode(true);
+    clone.classList.add("is-clone");
+    return clone;
+  });
+  const appendedClones = originalSlides.slice(0, numClones).map(el => {
+    const clone = el.cloneNode(true);
+    clone.classList.add("is-clone");
+    return clone;
+  });
+
+  // Insere clones no DOM
+  prependedClones.reverse().forEach(clone => track.insertBefore(clone, track.firstChild));
+  appendedClones.forEach(clone => track.appendChild(clone));
+
+  const slides = Array.from(track.children);
   const progress = $("#resultsProgress");
-  let index = 0;
+  let index = 0; // Índice do slide real ativo (0 a originalSlides.length - 1)
   let timer = null;
 
   const step = () => {
-    if (slides.length < 2) return slides[0]?.getBoundingClientRect().width || 0;
+    if (slides.length < 2) return 0;
     return slides[1].getBoundingClientRect().left - slides[0].getBoundingClientRect().left;
   };
-  const maxScroll = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-  const targetX = (i) => -Math.min(i * step(), maxScroll());
+
+  const getPositionX = (i) => - (i + numClones) * step();
 
   function runProgress() {
     if (!progress) return;
@@ -30,18 +49,45 @@ export function initResults() {
     if (reduceMotion) { gsap.set(progress, { scaleX: 1 }); return; }
     gsap.fromTo(progress, { scaleX: 0 }, { scaleX: 1, duration: 5, ease: "none" });
   }
+
+  // Ajusta a posição inicial sem animação
+  gsap.set(track, { x: getPositionX(0) });
+
   function go(i, { animate = true } = {}) {
-    const n = slides.length;
-    if (!n) return;
-    index = (i + n) % n;
-    const x = targetX(index);
-    if (animate) gsap.to(track, { x, duration: 0.8, ease: "expo.out" });
-    else gsap.set(track, { x });
+    const n = originalSlides.length;
+    let targetIndex = i;
+
+    if (animate) {
+      const x = getPositionX(targetIndex);
+      gsap.to(track, {
+        x,
+        duration: 0.8,
+        ease: "expo.out",
+        onComplete: () => {
+          // Loop contínuo: se chegou nos clones das pontas, salta silenciosamente para o original
+          if (targetIndex >= n) {
+            index = 0;
+            gsap.set(track, { x: getPositionX(0) });
+          } else if (targetIndex < 0) {
+            index = n - 1;
+            gsap.set(track, { x: getPositionX(n - 1) });
+          } else {
+            index = targetIndex;
+          }
+        }
+      });
+    } else {
+      if (targetIndex >= n) targetIndex = 0;
+      if (targetIndex < 0) targetIndex = n - 1;
+      index = targetIndex;
+      gsap.set(track, { x: getPositionX(index) });
+    }
     runProgress();
   }
+
   function auto() {
     clearInterval(timer);
-    if (reduceMotion || slides.length < 2) return;
+    if (reduceMotion || originalSlides.length < 2) return;
     timer = setInterval(() => go(index + 1), 5000);
     runProgress();
   }
@@ -87,8 +133,9 @@ export function initResults() {
     }
     if (dragging) {
       let x = baseX + dx;
-      const min = -maxScroll();
-      const max = 0;
+      // Limites baseados nos clones prepended/appended
+      const min = getPositionX(originalSlides.length + 0.5);
+      const max = getPositionX(-1.5);
       if (x > max) x = max + (x - max) * 0.35;
       if (x < min) x = min + (x - min) * 0.35;
       gsap.set(track, { x });

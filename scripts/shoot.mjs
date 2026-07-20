@@ -46,6 +46,7 @@ for (const view of VIEWS) {
 
 // ---- home COM motion: hero após a intro ----
 const live = await browser.newPage();
+live.on("console", (msg) => console.log("PAGE LOG:", msg.text()));
 await live.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
 await live.goto(base, { waitUntil: "networkidle0", timeout: 45000 });
 await new Promise((r) => setTimeout(r, 4200)); // preloader + intro do hero
@@ -55,7 +56,10 @@ await live.evaluate(() => {
   const el = document.querySelector("#alvoHit");
   window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY);
 });
-await new Promise((r) => setTimeout(r, 4500)); // Espera a animação e o dinheiro assentar
+await new Promise((r) => setTimeout(r, 800)); // Espera o tensionamento (arco esticado)
+await live.screenshot({ path: join(outDir, "live-alvobow.png") });
+console.log("ok live-alvobow");
+await new Promise((r) => setTimeout(r, 3700)); // Espera o disparo acontecer e o dinheiro assentar
 await live.screenshot({ path: join(outDir, "live-alvohit.png") });
 console.log("ok live-alvohit");
 
