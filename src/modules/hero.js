@@ -1,13 +1,13 @@
 /**
  * Hero: timeline de entrada (revelada pelo preloader), a MIRA (retícula/alvo)
- * que "trava" no centro, poeira de partículas em canvas, parallax da cena com
- * o mouse e parallax no scroll.
+ * que "trava" no centro e fica parada ali, poeira de partículas em canvas e
+ * parallax da cena no scroll.
  *
  * Todo o conceito visual da marca gira em torno do ALVO: a retícula converge,
  * os brackets travam e o núcleo pulsa — "faturamento no alvo".
  */
 import { gsap } from "./gsap.js";
-import { $, $$, reduceMotion, finePointer } from "./env.js";
+import { $, $$, reduceMotion } from "./env.js";
 
 /**
  * Monta a timeline de entrada do hero (pausada) e liga as animações de idle.
@@ -116,16 +116,6 @@ export function initHero() {
     gsap.to(".target-ring-outer", {
       scale: 1.04, duration: 4.2, ease: "sine.inOut", yoyo: true, repeat: -1, transformOrigin: "50% 50%",
     });
-    // flutuação dinâmica do alvo (vai e vem para maior dinamismo)
-    gsap.to(".hero-target", {
-      y: 25, duration: 6.5, ease: "sine.inOut", yoyo: true, repeat: -1
-    });
-    gsap.to(".hero-target", {
-      x: 15, duration: 8.2, ease: "sine.inOut", yoyo: true, repeat: -1
-    });
-    gsap.to(".hero-target", {
-      rotation: 1.5, duration: 7, ease: "sine.inOut", yoyo: true, repeat: -1, transformOrigin: "50% 50%"
-    });
   }
 
   initParticles();
@@ -184,24 +174,13 @@ function initParticles() {
   draw();
 }
 
-/** Parallax da mira com o mouse + parallax da cena no scroll. */
+/**
+ * Parallax da cena no scroll. A mira fica fixa e centrada em repouso (sem
+ * flutuação de idle nem parallax de mouse) — só se move ao sair da tela
+ * pelo scroll, que é o único movimento pedido pro fundo do hero.
+ */
 function initParallax() {
   if (reduceMotion) return;
-
-  // mouse: a cena da mira desliza suavemente
-  if (finePointer) {
-    const scene = $(".hero-target");
-    const hero = $(".hero");
-    if (scene && hero) {
-      const mx = gsap.quickTo(scene, "xPercent", { duration: 1.2, ease: "power2.out" });
-      const my = gsap.quickTo(scene, "yPercent", { duration: 1.2, ease: "power2.out" });
-      hero.addEventListener("pointermove", (e) => {
-        const nx = e.clientX / window.innerWidth - 0.5;
-        const ny = e.clientY / window.innerHeight - 0.5;
-        mx(nx * 4); my(ny * 4);
-      });
-    }
-  }
 
   // scroll: a mira sobe e desvanece; o título sobe um pouco mais rápido
   gsap.to(".hero-target", {
