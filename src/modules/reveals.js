@@ -4,7 +4,7 @@
  * quem, quem somos, finale).
  */
 import { gsap, ScrollTrigger } from "./gsap.js";
-import { $$, reduceMotion } from "./env.js";
+import { $, $$, reduceMotion } from "./env.js";
 import { animateCounter } from "./utils.js";
 
 export function initReveals() {
@@ -86,18 +86,84 @@ function initSectionReveals() {
   });
 }
 
-/** Título e CTA da seção final. */
+/**
+ * Título da seção final: efeito de máquina de escrever, letra por letra,
+ * terminando com um cursor "|" piscando (persiste depois de digitado).
+ */
 function initFinale() {
+  // processa CADA linha isoladamente (não o título inteiro) — assim os nós
+  // de texto só-espaço/quebra entre os `<span class="line">` (formatação do
+  // HTML) nunca entram na contagem de caracteres da digitação.
+  const lineInners = $$(".finale-title .line-inner");
+  const chars = lineInners.flatMap((line) => splitIntoChars(line));
+  const cursor = document.createElement("span");
+  cursor.className = "typewriter-cursor";
+  cursor.textContent = "|";
+  if (chars.length) chars[chars.length - 1].after(cursor);
+
+  if (reduceMotion) {
+    gsap.set(chars, { opacity: 1 });
+    cursor.classList.add("is-blinking");
+  } else {
+    gsap.set(chars, { opacity: 0 });
+    ScrollTrigger.create({
+      trigger: ".finale",
+      start: "top 70%",
+      once: true,
+      onEnter: () => {
+        gsap.to(chars, {
+          opacity: 1,
+          duration: 0.01,
+          stagger: 0.032,
+          ease: "none",
+          onComplete: () => cursor.classList.add("is-blinking"),
+        });
+      },
+    });
+  }
+
   if (reduceMotion) return;
-  gsap.from(".finale-title .line-inner", {
-    yPercent: 118,
-    duration: 1.1,
-    stagger: 0.1,
-    ease: "expo.out",
-    scrollTrigger: { trigger: ".finale", start: "top 70%", once: true },
-  });
   gsap.from([".finale-sub", ".finale .btn"], {
     opacity: 0, y: 30, stagger: 0.12, duration: 0.9, ease: "power3.out",
     scrollTrigger: { trigger: ".finale", start: "top 60%", once: true },
   });
+}
+
+/**
+ * Envolve cada caractere de `el` num <span class="char"> e devolve os spans
+ * em ordem de leitura — base para o efeito de máquina de escrever.
+ *
+ * Palavras com gradiente (`.brand-text`, que usa `background-clip: text`)
+ * são a exceção: esse recorte é pintado a partir do elemento que tem a
+ * classe, usando a forma de TODO o texto dentro dele — um span-filho com
+ * opacity:0 não impede o gradiente do pai de aparecer "atrás" da letra
+ * escondida. Por isso essas palavras não são quebradas em letras; entram
+ * na sequência como uma unidade só, com a opacidade no próprio elemento
+ * que já tem o recorte do gradiente (sem pai/filho conflitando).
+ */
+function splitIntoChars(el) {
+  const units = [];
+  function walk(node) {
+    Array.from(node.childNodes).forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        [...child.textContent].forEach((ch) => {
+          const span = document.createElement("span");
+          span.className = "char";
+          span.textContent = ch;
+          frag.appendChild(span);
+          units.push(span);
+        });
+        node.replaceChild(frag, child);
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        if (child.classList.contains("brand-text")) {
+          units.push(child);
+        } else {
+          walk(child);
+        }
+      }
+    });
+  }
+  walk(el);
+  return units;
 }

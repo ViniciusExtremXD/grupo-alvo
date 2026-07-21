@@ -1497,7 +1497,24 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: absolute;
   top: clamp(24px, 5vh, 48px);
   left: var(--gutter);
-  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.finale-eyebrow-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.finale-eyebrow-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-2);
 }
 .finale-title {
   font-weight: 800;
@@ -1505,6 +1522,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   line-height: 0.98;
   letter-spacing: -0.035em;
   margin: 20px 0 12px;
+}
+.finale-title .char { display: inline; white-space: pre; }
+.typewriter-cursor {
+  display: inline-block;
+  font-weight: 400;
+  color: var(--violet-2);
+  opacity: 0;
+}
+.typewriter-cursor.is-blinking {
+  opacity: 1;
+  animation: cursor-blink 0.9s step-end infinite;
+}
+.reduced-motion .typewriter-cursor.is-blinking { animation: none; opacity: 1; }
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 .finale-sub {
   font-size: clamp(16px, 1.8vw, 20px);
