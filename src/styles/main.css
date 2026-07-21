@@ -679,16 +679,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-alvo-line { margin-top: 0.04em; }
 .hero-alvo {
   position: relative;
-  display: inline-block;
-  vertical-align: baseline;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 4px 18px;
+  vertical-align: middle;
   filter: drop-shadow(0 6px 42px rgba(124, 77, 255, 0.62));
 }
 .hero-alvo .serif-accent {
   display: inline-block;
   font-size: 1.2em;
   line-height: 1;
-  vertical-align: baseline;
 }
 
 /* Mini brackets wrapping the branding "no alvo." */
