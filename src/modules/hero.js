@@ -48,6 +48,9 @@ export function initHero() {
     const m = measure();
     rings.style.left = `${m.cx}px`;
     rings.style.top = `${m.cy}px`;
+    // luz e radar do fundo saem do mesmo ponto
+    hero.style.setProperty("--cx", `${m.cx}px`);
+    hero.style.setProperty("--cy", `${m.cy}px`);
     const aw = arrow.getBoundingClientRect().width || arrow.clientWidth;
     // a ponta (x=0 do SVG) entra um pouco no ponto, como se tivesse cravado
     arrow.style.left = `${m.cx - m.r * 0.35}px`;
@@ -66,14 +69,18 @@ export function initHero() {
   });
   document.fonts?.ready.then(place);
 
+  // radar do fundo para de girar com o hero fora da tela
+  new IntersectionObserver(([e]) => hero.classList.toggle("is-off", !e.isIntersecting)).observe(hero);
+
   if (reduceMotion) {
     intro?.remove();
     return;
   }
 
+  const bg = $("#heroBg");
   lenis?.stop();
-  gsap.set(rings, { opacity: 1 });
-  gsap.set(circles, { scale: 0.4, opacity: 0, transformOrigin: "50% 50%" });
+  // (a opacidade de cada anel fica com o CSS; aqui anima o conjunto)
+  gsap.set(circles, { scale: 0.4, transformOrigin: "50% 50%" });
   gsap.set(arrow, { opacity: 1, x: () => window.innerWidth + 40 - parseFloat(arrow.style.left) });
 
   const tl = gsap.timeline({ delay: 0.1 });
@@ -108,7 +115,8 @@ export function initHero() {
   // ---------- 2. título, anéis, flecha ----------
   const T = intro ? 1.0 : 0;
   tl.to(lineSpans, { y: 0, duration: 1.2, stagger: 0.1, ease: "expo.out" }, T)
-    .to(circles, { scale: 1, opacity: 1, duration: 1.6, stagger: 0.07, ease: "expo.out" }, T + 0.6)
+    .to([rings, bg], { opacity: 1, duration: 1.4, ease: "power2.out" }, T + 0.5)
+    .to(circles, { scale: 1, duration: 1.6, stagger: 0.07, ease: "expo.out" }, T + 0.6)
     .to(arrow, { x: 0, duration: 0.5, ease: "power3.in" }, T + 1.0)
     .add(() => {
       dot.classList.remove("is-hit");
@@ -127,6 +135,12 @@ export function initHero() {
         { scale: 12, opacity: 0, duration: 2.4, ease: "expo.out", repeat: -1, repeatDelay: 1.4, transformOrigin: "50% 50%" });
       // só pulsa com o hero na tela
       new IntersectionObserver(([e]) => (e.isIntersecting ? pulse.play() : pulse.pause())).observe(hero);
+
+      // saída no scroll: o alvo abre e some, a luz apaga (criada só depois da
+      // entrada, pra partir da opacidade final e não brigar com ela)
+      const exit = { trigger: hero, start: "top top", end: "bottom top", scrub: true };
+      gsap.to(rings, { scale: 1.6, opacity: 0, ease: "none", scrollTrigger: exit });
+      gsap.to(bg, { opacity: 0, ease: "none", scrollTrigger: { ...exit } });
     }, T + 2.2);
 
   // anéis acompanham o mouse de leve (a mira "procura")
@@ -139,10 +153,4 @@ export function initHero() {
     });
     hero.addEventListener("pointerleave", () => { xTo(0); yTo(0); });
   }
-
-  // ---------- saída no scroll: o alvo abre e some (sem descolar do ponto) ----------
-  gsap.to(rings, {
-    scale: 1.6, opacity: 0, ease: "none",
-    scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true },
-  });
 }

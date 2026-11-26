@@ -241,19 +241,62 @@ ul, ol { list-style: none; }
 }
 .hero-inner { display: grid; justify-items: start; gap: 22px; }
 
+/* fundo do hero: tudo centrado no ponto do alvo (--cx/--cy vêm do hero.js) */
+.hero {
+  --cx: 40%; --cy: 50%;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(91, 60, 246, 0.14), transparent 55%),
+    linear-gradient(180deg, #0c0b0e 0%, #0e0c15 100%);
+}
+.hero-bg { position: absolute; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+.hero-glow, .hero-sweep {
+  position: absolute;
+  left: var(--cx); top: var(--cy);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+}
+/* uma luz só, saindo do ponto */
+.hero-glow {
+  width: min(1100px, 150vw);
+  background: radial-gradient(closest-side, rgba(91, 60, 246, 0.34), rgba(91, 60, 246, 0.12) 42%, transparent 72%);
+}
+/* varredura de radar: a mira "procurando" */
+.hero-sweep {
+  width: max(110vmax, 1100px);
+  background: conic-gradient(from 0deg,
+    transparent 0deg 300deg,
+    rgba(182, 166, 255, 0.03) 330deg,
+    rgba(182, 166, 255, 0.08) 354deg,
+    rgba(214, 206, 255, 0.18) 359.5deg,
+    transparent 360deg);
+  -webkit-mask-image: radial-gradient(closest-side, transparent 3%, #000 7%, rgba(0,0,0,0.6) 30%, transparent 56%);
+  mask-image: radial-gradient(closest-side, transparent 3%, #000 7%, rgba(0,0,0,0.6) 30%, transparent 56%);
+  will-change: transform;
+  animation: sweep 9s linear infinite;
+}
+@keyframes sweep { to { transform: rotate(360deg); } }
+.hero.is-off .hero-sweep { animation-play-state: paused; }
+
 .hero-rings {
   position: absolute;
   left: 0; top: 0;
-  width: max(150vmax, 1300px);
+  width: max(130vmax, 1200px);
   height: auto;
   translate: -50% -50%;
   z-index: -1;
   overflow: visible;
   pointer-events: none;
+  /* os anéis somem com a distância e do lado do texto (esquerda) */
+  -webkit-mask-image: radial-gradient(closest-side, #000 22%, transparent 80%), linear-gradient(90deg, transparent 30%, #000 50%);
+  -webkit-mask-composite: source-in;
+  mask-image: radial-gradient(closest-side, #000 22%, transparent 80%), linear-gradient(90deg, transparent 30%, #000 50%);
+  mask-composite: intersect;
 }
-.hero-rings circle { fill: none; stroke: var(--on-dark); stroke-width: 1; vector-effect: non-scaling-stroke; opacity: 0.06; }
-.hero-rings circle:first-child { opacity: 0.16; }
-.hero-rings .ping { stroke: var(--lav); opacity: 0; }
+.hero-rings circle { fill: none; stroke: var(--lav); stroke-width: 1; vector-effect: non-scaling-stroke; opacity: 0.22; }
+.hero-rings circle:nth-child(odd) { stroke-dasharray: 2 7; opacity: 0.35; }
+.hero-rings circle:first-child { stroke-dasharray: none; opacity: 0.45; }
+.hero-rings .ping { stroke: var(--lav); stroke-dasharray: none; opacity: 0; }
 
 .hero-kicker { font-size: 15px; font-weight: 600; color: var(--lav); }
 .hero-title {
@@ -718,7 +761,8 @@ video.person-media { opacity: 0; transition: opacity 0.5s; }
 .js .ln > span { transform: translateY(108%); }
 .js [data-fade] { opacity: 0; transform: translateY(24px); }
 .js .person-frame { clip-path: inset(100% 0 0 0); }
-.js .hero-rings, .js .bullseye { opacity: 0; }
+.js .hero-rings, .js .hero-bg, .js .bullseye { opacity: 0; }
+.reduced-motion .hero-sweep { animation: none; display: none; }
 
 /* ------------------------------------------------------------
    RESPONSIVO
