@@ -30,5 +30,7 @@ export function initHero() {
   // parallax: foto mais lenta e escurecendo, texto sobe um pouco mais
   gsap.timeline({ scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } })
     .to($(".hero-media", hero), { yPercent: 18, opacity: 0.35, ease: "none" }, 0)
+    // a trajetória e o alvo andam junto com a foto (o alvo continua na parede)
+    .to($("#heroShot", hero), { yPercent: 18, opacity: 0, ease: "none" }, 0)
     .to($(".hero-inner", hero), { yPercent: -14, opacity: 0, ease: "none" }, 0);
 }

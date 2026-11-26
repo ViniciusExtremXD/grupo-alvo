@@ -25,6 +25,14 @@ export function initReveals() {
     onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: 1.2, stagger: 0.1, ease: "expo.out", clearProps: "transform" }),
   });
 
+  // parallax suave nas imagens (sensação de profundidade ao rolar)
+  $$(".vcard-media, .person-frame").forEach((el) => {
+    gsap.fromTo(el, { yPercent: -5 }, {
+      yPercent: 5, ease: "none",
+      scrollTrigger: { trigger: el.parentElement, start: "top bottom", end: "bottom top", scrub: 0.6 },
+    });
+  });
+
   $$("[data-count-group]").forEach((group) => {
     ScrollTrigger.create({
       trigger: group, start: "top 85%", once: true,
