@@ -715,3 +715,135 @@ video.person-media { opacity: 0; transition: opacity 0.5s; }
   .hero .hero-title { font-size: 9.2vw; }
   .hero-hint { display: none; }
 }
+
+/* ============================================================
+   RODADA: carrossel que expande · sócios · final interativo
+   ============================================================ */
+
+/* ---------- resultados: o caso da vez se expande ---------- */
+.cases {
+  display: block; overflow: visible; scroll-snap-type: none;
+  cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+  --cw: clamp(200px, 16.5vw, 262px);
+  --cwa: calc(var(--cw) * 1.5);
+}
+.cases:active { cursor: grabbing; }
+.cases-track { display: flex; align-items: flex-end; gap: clamp(14px, 1.7vw, 26px); will-change: transform; }
+.case {
+  flex: 0 0 var(--cw); width: var(--cw); scroll-snap-align: none;
+  opacity: 0.5; cursor: pointer;
+  transition: flex-basis 0.9s var(--ease-io), width 0.9s var(--ease-io), opacity 0.7s var(--ease);
+}
+.case.is-active { flex-basis: var(--cwa); width: var(--cwa); opacity: 1; }
+.case-shot { cursor: pointer; }
+.case.is-active .case-shot { cursor: zoom-in; }
+.case.is-active .case-shot img { filter: none; }
+.case-num { transition: color 0.6s var(--ease); }
+.case.is-active .case-num { color: var(--lav); }
+.case-txt { min-height: 4.4em; }
+.slider-bar span { transition: left 0.9s var(--ease-io); }
+
+/* ---------- sócios: texto no centro, um de cada lado, foto viva ---------- */
+.founders-grid {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.05fr) minmax(0, 0.9fr);
+  align-items: center;
+}
+.founders-copy { grid-column: 2; grid-row: 1; justify-items: center; text-align: center; padding: 0 8px; }
+.founders-text { max-width: 34ch; }
+.person-a { grid-column: 1; grid-row: 1; margin: 0 0 64px; }
+.person-b { grid-column: 3; grid-row: 1; margin: 64px 0 0; }
+.js .person-frame { clip-path: inset(0 100% 0 0); }
+.js .person-b .person-frame { clip-path: inset(0 0 0 100%); }
+.person-live { position: absolute; inset: -5%; animation: alive 11s ease-in-out infinite alternate; }
+.person-b .person-live { animation-duration: 13s; animation-direction: alternate-reverse; }
+@keyframes alive {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.07) translate3d(-1.4%, -1.6%, 0); }
+}
+/* reflexo de luz que passa de tempos em tempos */
+.person-frame::before {
+  content: ""; position: absolute; inset: -20% -60%; z-index: 1; pointer-events: none;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.13) 50%, transparent 58%);
+  transform: translateX(-70%);
+}
+.person.is-in .person-frame::before { animation: sheen 7.5s var(--ease-io) 1.2s infinite; }
+.person-b.is-in .person-frame::before { animation-delay: 4.6s; }
+@keyframes sheen { 0% { transform: translateX(-70%); } 28%, 100% { transform: translateX(70%); } }
+.person-credit { z-index: 2; }
+
+/* ---------- como funciona: flecha na linha ---------- */
+.steps-line #stepsFill { position: absolute; inset: 0; }
+.steps-arrow {
+  position: absolute; left: 0; top: 50%;
+  width: 40px; height: 12px;
+  translate: -100% -50%;
+}
+.steps-arrow svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.steps-arrow path { fill: none; stroke: var(--violet); stroke-width: 1.5; stroke-linecap: round; }
+.steps-arrow .head { fill: var(--violet); stroke: none; }
+.steps-target {
+  position: absolute; right: -11px; top: 50%; translate: 0 -50%;
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid var(--on-light-2);
+  background: radial-gradient(circle, var(--violet) 0 3px, transparent 3.6px), var(--paper);
+}
+.steps-target.is-hit { animation: tgt-hit 1s var(--ease); }
+@keyframes tgt-hit {
+  0% { box-shadow: 0 0 0 0 rgba(91, 60, 246, 0.6); scale: 1.35; }
+  100% { box-shadow: 0 0 0 22px rgba(91, 60, 246, 0); scale: 1; }
+}
+.step { cursor: pointer; transition: opacity 0.7s var(--ease), translate 0.7s var(--ease); }
+.step.is-done { opacity: 0.6; }
+.step.is-active { translate: 0 -6px; }
+.step h3 { transition: color 0.6s var(--ease); }
+.step.is-active h3 { color: var(--violet); }
+
+/* ---------- contato: alvo 3D pra atirar + formulário em linha ---------- */
+.contact { padding: 0 0 var(--sec); background: var(--ink); }
+.contact-stage {
+  position: relative; isolation: isolate; overflow: clip;
+  min-height: clamp(540px, 82vh, 780px);
+  display: flex; align-items: center;
+  touch-action: pan-y;
+  --tx: 74%; --ty: 50%; --tr: 220px;
+}
+.contact-stage .contact-copy { position: relative; z-index: 1; }
+.contact-stage .contact-copy > * { max-width: min(48ch, 48vw); }
+.has-gl > .hero-target-css { opacity: 0; }
+.is-aiming { cursor: crosshair; }
+.is-grabbing { cursor: grabbing; }
+.contact-form { border-top: 1px solid var(--hair-dark); padding-top: clamp(36px, 4vw, 56px); }
+.contact-form .lead-form { grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: 0 28px; align-items: end; }
+.contact-form .lead-form > .label { grid-column: 1 / -1; }
+.contact-form .lead-form .btn { margin-top: 0; width: auto; }
+.btn.is-pulse { animation: cta-pulse 1.1s var(--ease) 3; }
+@keyframes cta-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(114, 88, 255, 0.75); }
+  100% { box-shadow: 0 0 0 26px rgba(114, 88, 255, 0); }
+}
+
+@media (max-width: 1080px) {
+  .founders-grid { grid-template-columns: 1fr 1fr; }
+  .founders-copy { grid-column: 1 / -1; grid-row: 1; margin-bottom: 20px; }
+  .person-a { grid-column: 1; grid-row: 2; margin: 0 0 48px; }
+  .person-b { grid-column: 2; grid-row: 2; margin: 48px 0 0; }
+  .steps-arrow, .steps-target { display: none; }
+  .step.is-active { translate: 0 0; }
+}
+@media (max-width: 860px) {
+  .contact-stage { display: block; min-height: 0; padding: calc(var(--tr) * 2 + 84px) 0 56px; }
+  .contact-stage .contact-copy > * { max-width: none; }
+  .contact-form .lead-form { grid-template-columns: 1fr; gap: 4px; }
+  .contact-form .lead-form .btn { margin-top: 24px; width: 100%; }
+}
+@media (max-width: 560px) {
+  .cases { --cw: 50vw; --cwa: 72vw; }
+}
+.reduced-motion .person-live, .reduced-motion .person-frame::before { animation: none !important; }
+/* borda esquerda do carrossel some suave (o caso anterior não fica cortado seco) */
+.cases {
+  --edge: max(var(--pad), calc((100vw - var(--max)) / 2));
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--edge));
+  mask-image: linear-gradient(90deg, transparent 0, #000 var(--edge));
+}
+.contact-stage .hero-glow { width: calc(var(--tr) * 3.3); }

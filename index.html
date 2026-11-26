@@ -241,17 +241,17 @@
           <a class="link-circle" href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" data-fade>Siga @grupoalvo_ <span class="circle"><svg class="ico"><use href="#i-arrow" /></svg></span></a>
         </div>
         <figure class="person person-a" data-person>
-          <div class="person-frame">
+          <div class="person-frame"><div class="person-live">
             <video class="person-media" muted playsinline preload="none" poster="assets/felipe.jpg" data-video="" aria-label="Felipe, sócio do Grupo Alvo"></video>
             <img class="person-media person-photo" src="assets/felipe.jpg" alt="Felipe, sócio do Grupo Alvo" loading="lazy" decoding="async" width="768" height="1163" />
-          </div>
+          </div></div>
           <figcaption class="person-credit"><span class="ln"><span class="person-name">Felipe</span></span></figcaption>
         </figure>
         <figure class="person person-b" data-person>
-          <div class="person-frame">
+          <div class="person-frame"><div class="person-live">
             <video class="person-media" muted playsinline preload="none" poster="assets/gabriel.jpg" data-video="" aria-label="Gabriel, sócio do Grupo Alvo"></video>
             <img class="person-media person-photo" src="assets/gabriel.jpg" alt="Gabriel, sócio do Grupo Alvo" loading="lazy" decoding="async" width="854" height="1280" />
-          </div>
+          </div></div>
           <figcaption class="person-credit"><span class="ln"><span class="person-name">Gabriel</span></span></figcaption>
         </figure>
       </div>
@@ -265,7 +265,7 @@
           <h2 class="headline" data-lines><span class="ln"><span>Simples, do primeiro</span></span><span class="ln"><span>contato ao resultado.</span></span></h2>
         </div>
         <div class="steps" id="steps">
-          <span class="steps-line" aria-hidden="true"><span id="stepsFill"></span></span>
+          <span class="steps-line" aria-hidden="true"><span id="stepsFill"></span><i class="steps-arrow" id="stepsArrow"><svg viewBox="0 0 40 12"><path d="M0 6 H34" /><path class="head" d="M40 6 L30 1.5 L30 10.5 Z" /><path d="M0 6 L-4 1 M5 6 L1 1 M0 6 L-4 11 M5 6 L1 11" /></svg></i><i class="steps-target" id="stepsTarget"></i></span>
           <div class="step" data-step><span class="step-n">01</span><h3>Conversa</h3><p>Você conta sobre o seu negócio. A gente entende o que está travando as vendas.</p></div>
           <div class="step" data-step><span class="step-n">02</span><h3>Plano</h3><p>Montamos a estratégia e o investimento certo para a sua realidade.</p></div>
           <div class="step" data-step><span class="step-n">03</span><h3>Campanhas no ar</h3><p>Anúncios e conteúdo rodando, com relatório toda semana.</p></div>
@@ -304,8 +304,12 @@
 
     <!-- ==================== CONTATO ==================== -->
     <section class="contact" id="contato" data-theme="dark">
-      <div class="wrap contact-grid">
-        <div class="contact-copy">
+      <!-- o alvo 3D de novo, agora pra pessoa atirar (contact.js) -->
+      <div class="contact-stage" id="contactStage">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-target-css" aria-hidden="true"></div>
+        <p class="hero-hint" aria-hidden="true">Sua vez · clique no alvo e mire no centro</p>
+        <div class="wrap contact-copy">
           <p class="label" data-fade>Contato</p>
           <h2 class="display-2" data-lines><span class="ln"><span>Vamos fazer</span></span><span class="ln"><span>o seu negócio</span></span><span class="ln"><span>crescer?</span></span></h2>
           <p class="contact-text" data-fade>Conta pra gente sobre o seu negócio. A conversa é grátis e a proposta chega em até 24h.</p>
@@ -314,7 +318,9 @@
             <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="link-circle">Instagram <span class="circle"><svg class="ico"><use href="#i-arrow" /></svg></span></a>
           </div>
         </div>
-        <form class="lead-form" id="leadForm" novalidate data-fade>
+      </div>
+      <div class="wrap contact-form" data-fade>
+        <form class="lead-form" id="leadForm" novalidate>
           <p class="label">Ou peça seu orçamento</p>
           <label class="field"><span>Seu nome</span><input type="text" name="nome" autocomplete="name" placeholder="Como podemos te chamar?" /></label>
           <label class="field"><span>WhatsApp</span><input type="tel" name="whatsapp" autocomplete="tel" placeholder="(11) 90000-0000" /></label>

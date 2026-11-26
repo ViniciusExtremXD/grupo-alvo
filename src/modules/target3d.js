@@ -16,6 +16,8 @@
  * sem WebGL2 o chamador mantém o alvo estático em CSS.
  */
 
+import { gsap } from "./gsap.js";
+
 const MAXA = 8;
 const SHAFT = 1.15; // comprimento visível da flecha (o raio do alvo é 1)
 
@@ -541,4 +543,18 @@ export function createTarget(host, opts) {
     },
     relayout: resize,
   };
+}
+
+/** Mostra a pontuação de um tiro ao lado da flecha (some sozinha). */
+export function scoreChip(host, target, score, arrow) {
+  if (!target) return;
+  const [x, y] = target.project(arrow.x, arrow.y);
+  const chip = document.createElement("span");
+  chip.className = "score-chip" + (score === 10 ? " is-bull" : "");
+  chip.textContent = score === 10 ? "10 · no alvo" : score ? String(score) : "fora";
+  chip.style.left = x + "px";
+  chip.style.top = y + "px";
+  host.appendChild(chip);
+  gsap.fromTo(chip, { opacity: 0, y: 4, scale: 0.7 }, { opacity: 1, y: -30, scale: 1, duration: 0.5, ease: "back.out(2.2)" });
+  gsap.to(chip, { opacity: 0, y: -52, duration: 0.6, delay: score === 10 ? 1.8 : 1.0, ease: "power2.in", onComplete: () => chip.remove() });
 }

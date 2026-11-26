@@ -20,6 +20,7 @@ import { initLightbox } from "./modules/lightbox.js";
 import { initMethod } from "./modules/method.js";
 import { initForm } from "./modules/form.js";
 import { initFaq } from "./modules/faq.js";
+import { initContact } from "./modules/contact.js";
 
 initScrollTop();
 initLightbox();
@@ -30,5 +31,6 @@ initFounders();
 initNav();
 initReveals();
 initMethod();
+initContact();
 initForm();
 initFaq();

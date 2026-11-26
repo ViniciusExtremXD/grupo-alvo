@@ -8,7 +8,7 @@
  */
 import { gsap } from "./gsap.js";
 import { $, $$, reduceMotion } from "./env.js";
-import { createTarget } from "./target3d.js";
+import { createTarget, scoreChip } from "./target3d.js";
 
 export function initHero() {
   const hero = $("#topo");
@@ -32,26 +32,17 @@ export function initHero() {
   const fades = $$("[data-fade]", hero);
   if (reduceMotion) return; // fica o alvo estático em CSS
 
-  const target = createTarget(hero, { layout, onHit: showScore });
-  if (target) hero.classList.add("has-gl");
-
   let shots = 0, best = 0;
-  function showScore(score, arrow) {
-    if (!target) return;
-    const [x, y] = target.project(arrow.x, arrow.y);
-    const chip = document.createElement("span");
-    chip.className = `score-chip${score === 10 ? " is-bull" : ""}`;
-    chip.textContent = score === 10 ? "10 · no alvo" : score ? String(score) : "fora";
-    chip.style.left = `${x}px`;
-    chip.style.top = `${y}px`;
-    hero.appendChild(chip);
-    gsap.fromTo(chip, { opacity: 0, y: 4, scale: 0.7 }, { opacity: 1, y: -30, scale: 1, duration: 0.5, ease: "back.out(2.2)" });
-    gsap.to(chip, { opacity: 0, y: -52, duration: 0.6, delay: score === 10 ? 1.8 : 1.0, ease: "power2.in", onComplete: () => chip.remove() });
-    if (arrow.user) {
+  const target = createTarget(hero, {
+    layout,
+    onHit(score, arrow) {
+      scoreChip(hero, target, score, arrow);
+      if (!arrow.user) return;
       shots++; best = Math.max(best, score);
       if (hint) hint.textContent = `${shots} ${shots === 1 ? "tiro" : "tiros"} · melhor: ${best}`;
-    }
-  }
+    },
+  });
+  if (target) hero.classList.add("has-gl");
 
   // ---------- entrada ----------
   const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
