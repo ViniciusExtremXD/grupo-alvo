@@ -20,7 +20,7 @@ export function initResults() {
 
   cards.forEach((card) => {
     const roi = $("[data-count]", card);
-    if (roi) roi.textContent = formatNumber(0, 0) + (roi.dataset.suffix || "");
+    if (roi) roi.textContent = (roi.dataset.prefix || "") + formatNumber(0, 0) + (roi.dataset.suffix || "");
   });
 
   gsap.set(cards, { opacity: 0, y: 40 });
