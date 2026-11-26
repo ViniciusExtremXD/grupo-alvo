@@ -54,19 +54,17 @@ function initCounters() {
 
 function initStrikes() {
   $$("[data-strike]").forEach((row) => {
-    const text = $(".strike-text", row);
-    const fix = $(".diag-fix", row);
-    gsap.timeline({
+    gsap.fromTo($(".strike-text", row), { "--strike": "0%" }, {
+      "--strike": "100%",
+      ease: "none",
       scrollTrigger: {
         trigger: row,
         start: "top 80%",
-        end: "top 42%",
+        end: "top 50%",
         scrub: 0.6,
         onUpdate: (self) => row.classList.toggle("is-struck", self.progress > 0.85),
       },
-    })
-      .fromTo(text, { "--strike": "0%" }, { "--strike": "100%", ease: "none", duration: 1 }, 0)
-      .fromTo(fix, { opacity: 0.2, x: -12 }, { opacity: 1, x: 0, ease: "none", duration: 0.5 }, 0.5);
+    });
   });
 }
 

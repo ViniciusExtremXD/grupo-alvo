@@ -21,13 +21,13 @@ import { initMethod, initFinale } from "./modules/method.js";
 import { initPointer } from "./modules/pointer.js";
 import { initForm } from "./modules/form.js";
 import { initFaq } from "./modules/faq.js";
+import { initVideos } from "./modules/videos.js";
 
 initScrollTop();
 initLightbox();
 initHero();
-// os pins entram em ordem de cima pra baixo (resultados, depois sócios):
-// cada um empurra o que vem abaixo dele
 initResults();
+initVideos();
 initFounders();
 initNav();
 initMarquee();
