@@ -6,26 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grupo Alvo — Marketing que traz clientes e vendas</title>
   <meta name="description" content="Agência de marketing: anúncios no Instagram e Google, redes sociais e sites para negócios que querem vender mais. Resultados reais, com print. Desde 2021." />
-  <meta name="theme-color" content="#0c0b0e" />
+  <meta name="theme-color" content="#0a0a0c" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
-  <meta property="og:title" content="Grupo Alvo — Mais clientes e mais vendas para o seu negócio" />
-  <meta property="og:description" content="R$ 4.148 em anúncios viraram R$ 85.649 em vendas para seis clientes. Anúncios, redes sociais e sites — desde 2021." />
+  <meta property="og:title" content="Grupo Alvo — Mais clientes. Mais vendas." />
+  <meta property="og:description" content="Agência de marketing para negócios que querem crescer. Anúncios, redes sociais e sites — desde 2021." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://alvomkt.com/" />
-  <meta property="og:image" content="https://alvomkt.com/assets/logo.png" />
+  <meta property="og:image" content="https://alvomkt.com/assets/videos/reel-bastidores.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/videos/reel-bastidores.jpg" />
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M3 12h17M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" /></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></symbol>
+  </svg>
 
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-
-  <!-- abertura: o ponto do alvo nasce no centro e "trava" no ponto final do título -->
-  <div class="intro" id="intro" aria-hidden="true">
-    <span class="intro-ring"></span><span class="intro-ring"></span><span class="intro-ring"></span>
-    <span class="intro-dot" id="introDot"></span>
-  </div>
 
   <!-- ==================== NAV ==================== -->
   <header class="nav" id="nav" data-theme="dark">
@@ -33,332 +32,211 @@
       <img src="assets/logo.png" alt="Grupo Alvo" width="640" height="440" />
     </a>
     <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#servicos" data-navlink="servicos">Serviços</a>
       <a href="#resultados" data-navlink="resultados">Resultados</a>
       <a href="#depoimentos" data-navlink="depoimentos">Depoimentos</a>
-      <a href="#servicos" data-navlink="servicos">Serviços</a>
       <a href="#como-funciona" data-navlink="como-funciona">Como funciona</a>
     </nav>
-    <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="nav-cta" data-magnetic>
-      <span class="dot" aria-hidden="true"></span>Falar no WhatsApp
-    </a>
+    <a href="#contato" class="btn btn-outline btn-sm nav-cta">Fale conosco</a>
     <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span>
     </button>
   </header>
 
-  <!-- ==================== MENU MOBILE ==================== -->
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <nav class="mobile-menu-links" aria-label="Menu">
+      <a href="#servicos">Serviços</a>
       <a href="#resultados">Resultados</a>
       <a href="#depoimentos">Depoimentos</a>
-      <a href="#servicos">Serviços</a>
       <a href="#como-funciona">Como funciona</a>
-      <a href="#faq">Dúvidas</a>
+      <a href="#contato">Contato</a>
     </nav>
-    <div class="mobile-menu-foot">
-      <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-light">Falar no WhatsApp <span class="arr">→</span></a>
-      <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="link-arrow">@grupoalvo_</a>
-    </div>
+    <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary">Falar no WhatsApp <svg class="ico"><use href="#i-arrow" /></svg></a>
   </div>
 
   <main id="conteudo">
     <!-- ==================== HERO ==================== -->
     <section class="hero" id="topo" data-theme="dark">
-      <!-- fundo: uma luz violeta e uma varredura de radar saindo do ponto do alvo -->
-      <div class="hero-bg" id="heroBg" aria-hidden="true">
-        <span class="hero-glow"></span>
-        <span class="hero-sweep"></span>
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/videos/reel-bastidores.jpg" alt="" width="1607" height="2025" fetchpriority="high" />
       </div>
-      <svg class="hero-rings" id="heroRings" viewBox="-500 -500 1000 1000" aria-hidden="true">
-        <circle r="70" /><circle r="150" /><circle r="240" /><circle r="340" /><circle r="450" />
-        <circle class="ping" r="40" />
-      </svg>
-
       <div class="wrap hero-inner">
-        <p class="hero-kicker" data-fade>Grupo Alvo · agência de marketing desde 2021</p>
-        <h1 class="hero-title" aria-label="Mais clientes e mais vendas para o seu negócio.">
-          <span class="ln"><span>Mais clientes e</span></span>
-          <span class="ln"><span>mais vendas para o</span></span>
-          <span class="ln"><span>seu <span class="nowrap">negócio<span class="bullseye" id="bullseye"></span></span></span></span>
+        <p class="label hero-label" data-fade>Grupo Alvo · Agência de marketing desde 2021</p>
+        <h1 class="display hero-title" aria-label="Mais clientes. Mais vendas.">
+          <span class="ln"><span>Mais clientes.</span></span>
+          <span class="ln"><span>Mais vendas.</span></span>
         </h1>
-        <p class="hero-sub" data-fade>
-          Anúncios no Instagram e no Google, redes sociais e sites.
-          Você cuida do seu negócio — a gente traz o cliente.
-        </p>
+        <p class="hero-sub" data-fade>Anúncios no Instagram e no Google, redes sociais e sites para o seu negócio crescer de verdade.</p>
         <div class="hero-actions" data-fade>
-          <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-light" data-magnetic>Falar no WhatsApp <span class="arr">→</span></a>
-          <a href="#resultados" class="link-arrow">Ver resultados de clientes</a>
-        </div>
-        <ul class="hero-trust" data-fade>
-          <li><b>+50</b> negócios atendidos</li>
-          <li><b>R$ 85 mil</b> em vendas com R$ 4 mil em anúncios</li>
-          <li>Proposta em <b>até 24h</b></li>
-        </ul>
-      </div>
-
-      <!-- flecha que vem da direita e crava no ponto final (a ponta fica em x=0) -->
-      <svg class="hero-arrow" id="heroArrow" viewBox="0 0 400 24" aria-hidden="true">
-        <path class="shaft" d="M22 12 H400" />
-        <path class="head" d="M28 3 L0 12 L28 21 Z" />
-        <path class="fletch" d="M372 12 L384 2 M382 12 L394 2 M392 12 L404 2 M372 12 L384 22 M382 12 L394 22 M392 12 L404 22" />
-      </svg>
-    </section>
-
-    <!-- ==================== FAIXA (reage à rolagem) ==================== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track" id="marqueeTrack">
-        <span class="marquee-item">Anúncios<i></i>Redes sociais<i></i>Sites e cardápios<i></i>Mais vendas<i></i></span>
-        <span class="marquee-item">Anúncios<i></i>Redes sociais<i></i>Sites e cardápios<i></i>Mais vendas<i></i></span>
-      </div>
-    </div>
-
-    <!-- ==================== DIAGNÓSTICO ==================== -->
-    <section class="diag" id="diagnostico" data-theme="light">
-      <div class="wrap diag-grid">
-        <h2 class="h2" data-lines>
-          <span class="ln"><span>Você trabalha muito,</span></span>
-          <span class="ln"><span>mas as vendas não crescem?</span></span>
-        </h2>
-        <ol class="diag-list">
-          <li class="diag-row" data-strike>
-            <p class="diag-problem"><span class="strike-text">Tem movimento, mas o caixa não sobe.</span></p>
-          </li>
-          <li class="diag-row" data-strike>
-            <p class="diag-problem"><span class="strike-text">As pessoas conhecem, mas não lembram de você na hora de comprar.</span></p>
-          </li>
-          <li class="diag-row" data-strike>
-            <p class="diag-problem"><span class="strike-text">Já tentou postar e impulsionar, e nada mudou.</span></p>
-          </li>
-        </ol>
-        <p class="diag-close" data-fade>O problema não é o seu produto. <b>É a mira.</b> E é isso que a gente ajusta.</p>
-      </div>
-    </section>
-
-    <!-- ==================== RESULTADOS ==================== -->
-    <section class="results" id="resultados" data-theme="dark">
-      <div class="wrap">
-        <header class="sec-head sec-head-row">
-          <div>
-            <p class="eyebrow">Resultados</p>
-            <h2 class="h2" data-lines>
-              <span class="ln"><span>Números reais,</span></span>
-              <span class="ln"><span>com print.</span></span>
-            </h2>
-          </div>
-          <div class="totals" data-count-group>
-            <p class="totals-line">
-              <span class="total-num" data-count="4148" data-prefix="R$ ">R$ 4.148</span>
-              <span class="totals-txt">investidos em anúncios viraram</span>
-              <span class="total-num total-num-hit" data-count="85649" data-prefix="R$ ">R$ 85.649</span>
-              <span class="totals-txt">em vendas para seis desses clientes.</span>
-            </p>
-          </div>
-        </header>
-
-        <!-- casos: cada um abre o print original. Para adicionar um caso novo,
-             copie um <article class="case"> e troque imagem e números. -->
-        <div class="cases" id="cases">
-          <article class="case" data-proof="assets/resultado-7.webp" data-alt="Print: levantamento de vendas do mês de um cliente, valor total R$ 126.463,00">
-            <button class="case-shot" type="button" aria-label="Ver o print das vendas do mês"><img src="assets/resultado-7.webp" alt="" loading="lazy" decoding="async" width="903" height="1600" /></button>
-            <div class="case-info">
-              <p class="case-seg">Cliente · fechamento do mês</p>
-              <p class="case-roi"><b data-count="126" data-prefix="R$ " data-suffix=" mil">R$ 126 mil</b> vendidos no mês</p>
-              <dl class="case-flow"><div><dt>Valor total do mês</dt><dd>R$ 126.463,00</dd></div></dl>
-            </div>
-          </article>
-          <article class="case" data-proof="assets/resultado-8.webp" data-alt="Print: cliente relatando 87 contatos, 22 aprovados e R$ 78.590,70 em vendas no mês">
-            <button class="case-shot" type="button" aria-label="Ver o print do fechamento do mês"><img src="assets/resultado-8.webp" alt="" loading="lazy" decoding="async" width="899" height="1600" /></button>
-            <div class="case-info">
-              <p class="case-seg">Cliente · fechamento do mês</p>
-              <p class="case-roi"><b data-count="78" data-prefix="R$ " data-suffix=" mil">R$ 78 mil</b> em vendas no mês</p>
-              <dl class="case-flow"><div><dt>Contatos</dt><dd>87</dd></div><div><dt>Aprovados</dt><dd>22</dd></div></dl>
-            </div>
-          </article>
-          <article class="case" data-proof="assets/resultado-6.jpg" data-alt="Print: delivery, R$ 479,99 investidos e R$ 25.617,71 em vendas">
-            <button class="case-shot" type="button" aria-label="Ver o print do delivery"><img src="assets/resultado-6.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
-            <div class="case-info">
-              <p class="case-seg">Delivery</p>
-              <p class="case-roi"><b data-count="53" data-suffix="x">53x</b> o valor investido</p>
-              <dl class="case-flow"><div><dt>Investiu</dt><dd>R$ 479,99</dd></div><div><dt>Vendeu</dt><dd>R$ 25.617,71</dd></div></dl>
-            </div>
-          </article>
-          <article class="case" data-proof="assets/resultado-1.jpg" data-alt="Print: relatório semanal, R$ 119,98 investidos e R$ 5.272,59 de retorno">
-            <button class="case-shot" type="button" aria-label="Ver o print das vendas pelo site"><img src="assets/resultado-1.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
-            <div class="case-info">
-              <p class="case-seg">Loja online · 1 semana</p>
-              <p class="case-roi"><b data-count="43" data-suffix="x">43x</b> o valor investido</p>
-              <dl class="case-flow"><div><dt>Investiu</dt><dd>R$ 119,98</dd></div><div><dt>Vendeu</dt><dd>R$ 5.272,59</dd></div></dl>
-            </div>
-          </article>
-          <article class="case" data-proof="assets/resultado-3.jpg" data-alt="Print: hamburgueria, R$ 645,97 investidos e R$ 12.221,62 faturados">
-            <button class="case-shot" type="button" aria-label="Ver o print da hamburgueria"><img src="assets/resultado-3.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
-            <div class="case-info">
-              <p class="case-seg">Hamburgueria</p>
-              <p class="case-roi"><b data-count="18" data-suffix="x">18x</b> o valor investido</p>
-              <dl class="case-flow"><div><dt>Investiu</dt><dd>R$ 645,97</dd></div><div><dt>Vendeu</dt><dd>R$ 12.221,62</dd></div></dl>
-            </div>
-          </article>
-          <article class="case" data-proof="assets/resultado-4.jpg" data-alt="Print: delivery em 3 meses, R$ 1.758,02 investidos e R$ 31.803,52 faturados">
-            <button class="case-shot" type="button" aria-label="Ver o print do delivery em 3 meses"><img src="assets/resultado-4.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
-            <div class="case-info">
-              <p class="case-seg">Delivery · 3 meses</p>
-              <p class="case-roi"><b data-count="18" data-suffix="x">18x</b> o valor investido</p>
-              <dl class="case-flow"><div><dt>Investiu</dt><dd>R$ 1.758,02</dd></div><div><dt>Vendeu</dt><dd>R$ 31.803,52</dd></div></dl>
-            </div>
-          </article>
-          <article class="case" data-proof="assets/resultado-2.jpg" data-alt="Print: pizzaria em uma semana, R$ 377,74 investidos e R$ 3.900,62 de receita">
-            <button class="case-shot" type="button" aria-label="Ver o print da pizzaria"><img src="assets/resultado-2.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
-            <div class="case-info">
-              <p class="case-seg">Pizzaria · 1 semana</p>
-              <p class="case-roi"><b data-count="10" data-suffix="x">10x</b> o valor investido</p>
-              <dl class="case-flow"><div><dt>Investiu</dt><dd>R$ 377,74</dd></div><div><dt>Vendeu</dt><dd>R$ 3.900,62</dd></div></dl>
-            </div>
-          </article>
-          <article class="case" data-proof="assets/resultado-5.jpg" data-alt="Print: pizzaria, R$ 767,08 investidos e R$ 6.833,39 faturados">
-            <button class="case-shot" type="button" aria-label="Ver o print da pizzaria"><img src="assets/resultado-5.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
-            <div class="case-info">
-              <p class="case-seg">Pizzaria</p>
-              <p class="case-roi"><b data-count="8" data-suffix="x">8x</b> o valor investido</p>
-              <dl class="case-flow"><div><dt>Investiu</dt><dd>R$ 767,08</dd></div><div><dt>Vendeu</dt><dd>R$ 6.833,39</dd></div></dl>
-            </div>
-          </article>
+          <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary">Quero vender mais <svg class="ico"><use href="#i-arrow" /></svg></a>
+          <a href="#resultados" class="link-circle">Ver resultados <span class="circle"><svg class="ico"><use href="#i-arrow" /></svg></span></a>
         </div>
       </div>
+      <a href="#numeros" class="scroll-cue" aria-label="Rolar para baixo"><span></span></a>
     </section>
 
-    <!-- ==================== DEPOIMENTOS EM VÍDEO ==================== -->
-    <!--
-      Cada vídeo abre numa janela. Hoje toca o reel do Instagram (data-ig).
-      Com o arquivo original (melhor qualidade), coloque em public/assets/videos/
-      e preencha data-video="assets/videos/arquivo.mp4" — ele passa a ter prioridade.
-    -->
-    <section class="videos" id="depoimentos" data-theme="dark">
-      <div class="wrap">
-        <header class="sec-head">
-          <p class="eyebrow">Depoimentos</p>
-          <h2 class="h2" data-lines>
-            <span class="ln"><span>Quem trabalha</span></span>
-            <span class="ln"><span>com a gente.</span></span>
-          </h2>
-        </header>
-        <div class="video-grid">
-          <button class="vcard" type="button" data-ig="DUKM9h6je6y" data-video="" data-fade>
-            <span class="vcard-play" aria-hidden="true"></span>
-            <span class="vcard-tag">Depoimento</span>
-            <span class="vcard-title">“Como têm sido os resultados nesses 4 meses?”</span>
-            <span class="vcard-meta">Rodrigo · Automax-Code</span>
-          </button>
-          <button class="vcard" type="button" data-ig="DXMYdt5B4WY" data-video="" data-fade>
-            <span class="vcard-play" aria-hidden="true"></span>
-            <span class="vcard-tag">Case</span>
-            <span class="vcard-title">De R$ 2,3 mil para R$ 22 mil: a joalheria que escalou</span>
-            <span class="vcard-meta">Sainte Joie · contado pelo Gabriel</span>
-          </button>
-          <button class="vcard" type="button" data-ig="DaWL_jGMqbR" data-video="" data-fade>
-            <span class="vcard-play" aria-hidden="true"></span>
-            <span class="vcard-tag">Bastidores</span>
-            <span class="vcard-title">Como a gente trabalha por trás das campanhas</span>
-            <span class="vcard-meta">Time Grupo Alvo</span>
-          </button>
-        </div>
+    <!-- ==================== NÚMEROS ==================== -->
+    <section class="stats" id="numeros" data-theme="dark" data-count-group>
+      <div class="wrap stats-grid">
+        <div class="stat"><span class="stat-num" data-count="50" data-prefix="+">+50</span><span class="stat-label">negócios atendidos</span></div>
+        <div class="stat"><span class="stat-num" data-count="126" data-prefix="R$ " data-suffix=" mil">R$ 126 mil</span><span class="stat-label">vendidos por um cliente em um mês</span></div>
+        <div class="stat"><span class="stat-num" data-count="53" data-suffix="x">53x</span><span class="stat-label">o valor investido em anúncios</span></div>
+        <div class="stat"><span class="stat-num" data-count="24" data-suffix="h">24h</span><span class="stat-label">para receber sua proposta</span></div>
       </div>
     </section>
 
     <!-- ==================== SERVIÇOS ==================== -->
     <section class="services" id="servicos" data-theme="light">
       <div class="wrap">
-        <header class="sec-head">
-          <p class="eyebrow">O que fazemos</p>
-          <h2 class="h2" data-lines>
-            <span class="ln"><span>Tudo que o seu negócio</span></span>
-            <span class="ln"><span>precisa pra vender mais.</span></span>
+        <div class="split-head">
+          <p class="label" data-fade>O que fazemos</p>
+          <h2 class="headline" data-lines>
+            <span class="ln"><span>Uma agência com um</span></span>
+            <span class="ln"><span>só objetivo: fazer o seu</span></span>
+            <span class="ln"><span>negócio vender mais.</span></span>
           </h2>
-        </header>
-        <div class="svc-list">
+        </div>
+        <div class="svc-grid">
           <article class="svc" data-fade>
             <span class="svc-n">01</span>
             <h3 class="svc-title">Anúncios</h3>
-            <p class="svc-text">Seu negócio aparecendo no Instagram, Facebook e Google para quem está perto e pronto pra comprar.</p>
+            <p>Seu negócio aparecendo no Instagram, Facebook e Google para quem está perto e pronto para comprar.</p>
           </article>
           <article class="svc" data-fade>
             <span class="svc-n">02</span>
             <h3 class="svc-title">Redes sociais</h3>
-            <p class="svc-text">Fotos, vídeos e posts que fazem as pessoas lembrarem de você — e voltarem.</p>
+            <p>Fotos, vídeos e gestão das redes para construir uma marca que as pessoas lembram e procuram.</p>
           </article>
           <article class="svc" data-fade>
             <span class="svc-n">03</span>
             <h3 class="svc-title">Sites e cardápios</h3>
-            <p class="svc-text">Site e cardápio digital rápidos no celular, feitos pra transformar visita em pedido.</p>
+            <p>Site e cardápio digital rápidos no celular, feitos para transformar visita em pedido.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ==================== MANIFESTO ==================== -->
-    <section class="manifesto" id="manifesto" data-theme="violet">
-      <div class="wrap">
-        <p class="manifesto-line">
-          <span class="m-a">Nós não vendemos <span class="strike-text">curtidas.</span></span>
-          <span class="m-c">Vendemos resultado.</span>
-        </p>
+    <!-- ==================== RESULTADOS ==================== -->
+    <section class="results" id="resultados" data-theme="dark">
+      <div class="wrap results-head">
+        <div>
+          <p class="label" data-fade>Resultados</p>
+          <h2 class="display-2" data-lines><span class="ln"><span>Números reais,</span></span><span class="ln"><span>com print.</span></span></h2>
+        </div>
+        <div class="slider-ctrl" data-fade>
+          <span class="slider-count"><b id="casesNow">01</b> / <span id="casesTotal">08</span></span>
+          <button class="circle-btn" id="casesPrev" aria-label="Caso anterior"><svg class="ico flip"><use href="#i-arrow" /></svg></button>
+          <button class="circle-btn" id="casesNext" aria-label="Próximo caso"><svg class="ico"><use href="#i-arrow" /></svg></button>
+        </div>
       </div>
+
+      <!-- para adicionar um caso: copie um <article class="case"> e troque imagem e números -->
+      <div class="cases" id="cases">
+        <article class="case" data-proof="assets/resultado-7.webp" data-alt="Print: levantamento de vendas do mês, valor total R$ 126.463,00">
+          <button class="case-shot" type="button" aria-label="Ver o print"><img src="assets/resultado-7.webp" alt="" loading="lazy" decoding="async" width="903" height="1600" /></button>
+          <p class="case-seg">Fechamento do mês</p>
+          <p class="case-num">R$ 126 mil</p>
+          <p class="case-txt">vendidos em um mês</p>
+        </article>
+        <article class="case" data-proof="assets/resultado-8.webp" data-alt="Print: 87 contatos, 22 aprovados e R$ 78.590,70 em vendas no mês">
+          <button class="case-shot" type="button" aria-label="Ver o print"><img src="assets/resultado-8.webp" alt="" loading="lazy" decoding="async" width="899" height="1600" /></button>
+          <p class="case-seg">Fechamento do mês</p>
+          <p class="case-num">R$ 78 mil</p>
+          <p class="case-txt">em vendas · 87 contatos, 22 fechados</p>
+        </article>
+        <article class="case" data-proof="assets/resultado-6.jpg" data-alt="Print: delivery, R$ 479,99 investidos e R$ 25.617,71 em vendas">
+          <button class="case-shot" type="button" aria-label="Ver o print"><img src="assets/resultado-6.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+          <p class="case-seg">Delivery</p>
+          <p class="case-num">53x</p>
+          <p class="case-txt">R$ 480 em anúncios → R$ 25,6 mil em vendas</p>
+        </article>
+        <article class="case" data-proof="assets/resultado-1.jpg" data-alt="Print: R$ 119,98 investidos e R$ 5.272,59 de retorno em uma semana">
+          <button class="case-shot" type="button" aria-label="Ver o print"><img src="assets/resultado-1.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+          <p class="case-seg">Loja online · 1 semana</p>
+          <p class="case-num">43x</p>
+          <p class="case-txt">R$ 120 em anúncios → R$ 5,2 mil em vendas</p>
+        </article>
+        <article class="case" data-proof="assets/resultado-3.jpg" data-alt="Print: hamburgueria, R$ 645,97 investidos e R$ 12.221,62 faturados">
+          <button class="case-shot" type="button" aria-label="Ver o print"><img src="assets/resultado-3.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+          <p class="case-seg">Hamburgueria</p>
+          <p class="case-num">18x</p>
+          <p class="case-txt">R$ 646 em anúncios → R$ 12,2 mil em vendas</p>
+        </article>
+        <article class="case" data-proof="assets/resultado-4.jpg" data-alt="Print: delivery em 3 meses, R$ 1.758,02 investidos e R$ 31.803,52 faturados">
+          <button class="case-shot" type="button" aria-label="Ver o print"><img src="assets/resultado-4.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+          <p class="case-seg">Delivery · 3 meses</p>
+          <p class="case-num">18x</p>
+          <p class="case-txt">R$ 1,7 mil em anúncios → R$ 31,8 mil em vendas</p>
+        </article>
+        <article class="case" data-proof="assets/resultado-2.jpg" data-alt="Print: pizzaria em uma semana, R$ 377,74 investidos e R$ 3.900,62 de receita">
+          <button class="case-shot" type="button" aria-label="Ver o print"><img src="assets/resultado-2.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+          <p class="case-seg">Pizzaria · 1 semana</p>
+          <p class="case-num">10x</p>
+          <p class="case-txt">R$ 378 em anúncios → R$ 3,9 mil em vendas</p>
+        </article>
+        <article class="case" data-proof="assets/resultado-5.jpg" data-alt="Print: pizzaria, R$ 767,08 investidos e R$ 6.833,39 faturados">
+          <button class="case-shot" type="button" aria-label="Ver o print"><img src="assets/resultado-5.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+          <p class="case-seg">Pizzaria</p>
+          <p class="case-num">8x</p>
+          <p class="case-txt">R$ 767 em anúncios → R$ 6,8 mil em vendas</p>
+        </article>
+      </div>
+      <div class="wrap"><div class="slider-bar"><span id="casesBar"></span></div></div>
     </section>
 
-    <!-- ==================== COMO FUNCIONA + FORM ==================== -->
-    <section class="method" id="como-funciona" data-theme="light">
+    <!-- ==================== DEPOIMENTOS ==================== -->
+    <!--
+      Prévia: a capa aparece com zoom lento. Para o vídeo tocar sozinho (sem
+      som) e abrir em tela cheia, coloque o MP4 em public/assets/videos/ e
+      preencha data-video (ex.: data-video="assets/videos/automax.mp4").
+      Sem MP4, o clique abre o reel do Instagram (data-ig).
+    -->
+    <section class="videos" id="depoimentos" data-theme="dark">
       <div class="wrap">
-        <header class="sec-head">
-          <p class="eyebrow">Como funciona</p>
-          <h2 class="h2" data-lines>
-            <span class="ln"><span>Simples, do primeiro</span></span>
-            <span class="ln"><span>contato ao resultado.</span></span>
-          </h2>
-        </header>
-
-        <div class="method-grid">
-          <ol class="steps" id="steps">
-            <li class="step" data-step><span class="step-n">1</span><div><h3>Conversa</h3><p>Você conta sobre o seu negócio. A gente entende o que está travando as vendas.</p></div></li>
-            <li class="step" data-step><span class="step-n">2</span><div><h3>Plano</h3><p>Montamos a estratégia e o investimento certo pra sua realidade.</p></div></li>
-            <li class="step" data-step><span class="step-n">3</span><div><h3>Campanhas no ar</h3><p>Anúncios e conteúdo rodando, com relatório toda semana.</p></div></li>
-            <li class="step" data-step><span class="step-n">4</span><div><h3>Crescimento</h3><p>O que traz venda recebe mais investimento. O que não traz, sai.</p></div></li>
-          </ol>
-
-          <form class="lead-form" id="leadForm" novalidate>
-            <h3>Peça seu orçamento grátis</h3>
-            <p>Resposta em até 24h, direto no seu WhatsApp.</p>
-            <label class="field"><span>Seu nome</span><input type="text" name="nome" autocomplete="name" placeholder="Como podemos te chamar?" /></label>
-            <label class="field"><span>WhatsApp</span><input type="tel" name="whatsapp" autocomplete="tel" placeholder="(11) 90000-0000" /></label>
-            <label class="field"><span>O que você precisa?</span>
-              <select name="objetivo">
-                <option value="" disabled selected>Escolha uma opção</option>
-                <option>Atrair mais clientes</option>
-                <option>Vender mais</option>
-                <option>Divulgar meu negócio na região</option>
-                <option>Cuidar das minhas redes sociais</option>
-                <option>Criar ou refazer meu site/cardápio</option>
-                <option>Outro</option>
-              </select>
-            </label>
-            <button type="submit" class="btn btn-block" data-magnetic><span class="btn-label">Quero meu orçamento</span> <span class="arr">→</span></button>
-          </form>
+        <div class="split-head split-head-dark">
+          <p class="label" data-fade>Depoimentos</p>
+          <h2 class="display-2" data-lines><span class="ln"><span>Quem trabalha</span></span><span class="ln"><span>com a gente.</span></span></h2>
+        </div>
+        <div class="video-grid">
+          <button class="vcard" type="button" data-ig="DUKM9h6je6y" data-video="" data-fade>
+            <span class="vcard-media"><img src="assets/videos/reel-automax.jpg" alt="" loading="lazy" decoding="async" width="1607" height="2025" /></span>
+            <span class="vcard-body">
+              <span class="label">Depoimento</span>
+              <span class="vcard-title">“Como têm sido os resultados nesses 4 meses?”</span>
+              <span class="vcard-meta">Rodrigo · Automax-Code</span>
+            </span>
+            <span class="vcard-play" aria-hidden="true"><svg class="ico"><use href="#i-play" /></svg></span>
+          </button>
+          <button class="vcard" type="button" data-ig="DXMYdt5B4WY" data-video="" data-fade>
+            <span class="vcard-media"><img src="assets/videos/reel-joalheria.jpg" alt="" loading="lazy" decoding="async" width="1607" height="2025" /></span>
+            <span class="vcard-body">
+              <span class="label">Case</span>
+              <span class="vcard-title">De R$ 2,3 mil para R$ 22 mil por mês</span>
+              <span class="vcard-meta">Joalheria Sainte Joie · contado pelo Gabriel</span>
+            </span>
+            <span class="vcard-play" aria-hidden="true"><svg class="ico"><use href="#i-play" /></svg></span>
+          </button>
+          <button class="vcard" type="button" data-ig="DaWL_jGMqbR" data-video="" data-fade>
+            <span class="vcard-media"><img src="assets/videos/reel-bastidores.jpg" alt="" loading="lazy" decoding="async" width="1607" height="2025" /></span>
+            <span class="vcard-body">
+              <span class="label">Bastidores</span>
+              <span class="vcard-title">Como a gente trabalha por trás das campanhas</span>
+              <span class="vcard-meta">Time Grupo Alvo</span>
+            </span>
+            <span class="vcard-play" aria-hidden="true"><svg class="ico"><use href="#i-play" /></svg></span>
+          </button>
         </div>
       </div>
     </section>
 
     <!-- ==================== SÓCIOS ==================== -->
-    <!--
-      Vídeos dos sócios: coloque os arquivos em public/assets/ e preencha o
-      data-video de cada <video> (ex.: data-video="assets/felipe.mp4").
-    -->
     <section class="founders" id="socios" data-theme="dark">
       <div class="wrap founders-grid" id="foundersStage">
         <div class="founders-copy">
-          <p class="eyebrow">Quem está por trás</p>
-          <h2 class="h2" data-lines>
-            <span class="ln"><span>Felipe &amp; Gabriel.</span></span>
-          </h2>
-          <p class="founders-text" data-fade>Sócios do Grupo Alvo. Desde 2021 ajudando negócios a venderem mais — com estratégia, anúncios e conteúdo.</p>
-          <a class="link-arrow" href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" data-fade>Siga @grupoalvo_</a>
+          <p class="label" data-fade>Quem está por trás</p>
+          <h2 class="display-2" data-lines><span class="ln"><span>Felipe</span></span><span class="ln"><span>&amp; Gabriel.</span></span></h2>
+          <p class="founders-text" data-fade>Sócios do Grupo Alvo. Desde 2021 ajudando negócios a venderem mais, com estratégia, anúncios e conteúdo — e relatório toda semana.</p>
+          <a class="link-circle" href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" data-fade>Siga @grupoalvo_ <span class="circle"><svg class="ico"><use href="#i-arrow" /></svg></span></a>
         </div>
         <figure class="person person-a" data-person>
           <div class="person-frame">
@@ -377,13 +255,30 @@
       </div>
     </section>
 
+    <!-- ==================== COMO FUNCIONA ==================== -->
+    <section class="method" id="como-funciona" data-theme="light">
+      <div class="wrap">
+        <div class="split-head">
+          <p class="label" data-fade>Como funciona</p>
+          <h2 class="headline" data-lines><span class="ln"><span>Simples, do primeiro</span></span><span class="ln"><span>contato ao resultado.</span></span></h2>
+        </div>
+        <div class="steps" id="steps">
+          <span class="steps-line" aria-hidden="true"><span id="stepsFill"></span></span>
+          <div class="step" data-step><span class="step-n">01</span><h3>Conversa</h3><p>Você conta sobre o seu negócio. A gente entende o que está travando as vendas.</p></div>
+          <div class="step" data-step><span class="step-n">02</span><h3>Plano</h3><p>Montamos a estratégia e o investimento certo para a sua realidade.</p></div>
+          <div class="step" data-step><span class="step-n">03</span><h3>Campanhas no ar</h3><p>Anúncios e conteúdo rodando, com relatório toda semana.</p></div>
+          <div class="step" data-step><span class="step-n">04</span><h3>Crescimento</h3><p>O que traz venda recebe mais investimento. O que não traz, sai.</p></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== FAQ ==================== -->
     <section class="faq" id="faq" data-theme="light">
       <div class="wrap faq-grid">
-        <header class="sec-head">
-          <p class="eyebrow">Dúvidas</p>
-          <h2 class="h2" data-lines><span class="ln"><span>Perguntas</span></span><span class="ln"><span>frequentes.</span></span></h2>
-        </header>
+        <div>
+          <p class="label" data-fade>Dúvidas</p>
+          <h2 class="headline" data-lines><span class="ln"><span>Perguntas frequentes.</span></span></h2>
+        </div>
         <div class="faq-list">
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Em quanto tempo vejo resultado?<span class="faq-icon" aria-hidden="true"></span></button>
@@ -391,11 +286,11 @@
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Que tipo de negócio vocês atendem?<span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Restaurantes, bares, deliveries, lojas, comércio e serviços locais e empresas em crescimento. Se tem cliente pra conquistar, a gente ajuda.</p></div></div>
+            <div class="faq-a"><div class="faq-a-inner"><p>Restaurantes, deliveries, lojas, comércio e serviços locais e empresas em crescimento. Se tem cliente para conquistar, a gente ajuda.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Preciso investir muito em anúncios?<span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Não. Um dos resultados acima saiu de R$ 479,99 em anúncios. Começamos com um valor que cabe no seu bolso e aumentamos conforme o retorno aparece.</p></div></div>
+            <div class="faq-a"><div class="faq-a-inner"><p>Não. Um dos resultados acima saiu de R$ 480 em anúncios. Começamos com um valor que cabe no seu bolso e aumentamos conforme o retorno aparece.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Como funciona o primeiro contato?<span class="faq-icon" aria-hidden="true"></span></button>
@@ -405,25 +300,39 @@
       </div>
     </section>
 
-    <!-- ==================== FINAL ==================== -->
-    <section class="finale" id="contato" data-theme="dark">
-      <div class="wrap finale-inner">
-        <h2 class="finale-title" data-lines aria-label="Bora acertar o alvo?">
-          <span class="ln"><span>Bora acertar o alvo?</span></span>
-        </h2>
-        <p class="finale-sub" data-fade>Conta pra gente sobre o seu negócio. A conversa é grátis.</p>
-        <div class="finale-target" id="finaleTarget">
-          <span class="ring" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span>
-          <span class="ping" aria-hidden="true"></span>
-          <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="finale-cta" id="finaleCta">
-            <span>Chamar no<br />WhatsApp</span>
-          </a>
+    <!-- ==================== CONTATO ==================== -->
+    <section class="contact" id="contato" data-theme="dark">
+      <div class="wrap contact-grid">
+        <div class="contact-copy">
+          <p class="label" data-fade>Contato</p>
+          <h2 class="display-2" data-lines><span class="ln"><span>Vamos fazer</span></span><span class="ln"><span>o seu negócio</span></span><span class="ln"><span>crescer?</span></span></h2>
+          <p class="contact-text" data-fade>Conta pra gente sobre o seu negócio. A conversa é grátis e a proposta chega em até 24h.</p>
+          <div class="contact-links" data-fade>
+            <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary">Falar no WhatsApp <svg class="ico"><use href="#i-arrow" /></svg></a>
+            <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="link-circle">Instagram <span class="circle"><svg class="ico"><use href="#i-arrow" /></svg></span></a>
+          </div>
         </div>
+        <form class="lead-form" id="leadForm" novalidate data-fade>
+          <p class="label">Ou peça seu orçamento</p>
+          <label class="field"><span>Seu nome</span><input type="text" name="nome" autocomplete="name" placeholder="Como podemos te chamar?" /></label>
+          <label class="field"><span>WhatsApp</span><input type="tel" name="whatsapp" autocomplete="tel" placeholder="(11) 90000-0000" /></label>
+          <label class="field"><span>O que você precisa?</span>
+            <select name="objetivo">
+              <option value="" disabled selected>Escolha uma opção</option>
+              <option>Atrair mais clientes</option>
+              <option>Vender mais</option>
+              <option>Divulgar meu negócio na região</option>
+              <option>Cuidar das minhas redes sociais</option>
+              <option>Criar ou refazer meu site/cardápio</option>
+              <option>Outro</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-outline btn-block"><span class="btn-label">Enviar pelo WhatsApp</span> <svg class="ico"><use href="#i-arrow" /></svg></button>
+        </form>
       </div>
     </section>
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
   <footer class="footer" data-theme="dark">
     <div class="wrap footer-row">
       <a href="#topo" class="footer-logo" aria-label="Grupo Alvo — voltar ao início"><img src="assets/logo.png" alt="Grupo Alvo" loading="lazy" decoding="async" width="640" height="440" /></a>
@@ -432,22 +341,19 @@
         <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener">Instagram</a>
         <a href="#faq">Dúvidas</a>
       </nav>
-      <span class="footer-copy">© 2026 Grupo Alvo · desde 2021</span>
+      <span class="footer-copy">© 2026 Grupo Alvo</span>
     </div>
   </footer>
 
-  <!-- WhatsApp flutuante -->
   <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="float-wa is-away" id="floatWa" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.2-157zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
   </a>
 
-  <!-- LIGHTBOX (prints) -->
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Print do resultado">
     <button class="lightbox-close" aria-label="Fechar">Fechar ×</button>
     <img id="lightboxImg" src="" alt="" />
   </div>
 
-  <!-- PLAYER (depoimentos) -->
   <div class="player" id="player" aria-hidden="true" role="dialog" aria-label="Vídeo">
     <button class="player-close" aria-label="Fechar vídeo">Fechar ×</button>
     <div class="player-frame" id="playerFrame"></div>
