@@ -26,16 +26,6 @@
 
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- tema: a flecha desce pela lateral conforme a rolagem e acerta o alvo no fim -->
-  <div class="rail" id="rail" aria-hidden="true">
-    <span class="rail-line"><span class="rail-fill" id="railFill"></span></span>
-    <svg class="rail-arrow" id="railArrow" viewBox="-8 -60 16 64">
-      <path d="M0 -56 V0" /><path class="head" d="M0 2 L-4 -7 L4 -7 Z" />
-      <path d="M0 -56 L-5 -62 M0 -50 L-5 -56 M0 -56 L5 -62 M0 -50 L5 -56" />
-    </svg>
-    <span class="rail-target" id="railTarget"><i></i></span>
-  </div>
-
   <!-- ==================== NAV ==================== -->
   <header class="nav" id="nav" data-theme="dark">
     <a href="#topo" class="nav-logo" aria-label="Grupo Alvo — início">
@@ -67,24 +57,13 @@
   <main id="conteudo">
     <!-- ==================== HERO ==================== -->
     <section class="hero" id="topo" data-theme="dark">
-      <div class="hero-media" aria-hidden="true">
-        <img src="assets/videos/reel-bastidores.jpg" alt="" width="1607" height="2025" fetchpriority="high" />
-      </div>
-      <!-- tema: a trajetória da flecha cruzando a foto até o alvo (desenhada pelo theme.js) -->
-      <svg class="hero-shot" id="heroShot" aria-hidden="true">
-        <path class="shot-path" id="shotPath" d="" />
-        <g class="shot-target" id="shotTarget">
-          <circle r="34" /><circle r="22" /><circle r="11" /><circle class="core" r="4" />
-          <circle class="ripple" r="11" />
-        </g>
-        <g class="shot-arrow" id="shotArrow">
-          <path class="shaft" d="M-46 0 H0" /><path class="head" d="M0 0 L-9 -4.5 L-9 4.5 Z" />
-          <path class="fletch" d="M-46 0 L-52 -5 M-40 0 L-46 -5 M-46 0 L-52 5 M-40 0 L-46 5" />
-        </g>
-        <circle class="shot-tracer" id="shotTracer" r="3" />
-      </svg>
+      <!-- a peça-assinatura: o alvo em 3D (target3d.js desenha no canvas que entra aqui).
+           Sem WebGL, fica o alvo estático abaixo. -->
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-target-css" aria-hidden="true"></div>
+      <p class="hero-hint" id="heroHint" aria-hidden="true">Arraste para girar · clique no alvo para atirar</p>
       <div class="wrap hero-inner">
-        <p class="label hero-label" data-fade>Grupo Alvo · Agência de marketing desde 2021</p>
+        <p class="label hero-label" data-fade>Grupo Alvo · A gente mira, você fatura</p>
         <h1 class="display hero-title" aria-label="Mais clientes. Mais vendas.">
           <span class="ln"><span>Mais clientes.</span></span>
           <span class="ln"><span>Mais vendas.</span></span>
@@ -357,36 +336,6 @@
   </main>
 
   <footer class="footer" data-theme="dark">
-    <!-- assinatura temática: o alvo e a trajetória (como a cena do asteroide da Vesta) -->
-    <div class="wrap signature" id="signature">
-      <div class="sig-left">
-        <svg class="sig-target" id="sigTarget" viewBox="-130 -130 260 260" aria-hidden="true">
-          <circle r="120" /><circle r="96" /><circle r="72" /><circle r="48" /><circle class="inner" r="24" /><circle class="core" r="8" />
-          <circle class="ripple" r="24" />
-          <g class="sig-arrow" id="sigArrow">
-            <path class="shaft" d="M-150 -150 L-2 -2" /><path class="head" d="M0 0 L-12 -4 L-4 -12 Z" />
-            <path class="fletch" d="M-150 -150 L-150 -136 M-150 -150 L-136 -150 M-140 -140 L-140 -126 M-140 -140 L-126 -140" />
-          </g>
-        </svg>
-        <p class="sig-name">Alvo · 10 anéis · 122 cm</p>
-        <dl class="sig-table">
-          <div><dt>Distância do tiro</dt><dd>70 m</dd></div>
-          <div class="is-hl"><dt>Velocidade da flecha</dt><dd>~220 km/h</dd></div>
-          <div><dt>Do arco ao centro</dt><dd>~1 s</dd></div>
-        </dl>
-      </div>
-      <div class="sig-right">
-        <svg class="sig-arc" id="sigArc" viewBox="0 0 800 380" aria-hidden="true">
-          <line class="ground" x1="0" y1="330" x2="800" y2="330" />
-          <path class="bow" d="M52 220 Q86 270 52 320 M52 220 L52 320" />
-          <path class="traj" id="sigPath" d="M60 270 Q400 -10 744 250" />
-          <g class="mini-target" transform="translate(750 250)"><circle r="22" /><circle r="14" /><circle r="6" class="core" /><circle class="ripple" r="6" /></g>
-          <circle class="tracer" id="sigTracer" r="4" />
-          <text x="60" y="360">Arco</text><text x="750" y="360" text-anchor="middle">Alvo</text>
-        </svg>
-        <p class="sig-tag">A gente mira, você fatura.</p>
-      </div>
-    </div>
     <div class="wrap footer-row">
       <a href="#topo" class="footer-logo" aria-label="Grupo Alvo — voltar ao início"><img src="assets/logo.png" alt="Grupo Alvo" loading="lazy" decoding="async" width="640" height="440" /></a>
       <nav class="footer-links" aria-label="Rodapé">

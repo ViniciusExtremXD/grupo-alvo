@@ -20,12 +20,10 @@ import { initLightbox } from "./modules/lightbox.js";
 import { initMethod } from "./modules/method.js";
 import { initForm } from "./modules/form.js";
 import { initFaq } from "./modules/faq.js";
-import { initTheme } from "./modules/theme.js";
 
 initScrollTop();
 initLightbox();
 initHero();
-initTheme();
 initResults();
 initVideos();
 initFounders();
