@@ -11,7 +11,8 @@
   <meta property="og:title" content="Grupo Alvo — A gente mira, você fatura." />
   <meta property="og:description" content="R$ 4.148 em anúncios viraram R$ 85.649 em vendas para seis clientes. Tráfego pago, social media e sites — desde 2021." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:url" content="https://alvomkt.com/" />
+  <meta property="og:image" content="https://alvomkt.com/assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet" />
@@ -19,7 +20,12 @@
 <body>
 
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-  <div class="grain" aria-hidden="true"></div>
+
+  <!-- abertura: o ponto do alvo nasce no centro e "trava" no ponto final do título -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <span class="intro-ring"></span><span class="intro-ring"></span><span class="intro-ring"></span>
+    <span class="intro-dot" id="introDot"></span>
+  </div>
 
   <!-- ==================== NAV ==================== -->
   <header class="nav" id="nav" data-theme="dark">
@@ -31,9 +37,8 @@
       <a href="#socios" data-navlink="socios">Sócios</a>
       <a href="#servicos" data-navlink="servicos">Serviços</a>
       <a href="#metodo" data-navlink="metodo">Método</a>
-      <a href="#faq" data-navlink="faq">Dúvidas</a>
     </nav>
-    <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="nav-cta">
+    <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="nav-cta" data-magnetic>
       <span class="dot" aria-hidden="true"></span>Falar no WhatsApp
     </a>
     <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -62,12 +67,8 @@
       <!-- o alvo: anéis concêntricos centrados no ponto final do título -->
       <svg class="hero-rings" id="heroRings" viewBox="-500 -500 1000 1000" aria-hidden="true">
         <circle r="70" /><circle r="150" /><circle r="240" /><circle r="340" /><circle r="450" />
+        <circle class="ping" r="40" />
       </svg>
-
-      <div class="hero-top wrap">
-        <p class="eyebrow">Acelerador de faturamento</p>
-        <p class="eyebrow">Desde 2021</p>
-      </div>
 
       <h1 class="hero-title wrap" aria-label="A gente mira, você fatura.">
         <span class="ln"><span>A gente mira,</span></span>
@@ -83,22 +84,22 @@
 
       <div class="hero-foot wrap">
         <p class="hero-sub" data-fade>
-          Tráfego pago, social media e sites que enchem o salão, movimentam o delivery
-          e fazem o seu negócio ser lembrado na hora da escolha.
+          Tráfego pago, social media e sites que enchem o salão e movimentam o delivery.
         </p>
         <div class="hero-actions" data-fade>
-          <a href="#contato" class="btn btn-light">Quero crescer meu negócio <span class="arr">→</span></a>
-          <a href="#resultados" class="link-arrow">Ver os números reais</a>
+          <a href="#contato" class="btn btn-light" data-magnetic>Quero crescer meu negócio <span class="arr">→</span></a>
+          <a href="#resultados" class="link-arrow">Ver resultados reais</a>
         </div>
-        <a href="#resultados" class="hero-proof" data-fade>
-          <span class="proof-num">R$ 4.148</span>
-          <span class="proof-txt">em anúncios viraram</span>
-          <span class="proof-num">R$ 85.649</span>
-          <span class="proof-txt">em vendas para seis clientes.</span>
-          <span class="proof-arrow" aria-hidden="true">↓</span>
-        </a>
       </div>
     </section>
+
+    <!-- ==================== FAIXA (reage à rolagem) ==================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack">
+        <span class="marquee-item">Tráfego pago<i></i>Social media<i></i>Sites &amp; cardápios<i></i>Mais faturamento<i></i></span>
+        <span class="marquee-item">Tráfego pago<i></i>Social media<i></i>Sites &amp; cardápios<i></i>Mais faturamento<i></i></span>
+      </div>
+    </div>
 
     <!-- ==================== DIAGNÓSTICO ==================== -->
     <section class="diag" id="diagnostico" data-theme="light">
@@ -114,39 +115,28 @@
         <ol class="diag-list">
           <li class="diag-row" data-strike>
             <p class="diag-problem"><span class="strike-text">Vende bem, mas fatura menos do que poderia.</span></p>
-            <p class="diag-fix">Movimento não é margem. Falta estratégia pra aumentar o ticket e a recorrência.</p>
+            <p class="diag-fix">Falta estratégia pra aumentar o ticket e a recorrência.</p>
           </li>
           <li class="diag-row" data-strike>
             <p class="diag-problem"><span class="strike-text">Todo mundo conhece, mas ninguém lembra na hora de escolher.</span></p>
-            <p class="diag-fix">Sem marca forte e presença digital, você fica invisível — e briga no preço.</p>
+            <p class="diag-fix">Sem marca forte, você fica invisível — e briga no preço.</p>
           </li>
           <li class="diag-row" data-strike>
             <p class="diag-problem"><span class="strike-text">Trabalha demais e mesmo assim não cresce.</span></p>
-            <p class="diag-fix">O problema não é o seu produto. É a mira.</p>
+            <p class="diag-fix">O problema não é o produto. É a mira.</p>
           </li>
         </ol>
-
-        <p class="diag-close" data-lines>
-          <span class="ln"><span>E é exatamente isso</span></span>
-          <span class="ln"><span>que a gente ajusta.</span></span>
-        </p>
       </div>
     </section>
 
     <!-- ==================== RESULTADOS ==================== -->
     <section class="results" id="resultados" data-theme="dark">
-      <div class="wrap">
-        <header class="sec-head sec-head-split">
-          <div>
-            <p class="eyebrow">Resultados reais</p>
-            <h2 class="h2" data-lines>
-              <span class="ln"><span>Print vale mais</span></span>
-              <span class="ln"><span>que promessa.</span></span>
-            </h2>
-          </div>
-          <p class="sec-note" data-fade>Seis clientes, números tirados direto do gerenciador de anúncios. Toque em uma linha para ver o print original.</p>
-        </header>
-
+      <div class="wrap results-intro">
+        <p class="eyebrow">Resultados reais</p>
+        <h2 class="h2" data-lines>
+          <span class="ln"><span>Print vale mais</span></span>
+          <span class="ln"><span>que promessa.</span></span>
+        </h2>
         <div class="totals" data-count-group>
           <div class="total">
             <span class="total-label">Investido em anúncios</span>
@@ -159,71 +149,67 @@
             <span class="total-label">Vendido</span>
             <span class="total-num total-num-hit" data-count="85649" data-prefix="R$ ">R$ 85.649</span>
           </div>
-          <p class="total-caption">Cada <b>R$ 1</b> em anúncio voltou como <b>R$ 20,64</b> em vendas.</p>
         </div>
+        <p class="total-caption" data-fade>Seis clientes. Cada <b>R$ 1</b> em anúncio voltou como <b>R$ 20,64</b> em vendas.</p>
+      </div>
 
-        <div class="ledger" role="table" aria-label="Resultados por cliente">
-          <div class="ledger-row ledger-head" role="row">
-            <span role="columnheader">Cliente</span>
-            <span role="columnheader">Investiu</span>
-            <span role="columnheader">Vendas</span>
-            <span role="columnheader">Faturou</span>
-            <span role="columnheader">Retorno</span>
-          </div>
-          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-6.jpg" data-alt="Print: delivery, R$ 479,99 investidos e R$ 25.617,71 em vendas">
-            <span role="cell" class="c-name">Delivery</span>
-            <span role="cell">R$ 479,99</span>
-            <span role="cell">965</span>
-            <span role="cell">R$ 25.617,71</span>
-            <span role="cell" class="c-roi"><b data-count="53.4" data-decimals="1" data-suffix="x">53,4x</b><button type="button" class="see">ver print</button></span>
-          </div>
-          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-1.jpg" data-alt="Print: relatório semanal, R$ 119,98 investidos e R$ 5.272,59 de retorno">
-            <span role="cell" class="c-name">Vendas pelo site</span>
-            <span role="cell">R$ 119,98</span>
-            <span role="cell">197</span>
-            <span role="cell">R$ 5.272,59</span>
-            <span role="cell" class="c-roi"><b data-count="43.9" data-decimals="1" data-suffix="x">43,9x</b><button type="button" class="see">ver print</button></span>
-          </div>
-          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-3.jpg" data-alt="Print: hamburgueria, R$ 645,97 investidos e R$ 12.221,62 faturados">
-            <span role="cell" class="c-name">Hamburgueria</span>
-            <span role="cell">R$ 645,97</span>
-            <span role="cell">217</span>
-            <span role="cell">R$ 12.221,62</span>
-            <span role="cell" class="c-roi"><b data-count="18.9" data-decimals="1" data-suffix="x">18,9x</b><button type="button" class="see">ver print</button></span>
-          </div>
-          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-4.jpg" data-alt="Print: delivery em 3 meses, R$ 1.758,02 investidos e R$ 31.803,52 faturados">
-            <span role="cell" class="c-name">Delivery <em>3 meses</em></span>
-            <span role="cell">R$ 1.758,02</span>
-            <span role="cell">569</span>
-            <span role="cell">R$ 31.803,52</span>
-            <span role="cell" class="c-roi"><b data-count="18.1" data-decimals="1" data-suffix="x">18,1x</b><button type="button" class="see">ver print</button></span>
-          </div>
-          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-2.jpg" data-alt="Print: pizzaria em uma semana, R$ 377,74 investidos e R$ 3.900,62 de receita">
-            <span role="cell" class="c-name">Pizzaria <em>1 semana</em></span>
-            <span role="cell">R$ 377,74</span>
-            <span role="cell">50</span>
-            <span role="cell">R$ 3.900,62</span>
-            <span role="cell" class="c-roi"><b data-count="10.3" data-decimals="1" data-suffix="x">10,3x</b><button type="button" class="see">ver print</button></span>
-          </div>
-          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-5.jpg" data-alt="Print: pizzaria, R$ 767,08 investidos e R$ 6.833,39 faturados">
-            <span role="cell" class="c-name">Pizzaria</span>
-            <span role="cell">R$ 767,08</span>
-            <span role="cell">87</span>
-            <span role="cell">R$ 6.833,39</span>
-            <span role="cell" class="c-roi"><b data-count="8.9" data-decimals="1" data-suffix="x">8,9x</b><button type="button" class="see">ver print</button></span>
-          </div>
-        </div>
-
-        <!-- os prints, arrastáveis -->
-        <div class="proofs" id="proofs" aria-label="Prints dos resultados">
-          <div class="proofs-track" id="proofsTrack">
-            <button class="proof" data-proof="assets/resultado-6.jpg" data-alt="Print: delivery, R$ 479,99 investidos"><img src="assets/resultado-6.jpg" alt="Print do resultado de um delivery" loading="lazy" decoding="async" width="591" height="1280" /><span>Delivery · 53,4x</span></button>
-            <button class="proof" data-proof="assets/resultado-1.jpg" data-alt="Print: relatório semanal"><img src="assets/resultado-1.jpg" alt="Print do relatório semanal de vendas pelo site" loading="lazy" decoding="async" width="591" height="1280" /><span>Vendas pelo site · 43,9x</span></button>
-            <button class="proof" data-proof="assets/resultado-3.jpg" data-alt="Print: hamburgueria"><img src="assets/resultado-3.jpg" alt="Print do resultado de uma hamburgueria" loading="lazy" decoding="async" width="591" height="1280" /><span>Hamburgueria · 18,9x</span></button>
-            <button class="proof" data-proof="assets/resultado-4.jpg" data-alt="Print: delivery em 3 meses"><img src="assets/resultado-4.jpg" alt="Print do resultado de um delivery em 3 meses" loading="lazy" decoding="async" width="591" height="1280" /><span>Delivery · 18,1x</span></button>
-            <button class="proof" data-proof="assets/resultado-2.jpg" data-alt="Print: pizzaria em uma semana"><img src="assets/resultado-2.jpg" alt="Print do relatório de uma pizzaria" loading="lazy" decoding="async" width="591" height="1280" /><span>Pizzaria · 10,3x</span></button>
-            <button class="proof" data-proof="assets/resultado-5.jpg" data-alt="Print: pizzaria"><img src="assets/resultado-5.jpg" alt="Print do resultado de uma pizzaria" loading="lazy" decoding="async" width="591" height="1280" /><span>Pizzaria · 8,9x</span></button>
-          </div>
+      <!-- os casos: no desktop rolam na horizontal enquanto você desce a página -->
+      <div class="cases" id="cases">
+        <div class="cases-track" id="casesTrack">
+          <article class="case" data-proof="assets/resultado-6.jpg" data-alt="Print: delivery, R$ 479,99 investidos e R$ 25.617,71 em vendas">
+            <button class="case-shot" type="button" aria-label="Ver o print do delivery"><img src="assets/resultado-6.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+            <div class="case-info">
+              <p class="case-seg">Delivery</p>
+              <p class="case-roi" data-count="53.4" data-decimals="1" data-suffix="x">53,4x</p>
+              <p class="case-flow">R$ 479,99 <span>→</span> R$ 25.617,71</p>
+              <p class="case-note">965 compras no site</p>
+            </div>
+          </article>
+          <article class="case" data-proof="assets/resultado-1.jpg" data-alt="Print: relatório semanal, R$ 119,98 investidos e R$ 5.272,59 de retorno">
+            <button class="case-shot" type="button" aria-label="Ver o print das vendas pelo site"><img src="assets/resultado-1.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+            <div class="case-info">
+              <p class="case-seg">Vendas pelo site</p>
+              <p class="case-roi" data-count="43.9" data-decimals="1" data-suffix="x">43,9x</p>
+              <p class="case-flow">R$ 119,98 <span>→</span> R$ 5.272,59</p>
+              <p class="case-note">197 compras em uma semana</p>
+            </div>
+          </article>
+          <article class="case" data-proof="assets/resultado-3.jpg" data-alt="Print: hamburgueria, R$ 645,97 investidos e R$ 12.221,62 faturados">
+            <button class="case-shot" type="button" aria-label="Ver o print da hamburgueria"><img src="assets/resultado-3.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+            <div class="case-info">
+              <p class="case-seg">Hamburgueria</p>
+              <p class="case-roi" data-count="18.9" data-decimals="1" data-suffix="x">18,9x</p>
+              <p class="case-flow">R$ 645,97 <span>→</span> R$ 12.221,62</p>
+              <p class="case-note">217 compras</p>
+            </div>
+          </article>
+          <article class="case" data-proof="assets/resultado-4.jpg" data-alt="Print: delivery em 3 meses, R$ 1.758,02 investidos e R$ 31.803,52 faturados">
+            <button class="case-shot" type="button" aria-label="Ver o print do delivery em 3 meses"><img src="assets/resultado-4.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+            <div class="case-info">
+              <p class="case-seg">Delivery · 3 meses</p>
+              <p class="case-roi" data-count="18.1" data-decimals="1" data-suffix="x">18,1x</p>
+              <p class="case-flow">R$ 1.758,02 <span>→</span> R$ 31.803,52</p>
+              <p class="case-note">569 compras no cardápio digital</p>
+            </div>
+          </article>
+          <article class="case" data-proof="assets/resultado-2.jpg" data-alt="Print: pizzaria em uma semana, R$ 377,74 investidos e R$ 3.900,62 de receita">
+            <button class="case-shot" type="button" aria-label="Ver o print da pizzaria"><img src="assets/resultado-2.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+            <div class="case-info">
+              <p class="case-seg">Pizzaria · 1 semana</p>
+              <p class="case-roi" data-count="10.3" data-decimals="1" data-suffix="x">10,3x</p>
+              <p class="case-flow">R$ 377,74 <span>→</span> R$ 3.900,62</p>
+              <p class="case-note">50 pedidos concluídos</p>
+            </div>
+          </article>
+          <article class="case" data-proof="assets/resultado-5.jpg" data-alt="Print: pizzaria, R$ 767,08 investidos e R$ 6.833,39 faturados">
+            <button class="case-shot" type="button" aria-label="Ver o print da pizzaria"><img src="assets/resultado-5.jpg" alt="" loading="lazy" decoding="async" width="591" height="1280" /></button>
+            <div class="case-info">
+              <p class="case-seg">Pizzaria</p>
+              <p class="case-roi" data-count="8.9" data-decimals="1" data-suffix="x">8,9x</p>
+              <p class="case-flow">R$ 767,08 <span>→</span> R$ 6.833,39</p>
+              <p class="case-note">87 compras no cardápio digital</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -236,17 +222,14 @@
     -->
     <section class="founders" id="socios" data-theme="dark">
       <div class="founders-stage" id="foundersStage">
-        <div class="founders-copy wrap">
+        <div class="founders-copy">
           <p class="eyebrow">Quem está por trás</p>
           <h2 class="h2 founders-title" data-lines>
             <span class="ln"><span>Felipe</span></span>
             <span class="ln"><span>&amp; Gabriel.</span></span>
           </h2>
-          <p class="founders-text" data-fade>
-            Desde 2021 o Grupo Alvo acelera o faturamento de quem empreende — com estratégia,
-            tráfego e conteúdo. Sem enrolação: a gente só fala de resultado.
-          </p>
-          <a class="link-arrow" href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" data-fade>Acompanhe no Instagram</a>
+          <p class="founders-text" data-fade>Desde 2021 acelerando o faturamento de quem empreende.</p>
+          <a class="link-arrow" href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" data-fade>@grupoalvo_</a>
         </div>
 
         <figure class="person person-a" data-person>
@@ -286,35 +269,20 @@
 
         <div class="svc-list">
           <article class="svc" data-fade>
+            <span class="svc-n">01</span>
             <h3 class="svc-title">Tráfego pago</h3>
-            <div class="svc-body">
-              <p>Anúncios que colocam o seu negócio na frente de quem já está pronto pra comprar — na hora certa, no raio certo.</p>
-              <ul><li>Meta &amp; Google Ads</li><li>Presença nos apps de delivery</li><li>Segmentação por bairro</li><li>Relatório toda semana</li></ul>
-            </div>
+            <p class="svc-text">Anúncios no Meta e no Google pra quem já está pronto pra comprar — no raio certo, na hora certa.</p>
           </article>
           <article class="svc" data-fade>
+            <span class="svc-n">02</span>
             <h3 class="svc-title">Social media</h3>
-            <div class="svc-body">
-              <p>Conteúdo que constrói uma marca desejada, gera autoridade e transforma seguidor em cliente que volta.</p>
-              <ul><li>Fotos e vídeos que vendem</li><li>Linha editorial</li><li>Gestão diária das redes</li><li>Comunidade fiel</li></ul>
-            </div>
+            <p class="svc-text">Fotos, vídeos e gestão das redes pra construir uma marca que as pessoas desejam.</p>
           </article>
           <article class="svc" data-fade>
+            <span class="svc-n">03</span>
             <h3 class="svc-title">Sites &amp; cardápios</h3>
-            <div class="svc-body">
-              <p>Sites e cardápios digitais rápidos no celular, feitos pra transformar visita em pedido.</p>
-              <ul><li>Cardápio digital</li><li>Site institucional</li><li>Sistema de reservas</li><li>Rápido no 4G</li></ul>
-            </div>
+            <p class="svc-text">Cardápio digital e site rápidos no celular, feitos pra transformar visita em pedido.</p>
           </article>
-        </div>
-
-        <div class="for-who" data-fade>
-          <p class="eyebrow">Para quem é</p>
-          <ul>
-            <li><b>Restaurantes &amp; bares</b> que querem casa cheia e ticket maior.</li>
-            <li><b>Comércio &amp; serviços locais</b> que precisam virar referência no bairro.</li>
-            <li><b>Marcas em crescimento</b> que querem escalar sem guerra de preço.</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -327,7 +295,6 @@
           <span class="m-b"><span class="strike-text">curtidas.</span></span>
         </p>
         <p class="manifesto-line manifesto-answer"><span class="m-c">Vendemos faturamento.</span></p>
-        <p class="manifesto-note" data-fade>Curtida não paga conta. A gente mira no que importa: mais clientes, mais vendas e caixa no azul.</p>
       </div>
     </section>
 
@@ -344,29 +311,16 @@
 
         <div class="method-grid">
           <ol class="steps" id="steps">
-            <li class="step" data-step>
-              <span class="step-n">1</span>
-              <div><h3>Diagnóstico</h3><p>Analisamos seu negócio, seu mercado e a concorrência pra achar o dinheiro que está passando batido.</p></div>
-            </li>
-            <li class="step" data-step>
-              <span class="step-n">2</span>
-              <div><h3>Estratégia</h3><p>Montamos o plano de mídia e conteúdo com a mira travada no seu objetivo de faturamento.</p></div>
-            </li>
-            <li class="step" data-step>
-              <span class="step-n">3</span>
-              <div><h3>Execução</h3><p>Campanhas no ar e conteúdo que atrai — do anúncio até a venda confirmada.</p></div>
-            </li>
-            <li class="step" data-step>
-              <span class="step-n">4</span>
-              <div><h3>Escala</h3><p>Medimos, otimizamos e colocamos mais verba no que traz caixa. Crescimento com previsibilidade.</p></div>
-            </li>
+            <li class="step" data-step><span class="step-n">1</span><div><h3>Diagnóstico</h3><p>Achamos onde está o dinheiro que passa batido.</p></div></li>
+            <li class="step" data-step><span class="step-n">2</span><div><h3>Estratégia</h3><p>Plano de mídia e conteúdo com a mira no seu faturamento.</p></div></li>
+            <li class="step" data-step><span class="step-n">3</span><div><h3>Execução</h3><p>Campanhas no ar, do anúncio até a venda confirmada.</p></div></li>
+            <li class="step" data-step><span class="step-n">4</span><div><h3>Escala</h3><p>Mais verba no que traz caixa. Crescimento previsível.</p></div></li>
           </ol>
 
           <form class="lead-form" id="leadForm" novalidate>
             <h3>Peça seu orçamento</h3>
-            <p>Proposta personalizada em até 24h, direto no seu WhatsApp.</p>
+            <p>Proposta em até 24h, direto no seu WhatsApp.</p>
             <label class="field"><span>Nome</span><input type="text" name="nome" autocomplete="name" placeholder="Seu nome" /></label>
-            <label class="field"><span>E-mail</span><input type="email" name="email" autocomplete="email" placeholder="voce@email.com" /></label>
             <label class="field"><span>WhatsApp</span><input type="tel" name="whatsapp" autocomplete="tel" placeholder="(11) 90000-0000" /></label>
             <label class="field"><span>Objetivo</span>
               <select name="objetivo">
@@ -379,8 +333,7 @@
                 <option>Outro</option>
               </select>
             </label>
-            <button type="submit" class="btn btn-dark btn-block"><span class="btn-label">Receber proposta</span> <span class="arr">→</span></button>
-            <p class="form-note">Abre direto no WhatsApp · sem enrolação</p>
+            <button type="submit" class="btn btn-block" data-magnetic><span class="btn-label">Receber proposta</span> <span class="arr">→</span></button>
           </form>
         </div>
       </div>
@@ -400,7 +353,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Que tipo de negócio vocês atendem?<span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-a"><div class="faq-a-inner"><p>Quem quer crescer de verdade — restaurantes e bares, deliveries, comércio e serviços locais e marcas em expansão. Se tem cliente pra conquistar, a gente mira.</p></div></div>
+            <div class="faq-a"><div class="faq-a-inner"><p>Restaurantes e bares, deliveries, comércio e serviços locais e marcas em crescimento. Se tem cliente pra conquistar, a gente mira.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Preciso ter verba grande de anúncios?<span class="faq-icon" aria-hidden="true"></span></button>
@@ -423,36 +376,25 @@
         </h2>
         <div class="finale-target" id="finaleTarget">
           <span class="ring" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span>
+          <span class="ping" aria-hidden="true"></span>
           <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="finale-cta" id="finaleCta">
             <span>Chamar no<br />WhatsApp</span>
           </a>
         </div>
-        <p class="finale-sub" data-fade>A gente mira, você fatura. Resposta no mesmo dia.</p>
       </div>
     </section>
   </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="footer" data-theme="dark">
-    <div class="wrap footer-top">
-      <div class="footer-cols">
-        <div>
-          <p class="eyebrow">Navegar</p>
-          <a href="#resultados">Resultados</a><a href="#socios">Sócios</a><a href="#servicos">Serviços</a><a href="#metodo">Método</a>
-        </div>
-        <div>
-          <p class="eyebrow">Contato</p>
-          <a href="https://wa.me/5511979705089" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener">Instagram</a>
-          <a href="#metodo">Pedir orçamento</a>
-        </div>
-      </div>
-      <p class="footer-claim">Acelerador de faturamento.<br />Estratégia que transforma negócios em marcas.</p>
-    </div>
-    <img class="footer-logo" src="assets/logo-hd.png" alt="Grupo Alvo" loading="lazy" decoding="async" width="1200" height="825" />
-    <div class="wrap footer-bottom">
-      <span>© 2026 Grupo Alvo</span>
-      <span>Feito com mira no seu faturamento.</span>
+    <div class="wrap footer-row">
+      <a href="#topo" class="footer-logo" aria-label="Grupo Alvo — voltar ao início"><img src="assets/logo.png" alt="Grupo Alvo" loading="lazy" decoding="async" width="640" height="440" /></a>
+      <nav class="footer-links" aria-label="Rodapé">
+        <a href="https://wa.me/5511979705089" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+      <span class="footer-copy">© 2026 Grupo Alvo · desde 2021</span>
     </div>
   </footer>
 

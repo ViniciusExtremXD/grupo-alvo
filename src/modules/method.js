@@ -33,6 +33,20 @@ export function initFinale() {
     scrollTrigger: { trigger: target, start: "top 85%", once: true },
   });
 
+  // pulso de radar saindo do botão (só enquanto a seção está na tela)
+  const ping = target.querySelector(".ping");
+  if (ping) {
+    const pulse = gsap.fromTo(ping,
+      { scale: 1, opacity: 0.8 },
+      { scale: 3.4, opacity: 0, duration: 2, ease: "expo.out", repeat: -1, repeatDelay: 0.6, paused: true });
+    ScrollTrigger.create({
+      trigger: target,
+      start: "top bottom",
+      end: "bottom top",
+      onToggle: (self) => (self.isActive ? pulse.play() : pulse.pause()),
+    });
+  }
+
   if (!finePointer) return;
   const section = target.closest("section");
   const tos = [cta, ...rings].map((el, i) => {

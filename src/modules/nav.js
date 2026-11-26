@@ -46,15 +46,24 @@ export function initNav() {
   if (lenis) lenis.on("scroll", ({ scroll }) => onScroll(scroll));
   else window.addEventListener("scroll", () => onScroll(window.scrollY), { passive: true });
 
-  // WhatsApp flutuante só aparece depois do hero (onde o CTA já está à vista)
+  // WhatsApp flutuante some onde o CTA já está à vista: no hero e no final
   const floatWa = $("#floatWa");
-  if (floatWa && $("#topo")) {
-    ScrollTrigger.create({
-      trigger: "#topo",
-      start: "top top",
-      end: "bottom 35%",
-      onToggle: (self) => floatWa.classList.toggle("is-away", self.isActive),
-    });
+  if (floatWa) {
+    const away = { hero: true, end: false };
+    const sync = () => floatWa.classList.toggle("is-away", away.hero || away.end);
+    if ($("#topo")) {
+      ScrollTrigger.create({
+        trigger: "#topo", start: "top top", end: "bottom 35%",
+        onToggle: (self) => { away.hero = self.isActive; sync(); },
+      });
+    }
+    if ($("#contato")) {
+      ScrollTrigger.create({
+        trigger: "#contato", start: "top 70%", end: "bottom top",
+        refreshPriority: -1,
+        onToggle: (self) => { away.end = self.isActive; sync(); },
+      });
+    }
   }
 
   // link ativo

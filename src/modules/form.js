@@ -35,7 +35,6 @@ export function initForm() {
       "",
       "*Meus dados:*",
       `• Nome: ${data.nome}`,
-      `• E-mail: ${data.email}`,
       `• WhatsApp: ${data.whatsapp}`,
       `• Objetivo: ${data.objetivo}`,
       "",

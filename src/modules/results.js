@@ -1,73 +1,84 @@
 /**
- * Resultados: tabela (cada linha abre o print original), faixa de prints
- * arrastável e a entrada das linhas com os retornos contando.
+ * Resultados: os seis casos. No desktop a faixa fica presa na tela e rola na
+ * horizontal enquanto você desce a página (cada retorno conta ao entrar).
+ * No celular é um carrossel nativo com encaixe. Clique no print abre em tela
+ * cheia.
  */
-import { gsap } from "./gsap.js";
+import { gsap, ScrollTrigger } from "./gsap.js";
 import { $, $$, reduceMotion } from "./env.js";
-import { animateCounter } from "./utils.js";
+import { animateCounter, formatNumber } from "./utils.js";
 import { openLightbox } from "./lightbox.js";
 
 export function initResults() {
-  const section = $("#resultados");
-  if (!section) return;
+  const cases = $("#cases");
+  const track = $("#casesTrack");
+  if (!cases || !track) return;
+  const cards = $$(".case", track);
 
-  // ---- linhas da tabela: clique em qualquer lugar abre o print ----
-  const rows = $$(".ledger-row.is-click", section);
-  rows.forEach((row) => {
-    row.addEventListener("click", () => openLightbox(row.dataset.proof, row.dataset.alt));
-  });
-
-  // ---- faixa de prints: arraste com o mouse (no toque é o scroll nativo) ----
-  const strip = $("#proofs");
-  let dragged = false;
-  if (strip) {
-    let down = false, startX = 0, startScroll = 0;
-    strip.addEventListener("pointerdown", (e) => {
-      if (e.pointerType !== "mouse" || e.button !== 0) return;
-      down = true; dragged = false;
-      startX = e.clientX; startScroll = strip.scrollLeft;
-    });
-    window.addEventListener("pointermove", (e) => {
-      if (!down) return;
-      const dx = e.clientX - startX;
-      if (Math.abs(dx) > 6) { dragged = true; strip.classList.add("is-dragging"); }
-      if (dragged) strip.scrollLeft = startScroll - dx;
-    });
-    window.addEventListener("pointerup", () => {
-      down = false;
-      strip.classList.remove("is-dragging");
-    });
-    strip.addEventListener("dragstart", (e) => e.preventDefault());
-  }
-  $$(".proof", section).forEach((btn) => {
-    btn.addEventListener("click", () => {
-      if (dragged) { dragged = false; return; }
-      openLightbox(btn.dataset.proof, btn.dataset.alt);
-    });
+  cards.forEach((card) => {
+    $(".case-shot", card)?.addEventListener("click", () => openLightbox(card.dataset.proof, card.dataset.alt));
   });
 
   if (reduceMotion) return;
 
-  // ---- entrada das linhas, com o retorno contando ----
-  gsap.set(rows, { opacity: 0, y: 24 });
-  rows.forEach((row) => {
-    gsap.to(row, {
-      opacity: 1, y: 0, duration: 1, ease: "expo.out", clearProps: "transform",
+  // os retornos começam zerados e contam quando o caso aparece
+  const rois = cards.map((c) => $("[data-count]", c));
+  rois.forEach((el) => {
+    el.textContent = (el.dataset.prefix || "") + formatNumber(0, parseInt(el.dataset.decimals || "0", 10)) + (el.dataset.suffix || "");
+  });
+  const counted = new WeakSet();
+  const count = (card) => {
+    const el = $("[data-count]", card);
+    if (!el || counted.has(el)) return;
+    counted.add(el);
+    animateCounter(el, { duration: 1.4 });
+  };
+
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 1081px)", () => {
+    const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+    const slide = gsap.to(track, {
+      x: () => -distance(),
+      ease: "none",
       scrollTrigger: {
-        trigger: row,
-        start: "top 92%",
-        once: true,
-        onEnter: () => {
-          const roi = $("[data-count]", row);
-          if (roi) animateCounter(roi, { duration: 1.6 });
-        },
+        trigger: cases,
+        start: "center center",
+        end: () => `+=${distance()}`,
+        pin: true,
+        scrub: 0.8,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
       },
+    });
+
+    cards.forEach((card) => {
+      ScrollTrigger.create({
+        trigger: card,
+        containerAnimation: slide,
+        start: "left 88%",
+        onEnter: () => count(card),
+      });
+      // o print "assenta" conforme o caso chega ao centro
+      gsap.fromTo($(".case-shot", card),
+        { rotation: -5, yPercent: 10 },
+        { rotation: 0, yPercent: 0, ease: "none",
+          scrollTrigger: { trigger: card, containerAnimation: slide, start: "left right", end: "center 55%", scrub: true } });
     });
   });
 
-  const proofs = $$(".proof", section);
-  gsap.from(proofs, {
-    opacity: 0, y: 60, duration: 1.2, stagger: 0.07, ease: "expo.out", clearProps: "transform,opacity",
-    scrollTrigger: { trigger: strip, start: "top 88%", once: true },
+  mm.add("(max-width: 1080px)", () => {
+    // carrossel nativo: conta tudo quando a faixa aparece
+    ScrollTrigger.create({
+      trigger: cases,
+      start: "top 85%",
+      once: true,
+      onEnter: () => cards.forEach((c, i) => gsap.delayedCall(i * 0.12, () => count(c))),
+    });
+  });
+
+  gsap.from(cards, {
+    opacity: 0, y: 50, duration: 1.1, stagger: 0.08, ease: "expo.out", clearProps: "opacity",
+    scrollTrigger: { trigger: cases, start: "top 90%", once: true },
   });
 }

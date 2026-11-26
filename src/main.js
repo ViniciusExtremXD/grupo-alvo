@@ -12,22 +12,28 @@ window.__alvoReady = true;
 import { initScrollTop } from "./modules/smooth-scroll.js";
 import { initHero } from "./modules/hero.js";
 import { initNav } from "./modules/nav.js";
+import { initMarquee } from "./modules/marquee.js";
 import { initReveals } from "./modules/reveals.js";
 import { initResults } from "./modules/results.js";
 import { initFounders } from "./modules/founders.js";
 import { initLightbox } from "./modules/lightbox.js";
 import { initMethod, initFinale } from "./modules/method.js";
+import { initPointer } from "./modules/pointer.js";
 import { initForm } from "./modules/form.js";
 import { initFaq } from "./modules/faq.js";
 
 initScrollTop();
 initLightbox();
 initHero();
-initFounders(); // cedo: o pin da cena empurra tudo que vem abaixo dela
-initNav();
-initReveals();
+// os pins entram em ordem de cima pra baixo (resultados, depois sócios):
+// cada um empurra o que vem abaixo dele
 initResults();
+initFounders();
+initNav();
+initMarquee();
+initReveals();
 initMethod();
 initFinale();
+initPointer();
 initForm();
 initFaq();
