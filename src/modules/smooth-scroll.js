@@ -13,18 +13,21 @@ import { $, reduceMotion } from "./env.js";
 export let lenis = null;
 
 if (!reduceMotion) {
-  lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  // lerp (interpolação por frame) em vez de duração fixa: a rolagem segue a
+  // roda do mouse de forma contínua, sem "travadinhas" entre um giro e outro.
+  // No toque, mantém o scroll nativo do celular (mais natural e leve).
+  lenis = new Lenis({ lerp: 0.095, smoothWheel: true, wheelMultiplier: 1 });
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
   lenis.scrollTo(0, { immediate: true }); // garante topo mesmo com o smooth scroll
 }
 
-/** Rola suavemente até um elemento (ou seletor), com respiro para a nav. */
+/** Rola suavemente até o início de um elemento (ou seletor). */
 export function scrollToTarget(target) {
   const el = typeof target === "string" ? $(target) : target;
   if (!el) return;
-  if (lenis) lenis.scrollTo(el, { offset: -74, duration: 1.4 });
+  if (lenis) lenis.scrollTo(el, { offset: 0, duration: 1.4 });
   else el.scrollIntoView({ behavior: "smooth" });
 }
 

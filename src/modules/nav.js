@@ -1,6 +1,7 @@
 /**
- * Navegação: barra de progresso do scroll, esconder a nav ao descer, marcar o
- * link ativo por seção, menu mobile e âncoras com scroll suave.
+ * Navegação: troca de tema conforme a seção que está embaixo da barra
+ * (escura / clara / violeta), some ao descer e volta ao subir, marca o link
+ * da seção atual, menu mobile e âncoras com scroll suave.
  */
 import { ScrollTrigger } from "./gsap.js";
 import { $, $$ } from "./env.js";
@@ -8,62 +9,90 @@ import { lenis, scrollToTarget } from "./smooth-scroll.js";
 
 export function initNav() {
   const nav = $("#nav");
-  const progressBar = $("#scrollProgress");
-  let lastScroll = 0;
+  if (!nav) return;
+  const burger = $("#navBurger");
+  const menu = $("#mobileMenu");
+  let theme = "dark";
+  let menuOpen = false;
 
-  function onScroll(scrollY) {
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - window.innerHeight;
-    if (progressBar) progressBar.style.transform = `scaleX(${Math.min(scrollY / max, 1)})`;
-    if (scrollY > 60) nav.classList.add("is-scrolled");
-    else nav.classList.remove("is-scrolled");
-    if (scrollY > 160 && scrollY > lastScroll + 4) nav.classList.add("is-hidden");
-    else if (scrollY < lastScroll - 4) nav.classList.remove("is-hidden");
-    lastScroll = scrollY;
-  }
-  if (lenis) lenis.on("scroll", ({ scroll }) => onScroll(scroll));
-  else window.addEventListener("scroll", () => onScroll(window.scrollY), { passive: true });
+  const applyTheme = () => { nav.dataset.theme = menuOpen ? "dark" : theme; };
 
-  // link ativo conforme a seção visível
-  ["servicos", "metodo", "resultados", "contato"].forEach((id) => {
-    if (!$(`#${id}`)) return;
+  // tema: a seção que cruza a linha do meio da barra manda
+  const mid = () => `top ${Math.round(nav.offsetHeight / 2)}px`;
+  $$("main > section[data-theme], footer[data-theme]").forEach((sec) => {
     ScrollTrigger.create({
-      trigger: `#${id}`,
-      start: "top 50%",
-      end: "bottom 50%",
+      trigger: sec,
+      start: mid,
+      end: () => `bottom ${Math.round(nav.offsetHeight / 2)}px`,
+      refreshPriority: -1, // calcula depois do pin dos sócios
       onToggle: (self) => {
-        $(`[data-navlink="${id}"]`)?.classList.toggle("is-active", self.isActive);
+        if (!self.isActive) return;
+        theme = sec.dataset.theme;
+        applyTheme();
       },
     });
   });
 
-  // menu mobile (burger)
-  const burger = $("#navBurger");
-  const mobileMenu = $("#mobileMenu");
-  function closeMobileMenu() {
-    mobileMenu.classList.remove("is-open");
-    burger.classList.remove("is-open");
-    burger.setAttribute("aria-expanded", "false");
-    mobileMenu.setAttribute("aria-hidden", "true");
-    lenis?.start();
+  // fundo ao rolar + esconder ao descer
+  let last = 0;
+  const onScroll = (y) => {
+    nav.classList.toggle("is-scrolled", y > 40);
+    if (!menuOpen) {
+      if (y > 240 && y > last + 4) nav.classList.add("is-hidden");
+      else if (y < last - 4) nav.classList.remove("is-hidden");
+    }
+    last = y;
+  };
+  if (lenis) lenis.on("scroll", ({ scroll }) => onScroll(scroll));
+  else window.addEventListener("scroll", () => onScroll(window.scrollY), { passive: true });
+
+  // WhatsApp flutuante só aparece depois do hero (onde o CTA já está à vista)
+  const floatWa = $("#floatWa");
+  if (floatWa && $("#topo")) {
+    ScrollTrigger.create({
+      trigger: "#topo",
+      start: "top top",
+      end: "bottom 35%",
+      onToggle: (self) => floatWa.classList.toggle("is-away", self.isActive),
+    });
   }
-  burger?.addEventListener("click", () => {
-    const open = mobileMenu.classList.toggle("is-open");
-    burger.classList.toggle("is-open", open);
-    burger.setAttribute("aria-expanded", String(open));
-    mobileMenu.setAttribute("aria-hidden", String(!open));
-    open ? lenis?.stop() : lenis?.start();
+
+  // link ativo
+  $$("[data-navlink]", nav).forEach((link) => {
+    const sec = $(`#${link.dataset.navlink}`);
+    if (!sec) return;
+    ScrollTrigger.create({
+      trigger: sec,
+      start: "top 50%",
+      end: "bottom 50%",
+      onToggle: (self) => link.classList.toggle("is-active", self.isActive),
+    });
   });
 
-  // âncoras internas: fecham o menu e rolam suave até a seção
+  // menu mobile
+  const setMenu = (open) => {
+    menuOpen = open;
+    menu.classList.toggle("is-open", open);
+    burger.classList.toggle("is-open", open);
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    menu.setAttribute("aria-hidden", String(!open));
+    if (open) nav.classList.remove("is-hidden");
+    applyTheme();
+    open ? lenis?.stop() : lenis?.start();
+  };
+  burger?.addEventListener("click", () => setMenu(!menuOpen));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && menuOpen) setMenu(false); });
+
+  // âncoras internas
   $$('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const href = a.getAttribute("href");
-      if (href.length > 1 && $(href)) {
-        e.preventDefault();
-        if (mobileMenu?.classList.contains("is-open")) closeMobileMenu();
-        scrollToTarget(href);
-      }
+      const target = href.length > 1 && $(href);
+      if (!target) return;
+      e.preventDefault();
+      if (menuOpen) setMenu(false);
+      scrollToTarget(target);
     });
   });
 }

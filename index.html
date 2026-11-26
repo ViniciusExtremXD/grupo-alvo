@@ -1,550 +1,376 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+  <script>if(!/[?&]motion=0/.test(location.search)){document.documentElement.classList.add("js");setTimeout(function(){if(!window.__alvoReady)document.documentElement.classList.remove("js")},4000)}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grupo Alvo — Acelerador de Faturamento</title>
-  <meta name="description" content="Faça seu negócio crescer de verdade. Tráfego pago, social media e sites que enchem o salão, movimentam o delivery e constroem marca. No alvo, desde 2021." />
+  <title>Grupo Alvo — A gente mira, você fatura.</title>
+  <meta name="description" content="Tráfego pago, social media e sites que enchem o salão, movimentam o delivery e fazem o seu negócio ser lembrado. Resultados reais, com print. Desde 2021." />
+  <meta name="theme-color" content="#0c0b0e" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
-  <meta property="og:title" content="Grupo Alvo — Acelerador de Faturamento" />
-  <meta property="og:description" content="Faça seu negócio crescer de verdade. Mais clientes, mais vendas, mais faturamento — no alvo." />
+  <meta property="og:title" content="Grupo Alvo — A gente mira, você fatura." />
+  <meta property="og:description" content="R$ 4.148 em anúncios viraram R$ 85.649 em vendas para seis clientes. Tráfego pago, social media e sites — desde 2021." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@1,9..144,400..600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- ==================== PRELOADER ==================== -->
-  <div class="preloader" id="preloader">
-    <div class="preloader-inner" id="plInner">
-      <div class="pl-target" aria-hidden="true">
-        <span class="pl-target-ring"></span>
-        <span class="pl-target-ring"></span>
-      </div>
-      <img class="pl-logo" src="assets/logo.png" alt="Grupo Alvo" />
-    </div>
-    <div class="preloader-meta">
-      <span class="pl-label">Ajustando a mira</span>
-      <div class="pl-bar"><span class="pl-bar-fill" id="plFill"></span></div>
-      <span class="pl-count"><span id="plCount">0</span>%</span>
-    </div>
-  </div>
-
-  <!-- ==================== TEXTURA / PROGRESSO ==================== -->
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
   <div class="grain" aria-hidden="true"></div>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ==================== NAV ==================== -->
-  <header class="nav" id="nav">
-    <a href="#hero" class="nav-logo" aria-label="Grupo Alvo — início">
-      <img src="assets/logo.png" alt="Grupo Alvo" />
+  <header class="nav" id="nav" data-theme="dark">
+    <a href="#topo" class="nav-logo" aria-label="Grupo Alvo — início">
+      <img src="assets/logo.png" alt="Grupo Alvo" width="640" height="440" />
     </a>
     <nav class="nav-links" aria-label="Navegação principal">
-      <a href="#sobre" class="nav-link">Quem somos</a>
-      <a href="#servicos" class="nav-link" data-navlink="servicos">Serviços</a>
-      <a href="#metodo" class="nav-link" data-navlink="metodo">Método</a>
-      <a href="#resultados" class="nav-link" data-navlink="resultados">Resultados</a>
-      <a href="#contato" class="nav-link" data-navlink="contato">Contato</a>
+      <a href="#resultados" data-navlink="resultados">Resultados</a>
+      <a href="#socios" data-navlink="socios">Sócios</a>
+      <a href="#servicos" data-navlink="servicos">Serviços</a>
+      <a href="#metodo" data-navlink="metodo">Método</a>
+      <a href="#faq" data-navlink="faq">Dúvidas</a>
     </nav>
-    <div class="nav-cta">
-      <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram do Grupo Alvo" data-magnetic>
-        <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-      </a>
-      <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-magnetic>
-        <span class="btn-label">Falar no WhatsApp</span>
-      </a>
-      <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
-    </div>
+    <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="nav-cta">
+      <span class="dot" aria-hidden="true"></span>Falar no WhatsApp
+    </a>
+    <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span>
+    </button>
   </header>
 
   <!-- ==================== MENU MOBILE ==================== -->
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <nav class="mobile-menu-links">
-      <a href="#sobre">Quem somos</a>
+    <nav class="mobile-menu-links" aria-label="Menu">
+      <a href="#resultados">Resultados</a>
+      <a href="#socios">Sócios</a>
       <a href="#servicos">Serviços</a>
       <a href="#metodo">Método</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#contato">Contato</a>
+      <a href="#faq">Dúvidas</a>
     </nav>
     <div class="mobile-menu-foot">
-      <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary">
-        <span class="btn-label">Falar no WhatsApp</span>
-      </a>
-      <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="btn btn-ghost">
-        <span class="btn-label">@grupoalvo_</span>
-      </a>
+      <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-light">Falar no WhatsApp <span class="arr">→</span></a>
+      <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="link-arrow">@grupoalvo_</a>
     </div>
   </div>
 
-  <main>
+  <main id="conteudo">
     <!-- ==================== HERO ==================== -->
-    <section class="hero" id="hero">
-      <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
-      <div class="hero-bg-glow" aria-hidden="true"></div>
-      <!-- Linha guia laser conectando a intro até a seção do alvo -->
-      <div class="hero-laser-guide" aria-hidden="true">
-        <div class="laser-line"></div>
-        <div class="laser-pulse"></div>
+    <section class="hero" id="topo" data-theme="dark">
+      <!-- o alvo: anéis concêntricos centrados no ponto final do título -->
+      <svg class="hero-rings" id="heroRings" viewBox="-500 -500 1000 1000" aria-hidden="true">
+        <circle r="70" /><circle r="150" /><circle r="240" /><circle r="340" /><circle r="450" />
+      </svg>
+
+      <div class="hero-top wrap">
+        <p class="eyebrow">Acelerador de faturamento</p>
+        <p class="eyebrow">Desde 2021</p>
       </div>
 
-      <div class="hero-target" aria-hidden="true">
-        <svg class="target-svg hero-target-svg" viewBox="0 0 400 400" aria-hidden="true">
-          <defs>
-            <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(167, 139, 250, 0.8)" />
-              <stop offset="100%" stop-color="rgba(124, 77, 255, 0)" />
-            </linearGradient>
-          </defs>
+      <h1 class="hero-title wrap" aria-label="A gente mira, você fatura.">
+        <span class="ln"><span>A gente mira,</span></span>
+        <span class="ln"><span>você <span class="nowrap">fatura<span class="bullseye" id="bullseye"></span></span></span></span>
+      </h1>
 
-          <!-- Aneis Radar com Graus e Ticks -->
-          <circle class="target-ring target-ring-outer" cx="200" cy="200" r="192" />
-          <circle class="target-ring" cx="200" cy="200" r="150" stroke-dasharray="8 6" />
-          <circle class="target-ring target-ring-dashed" id="targetRingDashed" cx="200" cy="200" r="108" fill="none" stroke="rgba(167, 139, 250, 0.3)" stroke-width="1.2" />
-          <circle class="target-ring" cx="200" cy="200" r="66" />
-          
-          <!-- Ticks táticos radiais de bússola -->
-          <g id="targetTicks">
-            <circle class="target-tick" cx="200" cy="200" r="176" fill="none" stroke-dasharray="2 12" />
-            <line class="target-tick" x1="200" y1="4" x2="200" y2="24" stroke-width="2" />
-            <line class="target-tick" x1="200" y1="376" x2="200" y2="396" stroke-width="2" />
-            <line class="target-tick" x1="4" y1="200" x2="24" y2="200" stroke-width="2" />
-            <line class="target-tick" x1="376" y1="200" x2="396" y2="200" stroke-width="2" />
-            <line class="target-tick" x1="60" y1="60" x2="74" y2="74" />
-            <line class="target-tick" x1="340" y1="60" x2="326" y2="74" />
-            <line class="target-tick" x1="60" y1="340" x2="74" y2="326" />
-            <line class="target-tick" x1="340" y1="340" x2="326" y2="326" />
-          </g>
+      <!-- flecha que vem da direita e crava no ponto final (a ponta fica em x=0) -->
+      <svg class="hero-arrow" id="heroArrow" viewBox="0 0 400 24" aria-hidden="true">
+        <path class="shaft" d="M22 12 H400" />
+        <path class="head" d="M28 3 L0 12 L28 21 Z" />
+        <path class="fletch" d="M372 12 L384 2 M382 12 L394 2 M392 12 L404 2 M372 12 L384 22 M382 12 L394 22 M392 12 L404 22" />
+      </svg>
 
-          <!-- Retículos Eixo X/Y -->
-          <line class="target-cross" x1="10" y1="200" x2="135" y2="200" />
-          <line class="target-cross" x1="265" y1="200" x2="390" y2="200" />
-          <line class="target-cross" x1="200" y1="10" x2="200" y2="135" />
-          <line class="target-cross" x1="200" y1="265" x2="200" y2="390" />
-
-          <!-- HUD Data Corner Brackets -->
-          <path class="target-bracket target-bracket-tl" d="M16 60 L16 16 L60 16" />
-          <path class="target-bracket target-bracket-tr" d="M340 16 L384 16 L384 60" />
-          <path class="target-bracket target-bracket-bl" d="M16 340 L16 384 L60 384" />
-          <path class="target-bracket target-bracket-br" d="M340 384 L384 384 L384 340" />
-
-          <!-- Textos táticos HUD -->
-          <text x="25" y="42" fill="rgba(167,139,250,0.6)" font-size="10" font-family="monospace" letter-spacing="1">SYS.LOCK // 01</text>
-          <text x="300" y="42" fill="rgba(167,139,250,0.6)" font-size="10" font-family="monospace" letter-spacing="1">RADAR.ON</text>
-          <text x="25" y="370" fill="rgba(167,139,250,0.6)" font-size="10" font-family="monospace" letter-spacing="1">ALT.99.8</text>
-          <text x="295" y="370" fill="rgba(167,139,250,0.6)" font-size="10" font-family="monospace" letter-spacing="1">TARGET.OK</text>
-
-          <!-- Radar Scan Line -->
-          <line class="target-scan" id="targetScan" x1="200" y1="200" x2="200" y2="20" />
-          
-          <!-- Núcleo Central emissivo -->
-          <g id="targetCore">
-            <circle class="target-core-ring" cx="200" cy="200" r="16" />
-            <circle class="target-core" cx="200" cy="200" r="6" />
-          </g>
-        </svg>
-      </div>
-
-      <div class="container hero-inner">
-        <div class="hero-tag hero-eyebrow">
-          <span class="tag-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </span>
-          <div class="tag-body">
-            <span class="tag-title">Acelerando o seu negócio</span>
-            <span class="tag-sub">Desde 2021</span>
-          </div>
-        </div>
-        <h1 class="hero-title">
-          <span class="line"><span class="line-inner">Traga todo o potencial de</span></span>
-          <span class="line"><span class="line-inner">crescimento do seu negócio, mirando no</span></span>
-          <span class="line hero-alvo-line"><span class="line-inner">
-            <span class="hero-alvo">
-              <span class="serif-accent brand-text">alvo.</span>
-              <span class="alvo-bracket alvo-bracket-tl"></span>
-              <span class="alvo-bracket alvo-bracket-tr"></span>
-              <span class="alvo-bracket alvo-bracket-bl"></span>
-              <span class="alvo-bracket alvo-bracket-br"></span>
-            </span>
-          </span></span>
-        </h1>
-        <p class="hero-sub">
-          Mais clientes, mais vendas, mais faturamento. Unimos tráfego, conteúdo e
-          estratégia para fazer o seu negócio decolar — e construímos uma marca que as
-          pessoas lembram na hora de escolher.
+      <div class="hero-foot wrap">
+        <p class="hero-sub" data-fade>
+          Tráfego pago, social media e sites que enchem o salão, movimentam o delivery
+          e fazem o seu negócio ser lembrado na hora da escolha.
         </p>
-        <div class="hero-ctas">
-          <a href="#contato" class="btn btn-primary" data-magnetic>
-            <span class="btn-label">Quero crescer meu negócio</span>
-            <span class="btn-arrow">→</span>
-          </a>
-          <a href="#metodo" class="btn btn-ghost">
-            <span class="btn-label">Ver o método</span>
-          </a>
+        <div class="hero-actions" data-fade>
+          <a href="#contato" class="btn btn-light">Quero crescer meu negócio <span class="arr">→</span></a>
+          <a href="#resultados" class="link-arrow">Ver os números reais</a>
         </div>
-        <div class="hero-statstrip">
-          <div class="hstat"><span class="hstat-num">+50</span><span class="hstat-label">Projetos</span></div>
-          <span class="hstat-sep"></span>
-          <div class="hstat"><span class="hstat-num">4x</span><span class="hstat-label">ROI médio</span></div>
-          <span class="hstat-sep"></span>
-          <div class="hstat"><span class="hstat-num">2021</span><span class="hstat-label">Acelerando</span></div>
-        </div>
-      </div>
-
-      <div class="hero-scrollhint" aria-hidden="true">
-        <span>Role</span>
-        <span class="line-anim"></span>
+        <a href="#resultados" class="hero-proof" data-fade>
+          <span class="proof-num">R$ 4.148</span>
+          <span class="proof-txt">em anúncios viraram</span>
+          <span class="proof-num">R$ 85.649</span>
+          <span class="proof-txt">em vendas para seis clientes.</span>
+          <span class="proof-arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
     </section>
 
-    <!-- ==================== MARQUEE ==================== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span class="marquee-item">Tráfego pago <span class="marquee-star">✦</span> Social media <span class="marquee-star">✦</span> Sites &amp; cardápios <span class="marquee-star">✦</span> <span class="is-muted">Mais faturamento</span> <span class="marquee-star">✦</span></span>
-        <span class="marquee-item">Tráfego pago <span class="marquee-star">✦</span> Social media <span class="marquee-star">✦</span> Sites &amp; cardápios <span class="marquee-star">✦</span> <span class="is-muted">Mais faturamento</span> <span class="marquee-star">✦</span></span>
-      </div>
-    </div>
+    <!-- ==================== DIAGNÓSTICO ==================== -->
+    <section class="diag" id="diagnostico" data-theme="light">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow">O diagnóstico</p>
+          <h2 class="h2" data-lines>
+            <span class="ln"><span>Você trabalha muito.</span></span>
+            <span class="ln"><span>O faturamento não acompanha.</span></span>
+          </h2>
+        </header>
 
-    <!-- ==================== DOR / DIAGNÓSTICO ==================== -->
-    <section class="section pain" id="diagnostico">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">O diagnóstico</span>
-          <h2 class="section-title" data-split>Você trabalha muito.<br>Mas não vê o faturamento crescer.</h2>
+        <ol class="diag-list">
+          <li class="diag-row" data-strike>
+            <p class="diag-problem"><span class="strike-text">Vende bem, mas fatura menos do que poderia.</span></p>
+            <p class="diag-fix">Movimento não é margem. Falta estratégia pra aumentar o ticket e a recorrência.</p>
+          </li>
+          <li class="diag-row" data-strike>
+            <p class="diag-problem"><span class="strike-text">Todo mundo conhece, mas ninguém lembra na hora de escolher.</span></p>
+            <p class="diag-fix">Sem marca forte e presença digital, você fica invisível — e briga no preço.</p>
+          </li>
+          <li class="diag-row" data-strike>
+            <p class="diag-problem"><span class="strike-text">Trabalha demais e mesmo assim não cresce.</span></p>
+            <p class="diag-fix">O problema não é o seu produto. É a mira.</p>
+          </li>
+        </ol>
+
+        <p class="diag-close" data-lines>
+          <span class="ln"><span>E é exatamente isso</span></span>
+          <span class="ln"><span>que a gente ajusta.</span></span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== RESULTADOS ==================== -->
+    <section class="results" id="resultados" data-theme="dark">
+      <div class="wrap">
+        <header class="sec-head sec-head-split">
+          <div>
+            <p class="eyebrow">Resultados reais</p>
+            <h2 class="h2" data-lines>
+              <span class="ln"><span>Print vale mais</span></span>
+              <span class="ln"><span>que promessa.</span></span>
+            </h2>
+          </div>
+          <p class="sec-note" data-fade>Seis clientes, números tirados direto do gerenciador de anúncios. Toque em uma linha para ver o print original.</p>
+        </header>
+
+        <div class="totals" data-count-group>
+          <div class="total">
+            <span class="total-label">Investido em anúncios</span>
+            <span class="total-num" data-count="4148" data-prefix="R$ ">R$ 4.148</span>
+          </div>
+          <span class="total-arrow" aria-hidden="true">
+            <svg viewBox="0 0 120 24"><path d="M0 12 H112 M100 2 L118 12 L100 22" /></svg>
+          </span>
+          <div class="total">
+            <span class="total-label">Vendido</span>
+            <span class="total-num total-num-hit" data-count="85649" data-prefix="R$ ">R$ 85.649</span>
+          </div>
+          <p class="total-caption">Cada <b>R$ 1</b> em anúncio voltou como <b>R$ 20,64</b> em vendas.</p>
         </div>
 
-        <div class="pain-grid" data-reveal-group>
-          <article class="pain-card" data-reveal>
-            <span class="pain-index">01</span>
-            <span class="pain-bar" aria-hidden="true"></span>
-            <h3>Vende bem, <em>mas fatura menos do que poderia.</em></h3>
-            <p>Movimento não é margem. Falta estratégia pra aumentar o ticket e a recorrência.</p>
-          </article>
-          <article class="pain-card" data-reveal>
-            <span class="pain-index">02</span>
-            <span class="pain-bar" aria-hidden="true"></span>
-            <h3>Todo mundo conhece, <em>mas ninguém lembra na hora de escolher.</em></h3>
-            <p>Sem marca forte e presença digital, você fica invisível — e briga no preço.</p>
-          </article>
-          <article class="pain-card" data-reveal>
-            <span class="pain-index">03</span>
-            <span class="pain-bar" aria-hidden="true"></span>
-            <h3>Trabalha demais, <em>e mesmo assim não cresce.</em></h3>
-            <p>O problema não é o seu produto. É a mira. E é exatamente isso que a gente ajusta.</p>
-          </article>
+        <div class="ledger" role="table" aria-label="Resultados por cliente">
+          <div class="ledger-row ledger-head" role="row">
+            <span role="columnheader">Cliente</span>
+            <span role="columnheader">Investiu</span>
+            <span role="columnheader">Vendas</span>
+            <span role="columnheader">Faturou</span>
+            <span role="columnheader">Retorno</span>
+          </div>
+          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-6.jpg" data-alt="Print: delivery, R$ 479,99 investidos e R$ 25.617,71 em vendas">
+            <span role="cell" class="c-name">Delivery</span>
+            <span role="cell">R$ 479,99</span>
+            <span role="cell">965</span>
+            <span role="cell">R$ 25.617,71</span>
+            <span role="cell" class="c-roi"><b data-count="53.4" data-decimals="1" data-suffix="x">53,4x</b><button type="button" class="see">ver print</button></span>
+          </div>
+          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-1.jpg" data-alt="Print: relatório semanal, R$ 119,98 investidos e R$ 5.272,59 de retorno">
+            <span role="cell" class="c-name">Vendas pelo site</span>
+            <span role="cell">R$ 119,98</span>
+            <span role="cell">197</span>
+            <span role="cell">R$ 5.272,59</span>
+            <span role="cell" class="c-roi"><b data-count="43.9" data-decimals="1" data-suffix="x">43,9x</b><button type="button" class="see">ver print</button></span>
+          </div>
+          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-3.jpg" data-alt="Print: hamburgueria, R$ 645,97 investidos e R$ 12.221,62 faturados">
+            <span role="cell" class="c-name">Hamburgueria</span>
+            <span role="cell">R$ 645,97</span>
+            <span role="cell">217</span>
+            <span role="cell">R$ 12.221,62</span>
+            <span role="cell" class="c-roi"><b data-count="18.9" data-decimals="1" data-suffix="x">18,9x</b><button type="button" class="see">ver print</button></span>
+          </div>
+          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-4.jpg" data-alt="Print: delivery em 3 meses, R$ 1.758,02 investidos e R$ 31.803,52 faturados">
+            <span role="cell" class="c-name">Delivery <em>3 meses</em></span>
+            <span role="cell">R$ 1.758,02</span>
+            <span role="cell">569</span>
+            <span role="cell">R$ 31.803,52</span>
+            <span role="cell" class="c-roi"><b data-count="18.1" data-decimals="1" data-suffix="x">18,1x</b><button type="button" class="see">ver print</button></span>
+          </div>
+          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-2.jpg" data-alt="Print: pizzaria em uma semana, R$ 377,74 investidos e R$ 3.900,62 de receita">
+            <span role="cell" class="c-name">Pizzaria <em>1 semana</em></span>
+            <span role="cell">R$ 377,74</span>
+            <span role="cell">50</span>
+            <span role="cell">R$ 3.900,62</span>
+            <span role="cell" class="c-roi"><b data-count="10.3" data-decimals="1" data-suffix="x">10,3x</b><button type="button" class="see">ver print</button></span>
+          </div>
+          <div class="ledger-row is-click" role="row" data-proof="assets/resultado-5.jpg" data-alt="Print: pizzaria, R$ 767,08 investidos e R$ 6.833,39 faturados">
+            <span role="cell" class="c-name">Pizzaria</span>
+            <span role="cell">R$ 767,08</span>
+            <span role="cell">87</span>
+            <span role="cell">R$ 6.833,39</span>
+            <span role="cell" class="c-roi"><b data-count="8.9" data-decimals="1" data-suffix="x">8,9x</b><button type="button" class="see">ver print</button></span>
+          </div>
+        </div>
+
+        <!-- os prints, arrastáveis -->
+        <div class="proofs" id="proofs" aria-label="Prints dos resultados">
+          <div class="proofs-track" id="proofsTrack">
+            <button class="proof" data-proof="assets/resultado-6.jpg" data-alt="Print: delivery, R$ 479,99 investidos"><img src="assets/resultado-6.jpg" alt="Print do resultado de um delivery" loading="lazy" decoding="async" width="591" height="1280" /><span>Delivery · 53,4x</span></button>
+            <button class="proof" data-proof="assets/resultado-1.jpg" data-alt="Print: relatório semanal"><img src="assets/resultado-1.jpg" alt="Print do relatório semanal de vendas pelo site" loading="lazy" decoding="async" width="591" height="1280" /><span>Vendas pelo site · 43,9x</span></button>
+            <button class="proof" data-proof="assets/resultado-3.jpg" data-alt="Print: hamburgueria"><img src="assets/resultado-3.jpg" alt="Print do resultado de uma hamburgueria" loading="lazy" decoding="async" width="591" height="1280" /><span>Hamburgueria · 18,9x</span></button>
+            <button class="proof" data-proof="assets/resultado-4.jpg" data-alt="Print: delivery em 3 meses"><img src="assets/resultado-4.jpg" alt="Print do resultado de um delivery em 3 meses" loading="lazy" decoding="async" width="591" height="1280" /><span>Delivery · 18,1x</span></button>
+            <button class="proof" data-proof="assets/resultado-2.jpg" data-alt="Print: pizzaria em uma semana"><img src="assets/resultado-2.jpg" alt="Print do relatório de uma pizzaria" loading="lazy" decoding="async" width="591" height="1280" /><span>Pizzaria · 10,3x</span></button>
+            <button class="proof" data-proof="assets/resultado-5.jpg" data-alt="Print: pizzaria"><img src="assets/resultado-5.jpg" alt="Print do resultado de uma pizzaria" loading="lazy" decoding="async" width="591" height="1280" /><span>Pizzaria · 8,9x</span></button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== NO ALVO (flecha + dinheiro) ==================== -->
-    <section class="alvo-hit" id="alvoHit">
-      <canvas class="alvo-money" id="alvoMoney" aria-hidden="true"></canvas>
-      <div class="container alvo-inner">
-        <p class="alvo-lead">A gente ajusta a mira e crava o seu faturamento</p>
-        <div class="alvo-stage" id="alvoStage">
-          <div class="alvo-bow-wrap" id="alvoBowWrap">
-            <svg class="alvo-bow" id="alvoBow" viewBox="0 0 100 200" aria-hidden="true">
-              <!-- Arco invertido (virado para a direita) -->
-              <path class="bow-limb" d="M38,6 C86,55 86,145 38,194" />
-              <line class="bow-string" id="bowStringTop" x1="38" y1="6" x2="38" y2="100" />
-              <line class="bow-string" id="bowStringBottom" x1="38" y1="194" x2="38" y2="100" />
-            </svg>
-          </div>
-          <svg class="alvo-arrow" id="alvoArrow" viewBox="0 0 210 50" aria-hidden="true">
-            <defs>
-              <linearGradient id="laserShaft" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="var(--lav)" />
-                <stop offset="100%" stop-color="var(--violet-2)" />
-              </linearGradient>
-            </defs>
-            <!-- Cauda (Fletching) mais aerodinâmica com mais barbatanas -->
-            <path class="arrow-fletch" d="M38,25 Q20,10 8,5 Q18,15 32,25" fill="none" />
-            <path class="arrow-fletch" d="M38,25 Q20,40 8,45 Q18,35 32,25" fill="none" />
-            <path class="arrow-fletch" d="M48,25 Q26,14 14,8 Q24,18 42,25" fill="none" />
-            <path class="arrow-fletch" d="M48,25 Q26,36 14,42 Q24,32 42,25" fill="none" />
-            <!-- Nock (entalhe) moderno -->
-            <path class="arrow-nock" d="M12,20 L6,25 L12,30 L16,25 Z" />
-            <!-- Haste em gradiente -->
-            <line class="arrow-shaft" x1="12" y1="25" x2="175" y2="25" stroke="url(#laserShaft)" />
-            <!-- Ponta cravada realística, com o final exatamente no X=210 -->
-            <path class="arrow-head" d="M170,25 L190,15 L210,25 L190,35 Z" fill="var(--violet-2)" />
-          </svg>
-          <div class="alvo-target-wrap" id="alvoTargetWrap">
-          <svg class="alvo-target-svg" id="alvoTarget" viewBox="0 0 240 240" aria-hidden="true">
-            <defs>
-              <linearGradient id="lockGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#e879f9" />
-                <stop offset="50%" stop-color="#c084fc" />
-                <stop offset="100%" stop-color="#7c4dff" />
-              </linearGradient>
-              <filter id="lockGlow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="3" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            <!-- Outer Precision Radar Rings -->
-            <circle class="at-ring" cx="120" cy="120" r="112" />
-            <circle class="at-ring at-ring-dashed" id="alvoTargetRingDashed" cx="120" cy="120" r="84" />
-            <circle class="at-ring" cx="120" cy="120" r="56" />
-            <circle class="at-fill" cx="120" cy="120" r="30" />
-            
-            <!-- Shockwave expansion ring -->
-            <circle class="at-shockwave" id="alvoShockwave" cx="120" cy="120" r="10" />
-
-            <!-- Core central dot -->
-            <circle class="at-core" id="alvoCoreDot" cx="120" cy="120" r="13" />
-
-            <!-- Retículos e Linhas de Cruzamento Tático -->
-            <g id="alvoCrosshairs">
-              <line class="at-cross" x1="120" y1="12" x2="120" y2="48" />
-              <line class="at-cross" x1="120" y1="192" x2="120" y2="228" />
-              <line class="at-cross" x1="12" y1="120" x2="48" y2="120" />
-              <line class="at-cross" x1="192" y1="120" x2="228" y2="120" />
-              <circle cx="120" cy="120" r="4" fill="#ffffff" filter="url(#lockGlow)" />
-            </g>
-
-            <!-- Brackets de Lock-on Tático HUD (snap no centro) -->
-            <g id="alvoLockBrackets">
-              <!-- Top-Left Bracket -->
-              <path class="alvo-hud-bracket alvo-hud-tl" d="M 64 84 L 64 64 L 84 64" stroke="url(#lockGlowGrad)" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lockGlow)" />
-              <!-- Top-Right Bracket -->
-              <path class="alvo-hud-bracket alvo-hud-tr" d="M 156 64 L 176 64 L 176 84" stroke="url(#lockGlowGrad)" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lockGlow)" />
-              <!-- Bottom-Left Bracket -->
-              <path class="alvo-hud-bracket alvo-hud-bl" d="M 64 156 L 64 176 L 84 176" stroke="url(#lockGlowGrad)" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lockGlow)" />
-              <!-- Bottom-Right Bracket -->
-              <path class="alvo-hud-bracket alvo-hud-br" d="M 156 176 L 176 176 L 176 156" stroke="url(#lockGlowGrad)" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#lockGlow)" />
-            </g>
-
-            <!-- High-Voltage Energy Lock Pulse Ring -->
-            <circle id="alvoLockRing" cx="120" cy="120" r="38" fill="none" stroke="#e879f9" stroke-width="2" stroke-dasharray="8 4" opacity="0" filter="url(#lockGlow)" />
-          </svg>
-          </div>
+    <!-- ==================== SÓCIOS (cena) ==================== -->
+    <!--
+      Vídeos dos sócios: coloque os arquivos em public/assets/ e preencha o
+      data-video de cada <video> (ex.: data-video="assets/felipe.mp4").
+      Enquanto estiver vazio, a cena usa a foto com a entrada animada.
+    -->
+    <section class="founders" id="socios" data-theme="dark">
+      <div class="founders-stage" id="foundersStage">
+        <div class="founders-copy wrap">
+          <p class="eyebrow">Quem está por trás</p>
+          <h2 class="h2 founders-title" data-lines>
+            <span class="ln"><span>Felipe</span></span>
+            <span class="ln"><span>&amp; Gabriel.</span></span>
+          </h2>
+          <p class="founders-text" data-fade>
+            Desde 2021 o Grupo Alvo acelera o faturamento de quem empreende — com estratégia,
+            tráfego e conteúdo. Sem enrolação: a gente só fala de resultado.
+          </p>
+          <a class="link-arrow" href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" data-fade>Acompanhe no Instagram</a>
         </div>
-        <h3 class="alvo-word">
-          <span class="w"><span class="wi">NO</span></span>
-          <span class="w"><span class="wi brand-text">ALVO.</span></span>
-        </h3>
-      </div>
-    </section>
 
-    <!-- ==================== QUEM SOMOS ==================== -->
-    <section class="section about" id="sobre">
-      <div class="container">
-        <div class="about-wrap">
-          <div class="about-copy">
-            <span class="section-tag">Quem somos</span>
-            <h2 class="section-title" data-split>Especialistas em fazer<br>seu negócio crescer.</h2>
-            <p class="about-lead">Desde 2021, o Grupo Alvo acelera o faturamento de quem empreende — com estratégia, tráfego e conteúdo. Direto ao ponto: foco total em resultado.</p>
-
-            <div class="about-stats" data-count-group>
-              <div class="astat"><span class="astat-num" data-count="50" data-prefix="+">+0</span><span class="astat-label">Projetos entregues</span></div>
-              <div class="astat"><span class="astat-num" data-count="4" data-suffix="x">0x</span><span class="astat-label">ROI médio</span></div>
-              <div class="astat"><span class="astat-num" data-count="100" data-suffix="%">0%</span><span class="astat-label">Comprometimento</span></div>
-            </div>
-
-            <div class="about-ctas">
-              <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary" data-magnetic>
-                <span class="btn-label">Falar no WhatsApp</span>
-                <span class="btn-arrow">→</span>
-              </a>
-              <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="btn btn-ig-solid" data-magnetic>
-                <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-                <span class="btn-label">@grupoalvo_</span>
-              </a>
-            </div>
+        <figure class="person person-a" data-person>
+          <div class="person-frame">
+            <video class="person-media" muted playsinline preload="none" poster="assets/felipe.jpg" data-video="" aria-label="Felipe, sócio do Grupo Alvo"></video>
+            <img class="person-media person-photo" src="assets/felipe.jpg" alt="Felipe, sócio do Grupo Alvo" loading="lazy" decoding="async" width="768" height="1163" />
           </div>
-          <div class="founders">
-            <div class="founder">
-              <img src="assets/felipe.jpg" alt="Felipe — sócio do Grupo Alvo" loading="lazy" />
-              <div class="founder-name"><strong>Felipe</strong><span>Sócio</span></div>
-            </div>
-            <div class="founder">
-              <img src="assets/gabriel.jpg" alt="Gabriel — sócio do Grupo Alvo" loading="lazy" />
-              <div class="founder-name"><strong>Gabriel</strong><span>Sócio</span></div>
-            </div>
+          <figcaption class="person-credit">
+            <span class="ln"><span class="person-name">Felipe</span></span>
+            <span class="ln"><span class="person-role">Sócio</span></span>
+          </figcaption>
+        </figure>
+
+        <figure class="person person-b" data-person>
+          <div class="person-frame">
+            <video class="person-media" muted playsinline preload="none" poster="assets/gabriel.jpg" data-video="" aria-label="Gabriel, sócio do Grupo Alvo"></video>
+            <img class="person-media person-photo" src="assets/gabriel.jpg" alt="Gabriel, sócio do Grupo Alvo" loading="lazy" decoding="async" width="854" height="1280" />
           </div>
-        </div>
+          <figcaption class="person-credit">
+            <span class="ln"><span class="person-name">Gabriel</span></span>
+            <span class="ln"><span class="person-role">Sócio</span></span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- ==================== SERVIÇOS ==================== -->
-    <section class="section services" id="servicos">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">O que fazemos</span>
-          <h2 class="section-title" data-split>Três frentes para<br>aumentar o faturamento.</h2>
+    <section class="services" id="servicos" data-theme="light">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow">O que fazemos</p>
+          <h2 class="h2" data-lines>
+            <span class="ln"><span>Três frentes.</span></span>
+            <span class="ln"><span>Um objetivo: vender mais.</span></span>
+          </h2>
+        </header>
+
+        <div class="svc-list">
+          <article class="svc" data-fade>
+            <h3 class="svc-title">Tráfego pago</h3>
+            <div class="svc-body">
+              <p>Anúncios que colocam o seu negócio na frente de quem já está pronto pra comprar — na hora certa, no raio certo.</p>
+              <ul><li>Meta &amp; Google Ads</li><li>Presença nos apps de delivery</li><li>Segmentação por bairro</li><li>Relatório toda semana</li></ul>
+            </div>
+          </article>
+          <article class="svc" data-fade>
+            <h3 class="svc-title">Social media</h3>
+            <div class="svc-body">
+              <p>Conteúdo que constrói uma marca desejada, gera autoridade e transforma seguidor em cliente que volta.</p>
+              <ul><li>Fotos e vídeos que vendem</li><li>Linha editorial</li><li>Gestão diária das redes</li><li>Comunidade fiel</li></ul>
+            </div>
+          </article>
+          <article class="svc" data-fade>
+            <h3 class="svc-title">Sites &amp; cardápios</h3>
+            <div class="svc-body">
+              <p>Sites e cardápios digitais rápidos no celular, feitos pra transformar visita em pedido.</p>
+              <ul><li>Cardápio digital</li><li>Site institucional</li><li>Sistema de reservas</li><li>Rápido no 4G</li></ul>
+            </div>
+          </article>
         </div>
 
-        <div class="services-grid" data-reveal-group>
-          <article class="service-card" data-reveal data-tilt>
-            <span class="service-num">01</span>
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9" stroke-opacity="0.25" stroke-dasharray="2 3" />
-                <path d="M12 3v18M3 12h18" stroke-opacity="0.15" />
-                <path d="M6 18l3.5-3.5 2 2L18 8" stroke="var(--violet-2)" stroke-width="1.8" />
-                <path d="M14 8h4v4" stroke="var(--violet-2)" stroke-width="1.8" />
-                <circle cx="18" cy="8" r="2" fill="var(--violet-2)" />
-                <circle cx="6" cy="18" r="2.5" fill="currentColor" fill-opacity="0.1" />
-              </svg>
-            </div>
-            <h3>Tráfego Pago</h3>
-            <p>Anúncios que colocam seu negócio na frente de quem já está pronto pra comprar, na hora certa.</p>
-            <ul class="service-list">
-              <li>Campanhas Meta &amp; Google Ads</li>
-              <li>Mais clientes e vendas</li>
-              <li>Presença nos apps</li>
-              <li>Segmentação certeira</li>
-            </ul>
-          </article>
-
-          <article class="service-card" data-reveal data-tilt>
-            <span class="service-num">02</span>
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="9" cy="9" r="4.5" stroke="var(--violet-2)" stroke-opacity="0.8" stroke-width="1.6" />
-                <circle cx="15" cy="14" r="4.5" fill="var(--violet)" fill-opacity="0.15" stroke-width="1.6" />
-                <line x1="9" y1="9" x2="15" y2="14" stroke-opacity="0.5" />
-                <circle cx="12" cy="11.5" r="1.5" fill="var(--violet-2)" />
-                <path d="M18.5 7.5a7 7 0 0 1 0 9" stroke-dasharray="1.5 3.5" stroke-opacity="0.5" />
-                <path d="M5.5 16.5a7 7 0 0 1 0-9" stroke-dasharray="1.5 3.5" stroke-opacity="0.5" />
-              </svg>
-            </div>
-            <h3>Social Media</h3>
-            <p>Conteúdo que constrói uma marca desejada, gera autoridade e transforma seguidor em cliente fiel.</p>
-            <ul class="service-list">
-              <li>Fotos e vídeos que vendem</li>
-              <li>Linha editorial estratégica</li>
-              <li>Gestão diária das redes</li>
-              <li>Comunidade fiel à marca</li>
-            </ul>
-          </article>
-
-          <article class="service-card" data-reveal data-tilt>
-            <span class="service-num">03</span>
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="16" rx="2" stroke-width="1.8" />
-                <line x1="3" y1="9" x2="21" y2="9" stroke-width="1.3" stroke-opacity="0.4" />
-                <rect x="6" y="12" width="5" height="5" rx="1" fill="var(--violet)" fill-opacity="0.2" stroke="var(--violet-2)" stroke-width="1.3" />
-                <line x1="14" y1="12.5" x2="18" y2="12.5" stroke-width="1.2" />
-                <line x1="14" y1="15.5" x2="17" y2="15.5" stroke-width="1.2" />
-                <path d="M19 18l-3-1.5-.5 2z" fill="var(--violet-2)" />
-              </svg>
-            </div>
-            <h3>Sites &amp; Cardápios</h3>
-            <p>Sites e cardápios digitais rápidos e lindos no celular, feitos pra converter visita em venda.</p>
-            <ul class="service-list">
-              <li>Site institucional que converte</li>
-              <li>Sistema de reservas</li>
-              <li>Cardápio digital</li>
-              <li>Mobile-first e rápido</li>
-            </ul>
-          </article>
+        <div class="for-who" data-fade>
+          <p class="eyebrow">Para quem é</p>
+          <ul>
+            <li><b>Restaurantes &amp; bares</b> que querem casa cheia e ticket maior.</li>
+            <li><b>Comércio &amp; serviços locais</b> que precisam virar referência no bairro.</li>
+            <li><b>Marcas em crescimento</b> que querem escalar sem guerra de preço.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ==================== PARA QUEM ==================== -->
-    <section class="section audience" id="para-quem">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">Para quem é</span>
-          <h2 class="section-title" data-split>Feito para quem quer<br>crescer de verdade.</h2>
-        </div>
-        <div class="audience-grid" data-reveal-group>
-          <article class="audience-card" data-reveal>
-            <span class="audience-mark" aria-hidden="true"></span>
-            <h3>Restaurantes &amp; Bares</h3>
-            <p>Encher a casa, virar o ponto da cidade e aumentar o ticket médio.</p>
-          </article>
-          <article class="audience-card" data-reveal>
-            <span class="audience-mark" aria-hidden="true"></span>
-            <h3>Comércio &amp; Serviços locais</h3>
-            <p>Atrair a vizinhança certa, gerar fluxo e transformar presença em venda.</p>
-          </article>
-          <article class="audience-card" data-reveal>
-            <span class="audience-mark" aria-hidden="true"></span>
-            <h3>Marcas em crescimento</h3>
-            <p>Escalar com previsibilidade, ganhar autoridade e sair da guerra de preço.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== STATEMENT (preenche no scroll) ==================== -->
-    <section class="statement">
-      <div class="container">
-        <p class="statement-lead">Nós não vendemos curtidas</p>
-        <h2 class="statement-big">
-          <span class="fillword">FATURAMENTO<span class="fillword-echo" aria-hidden="true">FATURAMENTO</span></span>
-        </h2>
-        <p class="statement-note">
-          Curtida não paga conta. A gente mira no que importa: <b>mais clientes, mais vendas e caixa no azul.</b>
+    <!-- ==================== MANIFESTO ==================== -->
+    <section class="manifesto" id="manifesto" data-theme="violet">
+      <div class="wrap">
+        <p class="manifesto-line">
+          <span class="m-a">Nós não vendemos</span>
+          <span class="m-b"><span class="strike-text">curtidas.</span></span>
         </p>
+        <p class="manifesto-line manifesto-answer"><span class="m-c">Vendemos faturamento.</span></p>
+        <p class="manifesto-note" data-fade>Curtida não paga conta. A gente mira no que importa: mais clientes, mais vendas e caixa no azul.</p>
       </div>
     </section>
 
     <!-- ==================== MÉTODO + FORM ==================== -->
-    <section class="section method" id="metodo">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">O método Alvo</span>
-          <h2 class="section-title" data-split>Da mira ao alvo<br>em quatro passos.</h2>
-        </div>
+    <section class="method" id="metodo" data-theme="light">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="eyebrow">O método</p>
+          <h2 class="h2" data-lines>
+            <span class="ln"><span>Da mira ao alvo</span></span>
+            <span class="ln"><span>em quatro passos.</span></span>
+          </h2>
+        </header>
 
-        <div class="method-wrap">
-          <div class="method-steps">
-            <div class="steps-line"><span class="steps-progress" id="stepsProgress"></span></div>
-            <div class="step" data-step>
-              <span class="step-dot">01</span>
-              <h3>Diagnóstico</h3>
-              <p>Analisamos seu negócio, seu mercado e a concorrência pra achar onde está o dinheiro que passa batido.</p>
-            </div>
-            <div class="step" data-step>
-              <span class="step-dot">02</span>
-              <h3>Estratégia</h3>
-              <p>Montamos o plano de mídia e conteúdo com a mira travada no seu objetivo de faturamento.</p>
-            </div>
-            <div class="step" data-step>
-              <span class="step-dot">03</span>
-              <h3>Execução</h3>
-              <p>Campanhas no ar e conteúdo que atrai — do anúncio até a venda confirmada.</p>
-            </div>
-            <div class="step" data-step>
-              <span class="step-dot">04</span>
-              <h3>Escala</h3>
-              <p>Medimos, otimizamos e escalamos o que traz caixa. Crescimento com previsibilidade.</p>
-            </div>
-          </div>
+        <div class="method-grid">
+          <ol class="steps" id="steps">
+            <li class="step" data-step>
+              <span class="step-n">1</span>
+              <div><h3>Diagnóstico</h3><p>Analisamos seu negócio, seu mercado e a concorrência pra achar o dinheiro que está passando batido.</p></div>
+            </li>
+            <li class="step" data-step>
+              <span class="step-n">2</span>
+              <div><h3>Estratégia</h3><p>Montamos o plano de mídia e conteúdo com a mira travada no seu objetivo de faturamento.</p></div>
+            </li>
+            <li class="step" data-step>
+              <span class="step-n">3</span>
+              <div><h3>Execução</h3><p>Campanhas no ar e conteúdo que atrai — do anúncio até a venda confirmada.</p></div>
+            </li>
+            <li class="step" data-step>
+              <span class="step-n">4</span>
+              <div><h3>Escala</h3><p>Medimos, otimizamos e colocamos mais verba no que traz caixa. Crescimento com previsibilidade.</p></div>
+            </li>
+          </ol>
 
-          <!-- FORM -->
           <form class="lead-form" id="leadForm" novalidate>
-            <h3>Peça seu orçamento grátis</h3>
-            <p>Receba uma proposta personalizada em até 24h, direto no seu WhatsApp.</p>
-            <div class="field">
-              <label for="nome">Nome completo</label>
-              <input type="text" id="nome" name="nome" placeholder="Seu nome" autocomplete="name" />
-            </div>
-            <div class="field">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="voce@email.com" autocomplete="email" />
-            </div>
-            <div class="field">
-              <label for="whatsapp">WhatsApp (com DDD)</label>
-              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 90000-0000" autocomplete="tel" />
-            </div>
-            <div class="field">
-              <label for="objetivo">Qual seu principal objetivo?</label>
-              <select id="objetivo" name="objetivo">
-                <option value="" disabled selected>Selecione uma opção</option>
+            <h3>Peça seu orçamento</h3>
+            <p>Proposta personalizada em até 24h, direto no seu WhatsApp.</p>
+            <label class="field"><span>Nome</span><input type="text" name="nome" autocomplete="name" placeholder="Seu nome" /></label>
+            <label class="field"><span>E-mail</span><input type="email" name="email" autocomplete="email" placeholder="voce@email.com" /></label>
+            <label class="field"><span>WhatsApp</span><input type="tel" name="whatsapp" autocomplete="tel" placeholder="(11) 90000-0000" /></label>
+            <label class="field"><span>Objetivo</span>
+              <select name="objetivo">
+                <option value="" disabled selected>Escolha uma opção</option>
                 <option>Atrair mais clientes</option>
                 <option>Aumentar as vendas / faturamento</option>
                 <option>Divulgar meu negócio na cidade</option>
@@ -552,145 +378,92 @@
                 <option>Criar/refazer meu site ou cardápio</option>
                 <option>Outro</option>
               </select>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">
-              <span class="btn-label">Receber proposta</span>
-              <span class="btn-arrow">→</span>
-            </button>
-            <p class="form-privacy">Abre direto no WhatsApp · sem enrolação</p>
+            </label>
+            <button type="submit" class="btn btn-dark btn-block"><span class="btn-label">Receber proposta</span> <span class="arr">→</span></button>
+            <p class="form-note">Abre direto no WhatsApp · sem enrolação</p>
           </form>
         </div>
       </div>
     </section>
 
-    <!-- ==================== RESULTADOS ==================== -->
-    <section class="section results" id="resultados">
-      <div class="container">
-        <div class="results-head">
-          <div class="section-head">
-            <span class="section-tag">Resultados reais</span>
-            <h2 class="section-title" data-split>Prints que valem mais<br>que promessa.</h2>
-            <p class="section-sub">Toque para ver de perto — números reais de quem confiou na gente.</p>
-          </div>
-          <div class="results-nav">
-            <button class="results-arrow" id="resultsPrev" aria-label="Anterior">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button class="results-arrow" id="resultsNext" aria-label="Próximo">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="results-viewport">
-          <div class="results-track" id="resultsTrack">
-            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-1.jpg" alt="Resultado de campanha 1" loading="lazy" /></div>
-            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-2.jpg" alt="Resultado de campanha 2" loading="lazy" /></div>
-            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-3.jpg" alt="Resultado de campanha 3" loading="lazy" /></div>
-            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-4.jpg" alt="Resultado de campanha 4" loading="lazy" /></div>
-            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-5.jpg" alt="Resultado de campanha 5" loading="lazy" /></div>
-            <div class="result-card" data-lightbox><span class="result-badge">Resultado</span><span class="result-zoom" aria-hidden="true">⤢</span><img src="assets/resultado-6.jpg" alt="Resultado de campanha 6" loading="lazy" /></div>
-          </div>
-        </div>
-        <div class="results-progress-track"><span class="results-progress" id="resultsProgress"></span></div>
-      </div>
-    </section>
-
     <!-- ==================== FAQ ==================== -->
-    <section class="section faq" id="faq">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">Dúvidas</span>
-          <h2 class="section-title" data-split>Perguntas frequentes.</h2>
-        </div>
+    <section class="faq" id="faq" data-theme="light">
+      <div class="wrap faq-grid">
+        <header class="sec-head">
+          <p class="eyebrow">Dúvidas</p>
+          <h2 class="h2" data-lines><span class="ln"><span>Perguntas</span></span><span class="ln"><span>frequentes.</span></span></h2>
+        </header>
         <div class="faq-list">
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Em quanto tempo vejo resultado?<span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-a"><p>As primeiras campanhas costumam gerar movimento já nas primeiras semanas. Crescimento consistente vem com a otimização ao longo dos primeiros meses.</p></div>
+            <div class="faq-a"><div class="faq-a-inner"><p>As primeiras campanhas costumam gerar movimento já nas primeiras semanas. Crescimento consistente vem com a otimização ao longo dos primeiros meses.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Que tipo de negócio vocês atendem?<span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-a"><p>Trabalhamos com quem quer crescer de verdade — restaurantes e bares, comércio e serviços locais e marcas em expansão. Se tem cliente pra conquistar, a gente mira.</p></div>
+            <div class="faq-a"><div class="faq-a-inner"><p>Quem quer crescer de verdade — restaurantes e bares, deliveries, comércio e serviços locais e marcas em expansão. Se tem cliente pra conquistar, a gente mira.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Preciso ter verba grande de anúncios?<span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-a"><p>Não. Começamos com um investimento adequado à sua realidade e escalamos conforme o retorno aparece, sempre protegendo a sua margem.</p></div>
+            <div class="faq-a"><div class="faq-a-inner"><p>Não. Um dos resultados acima saiu de R$ 479,99 em anúncios. Começamos com um investimento adequado à sua realidade e escalamos conforme o retorno aparece.</p></div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Como funciona o primeiro contato?<span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-a"><p>Você chama no WhatsApp ou preenche o formulário. Fazemos um diagnóstico e enviamos uma proposta personalizada em até 24 horas.</p></div>
+            <div class="faq-a"><div class="faq-a-inner"><p>Você chama no WhatsApp ou preenche o formulário. Fazemos um diagnóstico e enviamos uma proposta personalizada em até 24 horas.</p></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== FINALE ==================== -->
-    <section class="finale" id="contato">
-      <div class="container">
-        <div class="finale-eyebrow">
-          <span class="finale-eyebrow-title">Bora acertar o alvo?</span>
-          <span class="finale-eyebrow-sub">Fale com nosso time</span>
-        </div>
-        <h2 class="finale-title">
-          <span class="line"><span class="line-inner">Prepare-se para ver</span></span>
-          <span class="line"><span class="line-inner">seu negócio <span class="serif-accent brand-text">crescer</span></span></span>
-          <span class="line"><span class="line-inner">como nunca visto antes.</span></span>
+    <!-- ==================== FINAL ==================== -->
+    <section class="finale" id="contato" data-theme="dark">
+      <div class="wrap finale-inner">
+        <h2 class="finale-title" data-lines aria-label="Bora acertar o alvo?">
+          <span class="ln"><span>Bora acertar</span></span>
+          <span class="ln"><span>o alvo?</span></span>
         </h2>
-        <p class="finale-sub">Chame no WhatsApp ou peça seu orçamento. A gente mira, você fatura.</p>
-        <div class="finale-ctas">
-          <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="btn btn-primary" data-magnetic>
-            <span class="btn-label">Falar no WhatsApp</span>
-            <span class="btn-arrow">→</span>
-          </a>
-          <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener" class="btn btn-ig-solid" data-magnetic>
-            <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-            <span class="btn-label">@grupoalvo_</span>
+        <div class="finale-target" id="finaleTarget">
+          <span class="ring" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span>
+          <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="finale-cta" id="finaleCta">
+            <span>Chamar no<br />WhatsApp</span>
           </a>
         </div>
+        <p class="finale-sub" data-fade>A gente mira, você fatura. Resposta no mesmo dia.</p>
       </div>
     </section>
   </main>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="assets/logo.png" alt="Grupo Alvo" />
-        <p>Acelerador de faturamento. Estratégia que transforma negócios em marcas — desde 2021.</p>
-      </div>
+  <footer class="footer" data-theme="dark">
+    <div class="wrap footer-top">
       <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Navegar</h4>
-          <a href="#sobre">Quem somos</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#metodo">Método</a>
-          <a href="#resultados">Resultados</a>
+        <div>
+          <p class="eyebrow">Navegar</p>
+          <a href="#resultados">Resultados</a><a href="#socios">Sócios</a><a href="#servicos">Serviços</a><a href="#metodo">Método</a>
         </div>
-        <div class="footer-col">
-          <h4>Contato</h4>
+        <div>
+          <p class="eyebrow">Contato</p>
           <a href="https://wa.me/5511979705089" target="_blank" rel="noopener">WhatsApp</a>
           <a href="https://www.instagram.com/grupoalvo_/" target="_blank" rel="noopener">Instagram</a>
-          <a href="#contato">Pedir orçamento</a>
+          <a href="#metodo">Pedir orçamento</a>
         </div>
       </div>
+      <p class="footer-claim">Acelerador de faturamento.<br />Estratégia que transforma negócios em marcas.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Grupo Alvo. Todos os direitos reservados.</span>
+    <img class="footer-logo" src="assets/logo-hd.png" alt="Grupo Alvo" loading="lazy" decoding="async" width="1200" height="825" />
+    <div class="wrap footer-bottom">
+      <span>© 2026 Grupo Alvo</span>
       <span>Feito com mira no seu faturamento.</span>
     </div>
   </footer>
 
-  <!-- ==================== FLUTUANTE (WhatsApp) ==================== -->
-  <div class="floats">
-    <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="float-btn float-wa" aria-label="Falar no WhatsApp">
-      <span class="float-pulse" aria-hidden="true"></span>
-      <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.2-157zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-    </a>
-  </div>
+  <!-- WhatsApp flutuante -->
+  <a href="https://wa.me/5511979705089" target="_blank" rel="noopener" class="float-wa is-away" id="floatWa" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.2-157zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+  </a>
 
-  <!-- ==================== LIGHTBOX ==================== -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-close" aria-label="Fechar">×</button>
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Print do resultado">
+    <button class="lightbox-close" aria-label="Fechar">Fechar ×</button>
     <img id="lightboxImg" src="" alt="" />
   </div>
 
